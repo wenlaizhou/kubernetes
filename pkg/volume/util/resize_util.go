@@ -51,7 +51,7 @@ func MarkFSResizeFinished(
 	newPVC := pvc.DeepCopy()
 	newPVC.Status.Capacity = capacity
 	newPVC = MergeResizeConditionOnPVC(newPVC, []v1.PersistentVolumeClaimCondition{})
-	_, err := PatchPVCStatus(pvc /*oldPVC*/, newPVC, kubeClient)
+	_, err := PatchPVCStatus(pvc /*oldPVC*/ , newPVC, kubeClient)
 	return err
 }
 

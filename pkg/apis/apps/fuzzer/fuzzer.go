@@ -17,7 +17,7 @@ limitations under the License.
 package fuzzer
 
 import (
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"

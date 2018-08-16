@@ -104,7 +104,7 @@ func (obj *ExternalType2) GroupVersionKind() schema.GroupVersionKind {
 func NewInternalType(kind, apiversion, name string) *InternalType {
 	item := InternalType{Kind: kind,
 		APIVersion: apiversion,
-		Name:       name}
+		Name: name}
 	return &item
 }
 
@@ -163,8 +163,8 @@ func (obj *ExternalNamespacedType2) GroupVersionKind() schema.GroupVersionKind {
 func NewInternalNamespacedType(kind, apiversion, name, namespace string) *InternalNamespacedType {
 	item := InternalNamespacedType{Kind: kind,
 		APIVersion: apiversion,
-		Name:       name,
-		Namespace:  namespace}
+		Name: name,
+		Namespace: namespace}
 	return &item
 }
 

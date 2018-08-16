@@ -727,7 +727,7 @@ func makeSignalObservations(summary *statsapi.Summary) (signalObservations, stat
 	if memory := summary.Node.Memory; memory != nil && memory.AvailableBytes != nil && memory.WorkingSetBytes != nil {
 		result[evictionapi.SignalMemoryAvailable] = signalObservation{
 			available: resource.NewQuantity(int64(*memory.AvailableBytes), resource.BinarySI),
-			capacity:  resource.NewQuantity(int64(*memory.AvailableBytes+*memory.WorkingSetBytes), resource.BinarySI),
+			capacity:  resource.NewQuantity(int64(*memory.AvailableBytes + *memory.WorkingSetBytes), resource.BinarySI),
 			time:      memory.Time,
 		}
 	}
@@ -737,7 +737,7 @@ func makeSignalObservations(summary *statsapi.Summary) (signalObservations, stat
 		if memory := allocatableContainer.Memory; memory != nil && memory.AvailableBytes != nil && memory.WorkingSetBytes != nil {
 			result[evictionapi.SignalAllocatableMemoryAvailable] = signalObservation{
 				available: resource.NewQuantity(int64(*memory.AvailableBytes), resource.BinarySI),
-				capacity:  resource.NewQuantity(int64(*memory.AvailableBytes+*memory.WorkingSetBytes), resource.BinarySI),
+				capacity:  resource.NewQuantity(int64(*memory.AvailableBytes + *memory.WorkingSetBytes), resource.BinarySI),
 				time:      memory.Time,
 			}
 		}
@@ -1076,7 +1076,7 @@ func evictionMessage(resourceToReclaim v1.ResourceName, pod *v1.Pod, stats stats
 				switch resourceToReclaim {
 				case v1.ResourceEphemeralStorage:
 					if containerStats.Rootfs != nil && containerStats.Rootfs.UsedBytes != nil && containerStats.Logs != nil && containerStats.Logs.UsedBytes != nil {
-						usage = resource.NewQuantity(int64(*containerStats.Rootfs.UsedBytes+*containerStats.Logs.UsedBytes), resource.BinarySI)
+						usage = resource.NewQuantity(int64(*containerStats.Rootfs.UsedBytes + *containerStats.Logs.UsedBytes), resource.BinarySI)
 					}
 				case v1.ResourceMemory:
 					if containerStats.Memory != nil && containerStats.Memory.WorkingSetBytes != nil {

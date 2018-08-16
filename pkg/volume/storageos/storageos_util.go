@@ -33,9 +33,9 @@ import (
 const (
 	losetupPath = "losetup"
 
-	modeBlock deviceType = iota
-	modeFile
-	modeUnsupported
+	modeBlock       deviceType = iota
+	modeFile        
+	modeUnsupported 
 
 	ErrDeviceNotFound     = "device not found"
 	ErrDeviceNotSupported = "device not supported"

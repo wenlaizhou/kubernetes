@@ -21,7 +21,6 @@ import (
 	"testing"
 	"time"
 
-	. "k8s.io/kubernetes/pkg/kubelet/container"
 	ctest "k8s.io/kubernetes/pkg/kubelet/container/testing"
 )
 

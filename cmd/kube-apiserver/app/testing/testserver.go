@@ -25,7 +25,7 @@ import (
 	"runtime"
 	"time"
 
-	pflag "github.com/spf13/pflag"
+	"github.com/spf13/pflag"
 
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/apiserver/pkg/registry/generic/registry"

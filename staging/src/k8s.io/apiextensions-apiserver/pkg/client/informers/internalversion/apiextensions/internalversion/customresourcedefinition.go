@@ -19,16 +19,16 @@ limitations under the License.
 package internalversion
 
 import (
-	time "time"
+	"time"
 
-	apiextensions "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions"
-	internalclientset "k8s.io/apiextensions-apiserver/pkg/client/clientset/internalclientset"
-	internalinterfaces "k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
-	internalversion "k8s.io/apiextensions-apiserver/pkg/client/listers/apiextensions/internalversion"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	watch "k8s.io/apimachinery/pkg/watch"
-	cache "k8s.io/client-go/tools/cache"
+	"k8s.io/apiextensions-apiserver/pkg/apis/apiextensions"
+	"k8s.io/apiextensions-apiserver/pkg/client/clientset/internalclientset"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/apiextensions-apiserver/pkg/client/listers/apiextensions/internalversion"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/tools/cache"
 )
 
 // CustomResourceDefinitionInformer provides access to a shared informer and lister for

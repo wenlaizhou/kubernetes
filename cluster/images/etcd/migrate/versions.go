@@ -63,8 +63,8 @@ type EtcdStorageVersion int
 
 const (
 	storageUnknown EtcdStorageVersion = iota
-	storageEtcd2
-	storageEtcd3
+	storageEtcd2   
+	storageEtcd3   
 )
 
 // ParseEtcdStorageVersion parses an etcd storage version string to an EtcdStorageVersion.

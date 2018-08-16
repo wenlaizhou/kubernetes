@@ -64,38 +64,38 @@ func TestNewFeatureGate(t *testing.T) {
 		expectedError        bool
 		expectedFeaturesGate map[string]bool
 	}{
-		{ //invalid value (missing =)
-			value:         "invalidValue",
+		{//invalid value (missing =)
+			value: "invalidValue",
 			expectedError: true,
 		},
-		{ //invalid value (missing =)
-			value:         "feature1=true,invalidValue",
+		{//invalid value (missing =)
+			value: "feature1=true,invalidValue",
 			expectedError: true,
 		},
-		{ //invalid value (not a boolean)
-			value:         "feature1=notABoolean",
+		{//invalid value (not a boolean)
+			value: "feature1=notABoolean",
 			expectedError: true,
 		},
-		{ //invalid value (not a boolean)
-			value:         "feature1=true,feature2=notABoolean",
+		{//invalid value (not a boolean)
+			value: "feature1=true,feature2=notABoolean",
 			expectedError: true,
 		},
-		{ //unrecognized feature-gate key
-			value:         "unknownFeature=false",
+		{//unrecognized feature-gate key
+			value: "unknownFeature=false",
 			expectedError: true,
 		},
-		{ //unrecognized feature-gate key
-			value:         "feature1=true,unknownFeature=false",
+		{//unrecognized feature-gate key
+			value: "feature1=true,unknownFeature=false",
 			expectedError: true,
 		},
-		{ //one feature
-			value:                "feature1=true",
-			expectedError:        false,
+		{//one feature
+			value: "feature1=true",
+			expectedError: false,
 			expectedFeaturesGate: map[string]bool{"feature1": true},
 		},
-		{ //two features
-			value:                "feature1=true,feature2=false",
-			expectedError:        false,
+		{//two features
+			value: "feature1=true,feature2=false",
+			expectedError: false,
 			expectedFeaturesGate: map[string]bool{"feature1": true, "feature2": false},
 		},
 	}
@@ -129,13 +129,13 @@ func TestValidateVersion(t *testing.T) {
 		requestedFeatures map[string]bool
 		expectedError     bool
 	}{
-		{ //no min version
+		{//no min version
 			requestedFeatures: map[string]bool{"feature1": true},
-			expectedError:     false,
+			expectedError: false,
 		},
-		{ //no min version
+		{//no min version
 			requestedFeatures: map[string]bool{"feature2": true},
-			expectedError:     false,
+			expectedError: false,
 		},
 	}
 
@@ -157,20 +157,20 @@ func TestResolveFeatureGateDependencies(t *testing.T) {
 		inputFeatures    map[string]bool
 		expectedFeatures map[string]bool
 	}{
-		{ // no flags
-			inputFeatures:    map[string]bool{},
+		{// no flags
+			inputFeatures: map[string]bool{},
 			expectedFeatures: map[string]bool{},
 		},
-		{ // others flags
-			inputFeatures:    map[string]bool{CoreDNS: false},
+		{// others flags
+			inputFeatures: map[string]bool{CoreDNS: false},
 			expectedFeatures: map[string]bool{CoreDNS: false},
 		},
-		{ // just StoreCertsInSecrets flags
-			inputFeatures:    map[string]bool{StoreCertsInSecrets: true},
+		{// just StoreCertsInSecrets flags
+			inputFeatures: map[string]bool{StoreCertsInSecrets: true},
 			expectedFeatures: map[string]bool{StoreCertsInSecrets: true, SelfHosting: true},
 		},
-		{ // just HighAvailability flags
-			inputFeatures:    map[string]bool{HighAvailability: true},
+		{// just HighAvailability flags
+			inputFeatures: map[string]bool{HighAvailability: true},
 			expectedFeatures: map[string]bool{HighAvailability: true, StoreCertsInSecrets: true, SelfHosting: true},
 		},
 	}

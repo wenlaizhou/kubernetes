@@ -365,19 +365,19 @@ func (check *Checker) updateExprType(x ast.Expr, typ Type, final bool) {
 	// update operands of x if necessary
 	switch x := x.(type) {
 	case *ast.BadExpr,
-		*ast.FuncLit,
-		*ast.CompositeLit,
-		*ast.IndexExpr,
-		*ast.SliceExpr,
-		*ast.TypeAssertExpr,
-		*ast.StarExpr,
-		*ast.KeyValueExpr,
-		*ast.ArrayType,
-		*ast.StructType,
-		*ast.FuncType,
-		*ast.InterfaceType,
-		*ast.MapType,
-		*ast.ChanType:
+	*ast.FuncLit,
+	*ast.CompositeLit,
+	*ast.IndexExpr,
+	*ast.SliceExpr,
+	*ast.TypeAssertExpr,
+	*ast.StarExpr,
+	*ast.KeyValueExpr,
+	*ast.ArrayType,
+	*ast.StructType,
+	*ast.FuncType,
+	*ast.InterfaceType,
+	*ast.MapType,
+	*ast.ChanType:
 		// These expression are never untyped - nothing to do.
 		// The respective sub-expressions got their final types
 		// upon assignment or use.
@@ -948,8 +948,8 @@ type exprKind int
 
 const (
 	conversion exprKind = iota
-	expression
-	statement
+	expression 
+	statement  
 )
 
 // rawExpr typechecks expression e and initializes x with the expression
@@ -1486,7 +1486,7 @@ func (check *Checker) exprInternal(x *operand, e ast.Expr, hint Type) exprKind {
 		goto Error
 
 	case *ast.ArrayType, *ast.StructType, *ast.FuncType,
-		*ast.InterfaceType, *ast.MapType, *ast.ChanType:
+	*ast.InterfaceType, *ast.MapType, *ast.ChanType:
 		x.mode = typexpr
 		x.typ = check.typ(e)
 		// Note: rawExpr (caller of exprInternal) will call check.recordTypeAndValue

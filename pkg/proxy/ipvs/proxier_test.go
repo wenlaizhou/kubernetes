@@ -1008,7 +1008,7 @@ func TestOnlyLocalNodePorts(t *testing.T) {
 	makeEndpointsMap(fp,
 		makeTestEndpoints(svcPortName.Namespace, svcPortName.Name, func(ept *api.Endpoints) {
 			ept.Subsets = []api.EndpointSubset{
-				{ // **local** endpoint address, should be added as RS
+				{// **local** endpoint address, should be added as RS
 					Addresses: []api.EndpointAddress{{
 						IP:       epIP,
 						NodeName: &thisHostname,
@@ -1017,7 +1017,7 @@ func TestOnlyLocalNodePorts(t *testing.T) {
 						Name: svcPortName.Port,
 						Port: int32(svcPort),
 					}}},
-				{ // **remote** endpoint address, should not be added as RS
+				{// **remote** endpoint address, should not be added as RS
 					Addresses: []api.EndpointAddress{{
 						IP:       epIP1,
 						NodeName: &otherHostname,

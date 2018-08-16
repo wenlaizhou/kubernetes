@@ -36,7 +36,6 @@ type Configuration struct {
 // To consume the resource, there must exist an associated quota that limits
 // its consumption.
 type LimitedResource struct {
-
 	// APIGroup is the name of the APIGroup that contains the limited resource.
 	// +optional
 	APIGroup string `json:"apiGroup,omitempty"`

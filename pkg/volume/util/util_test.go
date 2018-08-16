@@ -682,7 +682,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") == 0 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") == 0 */ , "b"),
 		},
 		// Tests for PVC names that end in - number, but don't look like statefulset PVCs
 		{
@@ -695,7 +695,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-0",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") == 0 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") == 0 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -707,7 +707,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-1",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -719,7 +719,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-2",
 			NumZones:   2,
-			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */, "c"),
+			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */ , "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -731,7 +731,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-3",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -743,7 +743,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-4",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 */ , "a"),
 		},
 		// Tests for PVC names that are edge cases
 		{
@@ -756,7 +756,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley-") = 2652299129 === 2 mod 3 = 2 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley-") = 2652299129 === 2 mod 3 = 2 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -768,7 +768,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "henley-a",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley-a") = 1459735322 === 2 mod 3 = 2 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley-a") = 1459735322 === 2 mod 3 = 2 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -780,7 +780,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium--1",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("") + 1 + 1(startingIndex) == 2166136261 + 1 + 1 === 3 mod 3 = 0 */, "b"),
+			Expected:   sets.NewString("a" /* hash("") + 1 + 1(startingIndex) == 2166136261 + 1 + 1 === 3 mod 3 = 0 */ , "b"),
 		},
 		// Tests for PVC names for simple StatefulSet cases
 		{
@@ -794,7 +794,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley-1",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -806,7 +806,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "loud-henley-1",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 1 + 1(startingIndex) == 2 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -818,7 +818,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "quiet-henley-2",
 			NumZones:   2,
-			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */, "c"),
+			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */ , "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -830,7 +830,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley-2",
 			NumZones:   2,
-			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */, "c"),
+			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */ , "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -842,7 +842,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley-3",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 === 6 mod 3 = 0 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 === 6 mod 3 = 0 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -854,7 +854,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley-4",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 === 2 mod 3 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 === 2 mod 3 */ , "a"),
 		},
 		// Tests for statefulsets (or claims) with dashes in the names
 		{
@@ -867,7 +867,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-alpha-henley-2",
 			NumZones:   2,
-			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */, "c"),
+			Expected:   sets.NewString("b" /* hash("henley") + 2 + 2(startingIndex) == 4 */ , "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -879,7 +879,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-beta-henley-3",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 === 0 mod 3 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") + 3 + 3(startingIndex) == 6 === 0 mod 3 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -891,7 +891,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-gamma-henley-4",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 === 2 mod 3 */, "a"),
+			Expected:   sets.NewString("c" /* hash("henley") + 4 + 4(startingIndex) == 8 === 2 mod 3 */ , "a"),
 		},
 		// Tests for statefulsets name ending in -
 		{
@@ -904,7 +904,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley--2",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("") + 2 + 2(startingIndex) == 2 mod 3 */, "a"),
+			Expected:   sets.NewString("c" /* hash("") + 2 + 2(startingIndex) == 2 mod 3 */ , "a"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -916,7 +916,7 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley--3",
 			NumZones:   2,
-			Expected:   sets.NewString("b" /* hash("") + 3 + 3(startingIndex) == 1 mod 3 */, "c"),
+			Expected:   sets.NewString("b" /* hash("") + 3 + 3(startingIndex) == 1 mod 3 */ , "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
@@ -928,67 +928,67 @@ func TestChooseZonesForVolume(t *testing.T) {
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley--4",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("") + 4 + 4(startingIndex) == 0 mod 3 */, "b"),
+			Expected:   sets.NewString("a" /* hash("") + 4 + 4(startingIndex) == 0 mod 3 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley--4",
 			NumZones:   3,
-			Expected:   sets.NewString("c" /* hash("") + 4 == 2 mod 3 */, "a", "b"),
+			Expected:   sets.NewString("c" /* hash("") + 4 == 2 mod 3 */ , "a", "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c"),
 			VolumeName: "medium-henley--4",
 			NumZones:   4,
-			Expected:   sets.NewString("c" /* hash("") + 4 + 9(startingIndex) == 2 mod 3 */, "a", "b", "c"),
+			Expected:   sets.NewString("c" /* hash("") + 4 + 9(startingIndex) == 2 mod 3 */ , "a", "b", "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-0",
 			NumZones:   2,
-			Expected:   sets.NewString("a" /* hash("henley") == 0 */, "b"),
+			Expected:   sets.NewString("a" /* hash("henley") == 0 */ , "b"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-1",
 			NumZones:   2,
-			Expected:   sets.NewString("c" /* hash("henley") == 0 + 2 */, "d"),
+			Expected:   sets.NewString("c" /* hash("henley") == 0 + 2 */ , "d"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-2",
 			NumZones:   2,
-			Expected:   sets.NewString("e" /* hash("henley") == 0 + 2 + 2(startingIndex) */, "f"),
+			Expected:   sets.NewString("e" /* hash("henley") == 0 + 2 + 2(startingIndex) */ , "f"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-3",
 			NumZones:   2,
-			Expected:   sets.NewString("g" /* hash("henley") == 0 + 2 + 4(startingIndex) */, "h"),
+			Expected:   sets.NewString("g" /* hash("henley") == 0 + 2 + 4(startingIndex) */ , "h"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-0",
 			NumZones:   3,
-			Expected:   sets.NewString("a" /* hash("henley") == 0 */, "b", "c"),
+			Expected:   sets.NewString("a" /* hash("henley") == 0 */ , "b", "c"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-1",
 			NumZones:   3,
-			Expected:   sets.NewString("d" /* hash("henley") == 0 + 1 + 2(startingIndex) */, "e", "f"),
+			Expected:   sets.NewString("d" /* hash("henley") == 0 + 1 + 2(startingIndex) */ , "e", "f"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-2",
 			NumZones:   3,
-			Expected:   sets.NewString("g" /* hash("henley") == 0 + 2 + 4(startingIndex) */, "h", "i"),
+			Expected:   sets.NewString("g" /* hash("henley") == 0 + 2 + 4(startingIndex) */ , "h", "i"),
 		},
 		{
 			Zones:      sets.NewString("a", "b", "c", "d", "e", "f", "g", "h", "i"),
 			VolumeName: "henley-3",
 			NumZones:   3,
-			Expected:   sets.NewString("a" /* hash("henley") == 0 + 3 + 6(startingIndex) */, "b", "c"),
+			Expected:   sets.NewString("a" /* hash("henley") == 0 + 3 + 6(startingIndex) */ , "b", "c"),
 		},
 	}
 

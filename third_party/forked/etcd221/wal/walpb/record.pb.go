@@ -14,13 +14,13 @@
 */
 package walpb
 
-import proto "github.com/gogo/protobuf/proto"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "math"
 
 // discarding unused import gogoproto "github.com/coreos/etcd/Godeps/_workspace/src/gogoproto"
 
-import io "io"
-import fmt "fmt"
+import "io"
+import "fmt"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

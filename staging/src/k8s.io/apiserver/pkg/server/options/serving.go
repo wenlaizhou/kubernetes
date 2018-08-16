@@ -159,12 +159,12 @@ func (s *SecureServingOptions) AddFlags(fs *pflag.FlagSet) {
 	fs.StringSliceVar(&s.CipherSuites, "tls-cipher-suites", s.CipherSuites,
 		"Comma-separated list of cipher suites for the server. "+
 			"If omitted, the default Go cipher suites will be use.  "+
-			"Possible values: "+strings.Join(tlsCipherPossibleValues, ","))
+			"Possible values: "+ strings.Join(tlsCipherPossibleValues, ","))
 
 	tlsPossibleVersions := utilflag.TLSPossibleVersions()
 	fs.StringVar(&s.MinTLSVersion, "tls-min-version", s.MinTLSVersion,
 		"Minimum TLS version supported. "+
-			"Possible values: "+strings.Join(tlsPossibleVersions, ", "))
+			"Possible values: "+ strings.Join(tlsPossibleVersions, ", "))
 
 	fs.Var(utilflag.NewNamedCertKeyArray(&s.SNICertKeys), "tls-sni-cert-key", ""+
 		"A pair of x509 certificate and private key file paths, optionally suffixed with a list of "+

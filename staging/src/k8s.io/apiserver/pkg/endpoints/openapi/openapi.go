@@ -24,7 +24,7 @@ import (
 	"strings"
 	"unicode"
 
-	restful "github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful"
 	"github.com/go-openapi/spec"
 
 	"k8s.io/apimachinery/pkg/apis/meta/v1"

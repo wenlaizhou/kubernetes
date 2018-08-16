@@ -36,9 +36,9 @@ type GoTemplatePrinter struct {
 func NewGoTemplatePrinter(tmpl []byte) (*GoTemplatePrinter, error) {
 	t, err := template.New("output").
 		Funcs(template.FuncMap{
-			"exists":       exists,
-			"base64decode": base64decode,
-		}).
+		"exists":       exists,
+		"base64decode": base64decode,
+	}).
 		Parse(string(tmpl))
 	if err != nil {
 		return nil, err

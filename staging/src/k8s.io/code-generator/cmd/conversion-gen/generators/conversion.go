@@ -858,8 +858,8 @@ func (g *genConversion) doStruct(inType, outType *types.Type, sw *generator.Snip
 
 		// If we can't auto-convert, punt before we emit any code.
 		if inMemberType.Kind != outMemberType.Kind {
-			sw.Do("// WARNING: in."+inMember.Name+" requires manual conversion: inconvertible types ("+
-				inMemberType.String()+" vs "+outMemberType.String()+")\n", nil)
+			sw.Do("// WARNING: in." + inMember.Name + " requires manual conversion: inconvertible types ("+
+				inMemberType.String()+ " vs "+ outMemberType.String()+ ")\n", nil)
 			g.skippedFields[inType] = append(g.skippedFields[inType], inMember.Name)
 			continue
 		}

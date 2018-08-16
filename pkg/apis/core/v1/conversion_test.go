@@ -184,7 +184,7 @@ func TestResourceListConversion(t *testing.T) {
 		input    v1.ResourceList
 		expected core.ResourceList
 	}{
-		{ // No changes necessary.
+		{// No changes necessary.
 			input: v1.ResourceList{
 				v1.ResourceMemory:  resource.MustParse("30M"),
 				v1.ResourceCPU:     resource.MustParse("100m"),
@@ -196,7 +196,7 @@ func TestResourceListConversion(t *testing.T) {
 				core.ResourceStorage: resource.MustParse("1G"),
 			},
 		},
-		{ // Nano-scale values should be rounded up to milli-scale.
+		{// Nano-scale values should be rounded up to milli-scale.
 			input: v1.ResourceList{
 				v1.ResourceCPU:    resource.MustParse("3.000023m"),
 				v1.ResourceMemory: resource.MustParse("500.000050m"),
@@ -206,7 +206,7 @@ func TestResourceListConversion(t *testing.T) {
 				core.ResourceMemory: resource.MustParse("501m"),
 			},
 		},
-		{ // Large values should still be accurate.
+		{// Large values should still be accurate.
 			input: v1.ResourceList{
 				v1.ResourceCPU:     *bigMilliQuantity.Copy(),
 				v1.ResourceStorage: *bigMilliQuantity.Copy(),

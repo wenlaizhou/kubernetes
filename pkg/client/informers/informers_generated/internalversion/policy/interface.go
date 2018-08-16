@@ -19,8 +19,8 @@ limitations under the License.
 package policy
 
 import (
-	internalinterfaces "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
-	internalversion "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/policy/internalversion"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/policy/internalversion"
 )
 
 // Interface provides access to each of this group's versions.

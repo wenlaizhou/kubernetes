@@ -341,31 +341,31 @@ func TestTLSConfig(t *testing.T) {
 			test:       "TLS setup between client and server",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: caCert,
-			wantAuth: true,
+			wantAuth:   true,
 		},
 		{
 			test:       "Server does not require client auth",
 			clientCA:   caCert,
 			serverCert: serverCert, serverKey: serverKey,
-			wantAuth: true,
+			wantAuth:   true,
 		},
 		{
 			test:       "Server does not require client auth, client provides it",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey,
-			wantAuth: true,
+			wantAuth:   true,
 		},
 		{
 			test:       "Client does not trust server",
 			clientCert: clientCert, clientKey: clientKey,
 			serverCert: serverCert, serverKey: serverKey,
-			wantErr: true,
+			wantErr:    true,
 		},
 		{
 			test:       "Server does not trust client",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: badCACert,
-			wantErr: true,
+			wantErr:    true,
 		},
 		{
 			// Plugin does not support insecure configurations.
@@ -479,7 +479,7 @@ func TestWebhook(t *testing.T) {
 			want: v1beta1.SubjectAccessReview{
 				TypeMeta: expTypeMeta,
 				Spec: v1beta1.SubjectAccessReviewSpec{
-					User: "jane",
+					User:                  "jane",
 					NonResourceAttributes: &v1beta1.NonResourceAttributes{},
 				},
 			},

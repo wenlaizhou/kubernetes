@@ -63,7 +63,7 @@ type templater struct {
 	HelpTemplate  string
 	RootCmd       *cobra.Command
 	CommandGroups
-	Filtered []string
+	Filtered      []string
 }
 
 func (templater *templater) ExposeFlags(cmd *cobra.Command, flags ...string) FlagExposer {

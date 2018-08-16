@@ -101,7 +101,7 @@ func TestCanSupport(t *testing.T) {
 	defer os.RemoveAll(tmpDir)
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 
 	plug, err := plugMgr.FindPluginByName("kubernetes.io/rbd")
 	if err != nil {
@@ -247,7 +247,7 @@ func checkMounterLog(t *testing.T, fakeMounter *mount.FakeMounter, expected int,
 func doTestPlugin(t *testing.T, c *testcase) {
 	fakeVolumeHost := volumetest.NewFakeVolumeHost(c.root, nil, nil)
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, fakeVolumeHost)
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , fakeVolumeHost)
 	plug, err := plugMgr.FindPluginByName("kubernetes.io/rbd")
 	if err != nil {
 		t.Errorf("Can't find the plugin by name")
@@ -475,7 +475,7 @@ func TestPersistentClaimReadOnlyFlag(t *testing.T) {
 	client := fake.NewSimpleClientset(pv, claim)
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, client, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, client, nil))
 	plug, _ := plugMgr.FindPluginByName(rbdPluginName)
 
 	// readOnly bool is supplied by persistent-claim volume source when its mounter creates other volumes
@@ -533,7 +533,7 @@ func TestGetDeviceMountPath(t *testing.T) {
 
 	fakeVolumeHost := volumetest.NewFakeVolumeHost(tmpDir, nil, nil)
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, fakeVolumeHost)
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , fakeVolumeHost)
 	plug, err := plugMgr.FindPluginByName("kubernetes.io/rbd")
 	if err != nil {
 		t.Errorf("Can't find the plugin by name")
@@ -600,7 +600,7 @@ func TestConstructVolumeSpec(t *testing.T) {
 
 	fakeVolumeHost := volumetest.NewFakeVolumeHost(tmpDir, nil, nil)
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, fakeVolumeHost)
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , fakeVolumeHost)
 	plug, err := plugMgr.FindPluginByName("kubernetes.io/rbd")
 	if err != nil {
 		t.Errorf("Can't find the plugin by name")

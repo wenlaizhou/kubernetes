@@ -96,7 +96,7 @@ func (pvIndex *persistentVolumeOrderedIndex) findByClaim(claim *v1.PersistentVol
 			return nil, err
 		}
 
-		bestVol, err := findMatchingVolume(claim, volumes, nil /* node for topology binding*/, nil /* exclusion map */, delayBinding)
+		bestVol, err := findMatchingVolume(claim, volumes, nil /* node for topology binding*/ , nil /* exclusion map */ , delayBinding)
 		if err != nil {
 			return nil, err
 		}

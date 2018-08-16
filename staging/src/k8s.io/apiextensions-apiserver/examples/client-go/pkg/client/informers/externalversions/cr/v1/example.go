@@ -19,16 +19,16 @@ limitations under the License.
 package v1
 
 import (
-	time "time"
+	"time"
 
 	crv1 "k8s.io/apiextensions-apiserver/examples/client-go/pkg/apis/cr/v1"
-	versioned "k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/clientset/versioned"
-	internalinterfaces "k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/listers/cr/v1"
+	"k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/clientset/versioned"
+	"k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/informers/externalversions/internalinterfaces"
+	"k8s.io/apiextensions-apiserver/examples/client-go/pkg/client/listers/cr/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	watch "k8s.io/apimachinery/pkg/watch"
-	cache "k8s.io/client-go/tools/cache"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/tools/cache"
 )
 
 // ExampleInformer provides access to a shared informer and lister for

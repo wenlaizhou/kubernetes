@@ -245,7 +245,7 @@ func typeFields(t reflect.Type) []field {
 			out = append(out, fi)
 			continue
 		}
-		dominant, ok := dominantField(fields[i : i+advance])
+		dominant, ok := dominantField(fields[i: i+advance])
 		if ok {
 			out = append(out, dominant)
 		}

@@ -368,7 +368,7 @@ func (util *RBDUtil) AttachDisk(b rbdMounter) (string, error) {
 	}
 
 	// Evalute whether this device was mapped with rbd.
-	devicePath, mapped := waitForPath(b.Pool, b.Image, 1 /*maxRetries*/, false /*useNbdDriver*/)
+	devicePath, mapped := waitForPath(b.Pool, b.Image, 1 /*maxRetries*/ , false /*useNbdDriver*/)
 
 	// If rbd-nbd tools are found, we will fallback to it should the default krbd driver fail.
 	nbdToolsFound := false
@@ -376,7 +376,7 @@ func (util *RBDUtil) AttachDisk(b rbdMounter) (string, error) {
 	if !mapped {
 		nbdToolsFound = checkRbdNbdTools(b.exec)
 		if nbdToolsFound {
-			devicePath, mapped = waitForPath(b.Pool, b.Image, 1 /*maxRetries*/, true /*useNbdDriver*/)
+			devicePath, mapped = waitForPath(b.Pool, b.Image, 1 /*maxRetries*/ , true /*useNbdDriver*/)
 		}
 	}
 
@@ -442,9 +442,9 @@ func (util *RBDUtil) AttachDisk(b rbdMounter) (string, error) {
 				outputList = append(outputList, output...)
 				return "", fmt.Errorf("rbd: map failed %v, rbd output: %s", errors.NewAggregate(errList), string(outputList))
 			}
-			devicePath, mapped = waitForPath(b.Pool, b.Image, 10 /*maxRetries*/, true /*useNbdDrive*/)
+			devicePath, mapped = waitForPath(b.Pool, b.Image, 10 /*maxRetries*/ , true /*useNbdDrive*/)
 		} else {
-			devicePath, mapped = waitForPath(b.Pool, b.Image, 10 /*maxRetries*/, false /*useNbdDriver*/)
+			devicePath, mapped = waitForPath(b.Pool, b.Image, 10 /*maxRetries*/ , false /*useNbdDriver*/)
 		}
 		if !mapped {
 			return "", fmt.Errorf("Could not map image %s/%s, Timeout after 10s", b.Pool, b.Image)
@@ -723,7 +723,7 @@ func (util *RBDUtil) rbdInfo(b *rbdMounter) (int, error) {
 	if sizeIndex == -1 || divIndex == -1 || divIndex <= sizeIndex+5 {
 		return 0, fmt.Errorf("can not get image size info %s: %s", b.Image, output)
 	}
-	rbdSizeStr := output[sizeIndex+5 : divIndex]
+	rbdSizeStr := output[sizeIndex+5: divIndex]
 	rbdSize, err := strconv.Atoi(rbdSizeStr)
 	if err != nil {
 		return 0, fmt.Errorf("can not convert size str: %s to int", rbdSizeStr)

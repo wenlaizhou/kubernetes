@@ -4583,7 +4583,7 @@ func ValidateSecret(secret *core.Secret) field.ErrorList {
 			allErrs = append(allErrs, field.Required(field.NewPath("metadata", "annotations").Key(core.ServiceAccountNameKey), ""))
 		}
 	case core.SecretTypeOpaque, "":
-	// no-op
+		// no-op
 	case core.SecretTypeDockercfg:
 		dockercfgBytes, exists := secret.Data[core.DockerConfigKey]
 		if !exists {
@@ -4629,7 +4629,7 @@ func ValidateSecret(secret *core.Secret) field.ErrorList {
 		if _, exists := secret.Data[core.TLSPrivateKeyKey]; !exists {
 			allErrs = append(allErrs, field.Required(dataPath.Key(core.TLSPrivateKeyKey), ""))
 		}
-	// TODO: Verify that the key matches the cert.
+		// TODO: Verify that the key matches the cert.
 	default:
 		// no-op
 	}

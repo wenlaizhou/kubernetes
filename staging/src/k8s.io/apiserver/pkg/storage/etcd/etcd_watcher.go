@@ -273,10 +273,10 @@ func (w *etcdWatcher) translate() {
 						Code:    http.StatusGone, // Gone
 						Reason:  metav1.StatusReasonExpired,
 					}
-				// TODO: need to generate errors using api/errors which has a circular dependency on this package
-				//   no other way to inject errors
-				// case etcdutil.IsEtcdUnreachable(err):
-				//   status = errors.NewServerTimeout(...)
+					// TODO: need to generate errors using api/errors which has a circular dependency on this package
+					//   no other way to inject errors
+					// case etcdutil.IsEtcdUnreachable(err):
+					//   status = errors.NewServerTimeout(...)
 				default:
 					status = &metav1.Status{
 						Status:  metav1.StatusFailure,

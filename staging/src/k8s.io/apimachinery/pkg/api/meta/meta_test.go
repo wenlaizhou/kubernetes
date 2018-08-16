@@ -25,7 +25,7 @@ import (
 	metav1beta1 "k8s.io/apimachinery/pkg/apis/meta/v1beta1"
 	"k8s.io/apimachinery/pkg/util/diff"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 )
 
 func TestAsPartialObjectMetadata(t *testing.T) {

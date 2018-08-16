@@ -435,7 +435,7 @@ func TestPodDescribeResultsSorted(t *testing.T) {
 	if err != nil {
 		t.Errorf("unexpected error: %v", err)
 	}
-	VerifyDatesInOrder(out, "\n" /* rowDelimiter */, "\t" /* columnDelimiter */, t)
+	VerifyDatesInOrder(out, "\n" /* rowDelimiter */ , "\t" /* columnDelimiter */ , t)
 }
 
 // VerifyDatesInOrder checks the start of each line for a RFC1123Z date
@@ -1862,7 +1862,7 @@ func TestDescribeHorizontalPodAutoscaler(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -1888,7 +1888,7 @@ func TestDescribeHorizontalPodAutoscaler(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -1901,7 +1901,7 @@ func TestDescribeHorizontalPodAutoscaler(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricStatus{
-								Name: api.ResourceCPU,
+								Name:                      api.ResourceCPU,
 								CurrentAverageUtilization: &currentUtilizationVal,
 								CurrentAverageValue:       *resource.NewMilliQuantity(40, resource.DecimalSI),
 							},
@@ -1931,7 +1931,7 @@ func TestDescribeHorizontalPodAutoscaler(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -1958,7 +1958,7 @@ func TestDescribeHorizontalPodAutoscaler(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricStatus{
-								Name: api.ResourceCPU,
+								Name:                      api.ResourceCPU,
 								CurrentAverageUtilization: &currentUtilizationVal,
 								CurrentAverageValue:       *resource.NewMilliQuantity(40, resource.DecimalSI),
 							},

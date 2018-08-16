@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	rest "k8s.io/client-go/rest"
-	testing "k8s.io/client-go/testing"
-	internalversion "k8s.io/sample-apiserver/pkg/client/clientset/internalversion/typed/wardle/internalversion"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/testing"
+	"k8s.io/sample-apiserver/pkg/client/clientset/internalversion/typed/wardle/internalversion"
 )
 
 type FakeWardle struct {

@@ -17,12 +17,12 @@ package walpb
 import (
 	"fmt"
 
-	proto "github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/proto"
 )
 
-import math "math"
+import "math"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

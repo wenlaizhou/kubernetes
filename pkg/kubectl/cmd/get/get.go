@@ -148,11 +148,11 @@ func NewCmdGet(parent string, f cmdutil.Factory, streams genericclioptions.IOStr
 	o := NewGetOptions(parent, streams)
 
 	cmd := &cobra.Command{
-		Use: "get [(-o|--output=)json|yaml|wide|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags]",
+		Use:                   "get [(-o|--output=)json|yaml|wide|custom-columns=...|custom-columns-file=...|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...] (TYPE[.VERSION][.GROUP] [NAME | -l label] | TYPE[.VERSION][.GROUP]/NAME ...) [flags]",
 		DisableFlagsInUseLine: true,
-		Short:   i18n.T("Display one or many resources"),
-		Long:    getLong + "\n\n" + cmdutil.SuggestApiResources(parent),
-		Example: getExample,
+		Short:                 i18n.T("Display one or many resources"),
+		Long:                  getLong + "\n\n" + cmdutil.SuggestApiResources(parent),
+		Example:               getExample,
 		Run: func(cmd *cobra.Command, args []string) {
 			cmdutil.CheckErr(o.Complete(f, cmd, args))
 			cmdutil.CheckErr(o.Validate(cmd))
@@ -323,18 +323,18 @@ func (o *GetOptions) Run(f cmdutil.Factory, cmd *cobra.Command, args []string) e
 		Latest().
 		Flatten().
 		TransformRequests(func(req *rest.Request) {
-			// We need full objects if printing with openapi columns
-			if o.PrintWithOpenAPICols {
-				return
-			}
-			if o.ServerPrint && o.IsHumanReadablePrinter && !o.Sort {
-				group := metav1beta1.GroupName
-				version := metav1beta1.SchemeGroupVersion.Version
+		// We need full objects if printing with openapi columns
+		if o.PrintWithOpenAPICols {
+			return
+		}
+		if o.ServerPrint && o.IsHumanReadablePrinter && !o.Sort {
+			group := metav1beta1.GroupName
+			version := metav1beta1.SchemeGroupVersion.Version
 
-				tableParam := fmt.Sprintf("application/json;as=Table;v=%s;g=%s, application/json", version, group)
-				req.SetHeader("Accept", tableParam)
-			}
-		}).
+			tableParam := fmt.Sprintf("application/json;as=Table;v=%s;g=%s, application/json", version, group)
+			req.SetHeader("Accept", tableParam)
+		}
+	}).
 		Do()
 
 	if o.IgnoreNotFound {

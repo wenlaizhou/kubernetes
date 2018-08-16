@@ -324,7 +324,6 @@ type DebuggingConfiguration struct {
 }
 
 type GenericComponentConfiguration struct {
-
 	// minResyncPeriod is the resync period in reflectors; will be random between
 	// minResyncPeriod and 2*minResyncPeriod.
 	MinResyncPeriod metav1.Duration `json:"minResyncPeriod"`

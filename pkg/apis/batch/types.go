@@ -88,7 +88,6 @@ type JobTemplateSpec struct {
 
 // JobSpec describes how the job execution will look like.
 type JobSpec struct {
-
 	// Specifies the maximum desired number of pods the job should
 	// run at any given time. The actual number of pods running in steady state will
 	// be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism),
@@ -142,7 +141,6 @@ type JobSpec struct {
 
 // JobStatus represents the current state of a Job.
 type JobStatus struct {
-
 	// The latest available observations of an object's current state.
 	// +optional
 	Conditions []JobCondition
@@ -240,7 +238,6 @@ type CronJobList struct {
 
 // CronJobSpec describes how the job execution will look like and when it will actually run.
 type CronJobSpec struct {
-
 	// The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
 	Schedule string
 

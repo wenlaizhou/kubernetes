@@ -102,10 +102,10 @@ func (n ContextBasedNaming) GenerateLink(requestInfo *request.RequestInfo, obj r
 	}
 
 	return n.SelfLinkPathPrefix +
-			url.QueryEscape(namespace) +
-			"/" + url.QueryEscape(requestInfo.Resource) + "/" +
-			url.QueryEscape(name) +
-			n.SelfLinkPathSuffix,
+		url.QueryEscape(namespace) +
+		"/" + url.QueryEscape(requestInfo.Resource) + "/" +
+		url.QueryEscape(name) +
+		n.SelfLinkPathSuffix,
 		nil
 }
 

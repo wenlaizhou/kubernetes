@@ -27,11 +27,11 @@ import (
 )
 
 const (
-	stdinChannel = iota
-	stdoutChannel
-	stderrChannel
-	errorChannel
-	resizeChannel
+	stdinChannel  = iota
+	stdoutChannel 
+	stderrChannel 
+	errorChannel  
+	resizeChannel 
 
 	preV4BinaryWebsocketProtocol = wsstream.ChannelWebSocketProtocol
 	preV4Base64WebsocketProtocol = wsstream.Base64ChannelWebSocketProtocol

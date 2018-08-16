@@ -26,7 +26,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"k8s.io/api/core/v1"
-	meta "k8s.io/apimachinery/pkg/api/meta"
+	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
 	utilerrors "k8s.io/apimachinery/pkg/util/errors"
@@ -145,11 +145,11 @@ func NewEnvOptions(streams genericclioptions.IOStreams) *EnvOptions {
 func NewCmdEnv(f cmdutil.Factory, streams genericclioptions.IOStreams) *cobra.Command {
 	o := NewEnvOptions(streams)
 	cmd := &cobra.Command{
-		Use: "env RESOURCE/NAME KEY_1=VAL_1 ... KEY_N=VAL_N",
+		Use:                   "env RESOURCE/NAME KEY_1=VAL_1 ... KEY_N=VAL_N",
 		DisableFlagsInUseLine: true,
-		Short:   "Update environment variables on a pod template",
-		Long:    envLong,
-		Example: fmt.Sprintf(envExample),
+		Short:                 "Update environment variables on a pod template",
+		Long:                  envLong,
+		Example:               fmt.Sprintf(envExample),
 		Run: func(cmd *cobra.Command, args []string) {
 			cmdutil.CheckErr(o.Complete(f, cmd, args))
 			cmdutil.CheckErr(o.Validate())

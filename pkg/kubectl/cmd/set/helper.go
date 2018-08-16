@@ -94,10 +94,10 @@ func selectString(s, spec string) bool {
 		// next part not in string
 		case next < pos:
 			fallthrough
-		// first part does not match start of string
+			// first part does not match start of string
 		case i == 0 && pos != 0:
 			fallthrough
-		// last part does not exactly match remaining part of string
+			// last part does not exactly match remaining part of string
 		case i == (len(parts)-1) && len(s) != (len(part)+next):
 			match = false
 			break

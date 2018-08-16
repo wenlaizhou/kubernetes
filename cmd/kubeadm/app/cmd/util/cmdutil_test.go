@@ -25,30 +25,30 @@ func TestValidateExactArgNumber(t *testing.T) {
 		args, supportedArgs []string
 		expectedErr         bool
 	}{
-		{ // one arg given and one arg expected
-			args:          []string{"my-node-1234"},
+		{// one arg given and one arg expected
+			args: []string{"my-node-1234"},
 			supportedArgs: []string{"node-name"},
-			expectedErr:   false,
+			expectedErr: false,
 		},
-		{ // two args given and two args expected
-			args:          []string{"my-node-1234", "foo"},
+		{// two args given and two args expected
+			args: []string{"my-node-1234", "foo"},
 			supportedArgs: []string{"node-name", "second-toplevel-arg"},
-			expectedErr:   false,
+			expectedErr: false,
 		},
-		{ // too few supplied args
-			args:          []string{},
+		{// too few supplied args
+			args: []string{},
 			supportedArgs: []string{"node-name"},
-			expectedErr:   true,
+			expectedErr: true,
 		},
-		{ // too few non-empty args
-			args:          []string{""},
+		{// too few non-empty args
+			args: []string{""},
 			supportedArgs: []string{"node-name"},
-			expectedErr:   true,
+			expectedErr: true,
 		},
-		{ // too many args
-			args:          []string{"my-node-1234", "foo"},
+		{// too many args
+			args: []string{"my-node-1234", "foo"},
 			supportedArgs: []string{"node-name"},
-			expectedErr:   true,
+			expectedErr: true,
 		},
 	}
 	for _, rt := range tests {

@@ -19,9 +19,6 @@ package validation
 import (
 	"path/filepath"
 
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-
 	utilerrors "k8s.io/apimachinery/pkg/util/errors"
 	"k8s.io/kube-openapi/pkg/util/proto/validation"
 	// This dependency is needed to register API types.

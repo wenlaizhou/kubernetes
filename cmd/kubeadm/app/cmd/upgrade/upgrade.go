@@ -54,7 +54,7 @@ func NewCmdUpgrade(out io.Writer) *cobra.Command {
 		printConfig:               false,
 		skipPreFlight:             false,
 		ignorePreflightErrorsSet:  sets.NewString(),
-		out: out,
+		out:                       out,
 	}
 
 	cmd := &cobra.Command{
@@ -81,5 +81,5 @@ func addApplyPlanFlags(fs *pflag.FlagSet, flags *applyPlanFlags) {
 	fs.BoolVar(&flags.skipPreFlight, "skip-preflight-checks", flags.skipPreFlight, "Skip preflight checks that normally run before modifying the system.")
 	fs.MarkDeprecated("skip-preflight-checks", "it is now equivalent to --ignore-preflight-errors=all")
 	fs.StringVar(&flags.featureGatesString, "feature-gates", flags.featureGatesString, "A set of key=value pairs that describe feature gates for various features."+
-		"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+		"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 }

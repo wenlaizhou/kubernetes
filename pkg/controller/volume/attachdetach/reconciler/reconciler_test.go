@@ -70,11 +70,11 @@ func Test_Run_Positive_DoNothing(t *testing.T) {
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 0 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, true /* expectZeroNewAttacherCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 0 /* expectedAttachCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewAttacherCallCount(t, 0 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, true /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 0 /* expectedAttachCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
 }
 
 // Populates desiredStateOfWorld cache with one node/volume/pod tuple.
@@ -121,9 +121,9 @@ func Test_Run_Positive_OneDesiredVolumeAttach(t *testing.T) {
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
+	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
 }
 
 // Populates desiredStateOfWorld cache with one node/volume/pod tuple.
@@ -173,11 +173,11 @@ func Test_Run_Positive_OneDesiredVolumeAttachThenDetachWithUnmountedVolume(t *te
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
 
 	// Act
 	dsw.DeletePod(types.UniquePodName(podName), generatedVolumeName, nodeName)
@@ -193,11 +193,11 @@ func Test_Run_Positive_OneDesiredVolumeAttachThenDetachWithUnmountedVolume(t *te
 	asw.SetVolumeMountedByNode(generatedVolumeName, nodeName, false /* mounted */)
 
 	// Assert
-	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 1 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 1 /* expectedDetachCallCount */ , fakePlugin)
 }
 
 // Populates desiredStateOfWorld cache with one node/volume/pod tuple.
@@ -246,11 +246,11 @@ func Test_Run_Positive_OneDesiredVolumeAttachThenDetachWithMountedVolume(t *test
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
 
 	// Act
 	dsw.DeletePod(types.UniquePodName(podName), generatedVolumeName, nodeName)
@@ -264,11 +264,11 @@ func Test_Run_Positive_OneDesiredVolumeAttachThenDetachWithMountedVolume(t *test
 	}
 
 	// Assert -- Timer will triger detach
-	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 1 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 1 /* expectedDetachCallCount */ , fakePlugin)
 }
 
 // Populates desiredStateOfWorld cache with one node/volume/pod tuple.
@@ -319,11 +319,11 @@ func Test_Run_Negative_OneDesiredVolumeAttachThenDetachWithUnmountedVolumeUpdate
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
 
 	// Act
 	dsw.DeletePod(types.UniquePodName(podName), generatedVolumeName, nodeName)
@@ -339,11 +339,11 @@ func Test_Run_Negative_OneDesiredVolumeAttachThenDetachWithUnmountedVolumeUpdate
 	asw.SetVolumeMountedByNode(generatedVolumeName, nodeName, false /* mounted */)
 
 	// Assert
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
 }
 
 // Creates a volume with accessMode ReadWriteMany
@@ -396,12 +396,12 @@ func Test_Run_OneVolumeAttachAndDetachMultipleNodesWithReadWriteMany(t *testing.
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 2 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
-	waitForAttachedToNodesCount(t, 2 /* expectedNodeCount */, generatedVolumeName, asw)
+	waitForNewAttacherCallCount(t, 2 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
+	waitForAttachedToNodesCount(t, 2 /* expectedNodeCount */ , generatedVolumeName, asw)
 
 	// Act
 	dsw.DeletePod(types.UniquePodName(podName1), generatedVolumeName, nodeName1)
@@ -415,11 +415,11 @@ func Test_Run_OneVolumeAttachAndDetachMultipleNodesWithReadWriteMany(t *testing.
 	}
 
 	// Assert -- Timer will triger detach
-	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForTotalDetachCallCount(t, 1 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForTotalDetachCallCount(t, 1 /* expectedDetachCallCount */ , fakePlugin)
 
 	// Act
 	dsw.DeletePod(types.UniquePodName(podName2), generatedVolumeName, nodeName2)
@@ -433,11 +433,11 @@ func Test_Run_OneVolumeAttachAndDetachMultipleNodesWithReadWriteMany(t *testing.
 	}
 
 	// Assert -- Timer will triger detach
-	waitForNewDetacherCallCount(t, 2 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForTotalDetachCallCount(t, 2 /* expectedDetachCallCount */, fakePlugin)
+	waitForNewDetacherCallCount(t, 2 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForTotalDetachCallCount(t, 2 /* expectedDetachCallCount */ , fakePlugin)
 }
 
 // Creates a volume with accessMode ReadWriteOnce
@@ -489,12 +489,12 @@ func Test_Run_OneVolumeAttachAndDetachMultipleNodesWithReadWriteOnce(t *testing.
 	defer close(ch)
 
 	// Assert
-	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForTotalAttachCallCount(t, 1 /* expectedAttachCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */, fakePlugin)
-	waitForAttachedToNodesCount(t, 1 /* expectedNodeCount */, generatedVolumeName, asw)
+	waitForNewAttacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForTotalAttachCallCount(t, 1 /* expectedAttachCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, true /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForDetachCallCount(t, 0 /* expectedDetachCallCount */ , fakePlugin)
+	waitForAttachedToNodesCount(t, 1 /* expectedNodeCount */ , generatedVolumeName, asw)
 
 	nodesForVolume := asw.GetNodesForVolume(generatedVolumeName)
 
@@ -524,12 +524,12 @@ func Test_Run_OneVolumeAttachAndDetachMultipleNodesWithReadWriteOnce(t *testing.
 	}
 
 	// Assert
-	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */, fakePlugin)
-	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */, fakePlugin)
-	waitForTotalDetachCallCount(t, 1 /* expectedDetachCallCount */, fakePlugin)
-	waitForNewAttacherCallCount(t, 2 /* expectedCallCount */, fakePlugin)
-	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */, fakePlugin)
-	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */, fakePlugin)
+	waitForNewDetacherCallCount(t, 1 /* expectedCallCount */ , fakePlugin)
+	verifyNewDetacherCallCount(t, false /* expectZeroNewDetacherCallCount */ , fakePlugin)
+	waitForTotalDetachCallCount(t, 1 /* expectedDetachCallCount */ , fakePlugin)
+	waitForNewAttacherCallCount(t, 2 /* expectedCallCount */ , fakePlugin)
+	verifyNewAttacherCallCount(t, false /* expectZeroNewAttacherCallCount */ , fakePlugin)
+	waitForTotalAttachCallCount(t, 2 /* expectedAttachCallCount */ , fakePlugin)
 }
 
 func Test_ReportMultiAttachError(t *testing.T) {

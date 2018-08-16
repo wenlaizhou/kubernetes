@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	imagepolicy "k8s.io/kubernetes/pkg/apis/imagepolicy"
+	"k8s.io/kubernetes/pkg/apis/imagepolicy"
 )
 
 // ImageReviewLister helps list ImageReviews.

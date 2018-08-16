@@ -44,12 +44,12 @@ const (
 	PodConfigNotificationUnknown = iota
 	// PodConfigNotificationSnapshot delivers the full configuration as a SET whenever
 	// any change occurs.
-	PodConfigNotificationSnapshot
+	PodConfigNotificationSnapshot 
 	// PodConfigNotificationSnapshotAndUpdates delivers an UPDATE and DELETE message whenever pods are
 	// changed, and a SET message if there are any additions or removals.
-	PodConfigNotificationSnapshotAndUpdates
+	PodConfigNotificationSnapshotAndUpdates 
 	// PodConfigNotificationIncremental delivers ADD, UPDATE, DELETE, REMOVE, RECONCILE to the update channel.
-	PodConfigNotificationIncremental
+	PodConfigNotificationIncremental 
 )
 
 // PodConfig is a configuration mux that merges many sources of pod configuration into a single

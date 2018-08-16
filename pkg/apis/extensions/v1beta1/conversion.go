@@ -21,7 +21,7 @@ import (
 
 	extensionsv1beta1 "k8s.io/api/extensions/v1beta1"
 
-	v1 "k8s.io/api/core/v1"
+	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/conversion"
 	"k8s.io/apimachinery/pkg/labels"

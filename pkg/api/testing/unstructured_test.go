@@ -48,20 +48,20 @@ func doRoundTrip(t *testing.T, internalVersion schema.GroupVersion, externalVers
 	}
 	seed := rand.Int63()
 	fuzzer.FuzzerFor(FuzzerFuncs, rand.NewSource(seed), legacyscheme.Codecs).
-		// We are explicitly overwriting custom fuzzing functions, to ensure
-		// that InitContainers and their statuses are not generated. This is
-		// because in thise test we are simply doing json operations, in which
-		// those disappear.
+	// We are explicitly overwriting custom fuzzing functions, to ensure
+	// that InitContainers and their statuses are not generated. This is
+	// because in thise test we are simply doing json operations, in which
+	// those disappear.
 		Funcs(
-			func(s *api.PodSpec, c fuzz.Continue) {
-				c.FuzzNoCustom(s)
-				s.InitContainers = nil
-			},
-			func(s *api.PodStatus, c fuzz.Continue) {
-				c.FuzzNoCustom(s)
-				s.InitContainerStatuses = nil
-			},
-		).Fuzz(internalObj)
+		func(s *api.PodSpec, c fuzz.Continue) {
+			c.FuzzNoCustom(s)
+			s.InitContainers = nil
+		},
+		func(s *api.PodStatus, c fuzz.Continue) {
+			c.FuzzNoCustom(s)
+			s.InitContainerStatuses = nil
+		},
+	).Fuzz(internalObj)
 
 	item, err := legacyscheme.Scheme.New(externalVersion.WithKind(kind))
 	if err != nil {

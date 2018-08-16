@@ -36,8 +36,8 @@ import (
 )
 
 const (
-	dataChannel = iota
-	errorChannel
+	dataChannel  = iota
+	errorChannel 
 
 	v4BinaryWebsocketProtocol = "v4." + wsstream.ChannelWebSocketProtocol
 	v4Base64WebsocketProtocol = "v4." + wsstream.Base64ChannelWebSocketProtocol

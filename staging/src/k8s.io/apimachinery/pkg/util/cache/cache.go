@@ -54,7 +54,7 @@ func (c *Cache) Get(index uint64) (obj interface{}, found bool) {
 }
 
 type cacheShard struct {
-	items map[uint64]interface{}
+	items   map[uint64]interface{}
 	sync.RWMutex
 	maxSize int
 }

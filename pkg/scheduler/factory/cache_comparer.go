@@ -25,7 +25,7 @@ import (
 	policy "k8s.io/api/policy/v1beta1"
 	"k8s.io/apimachinery/pkg/labels"
 	corelisters "k8s.io/client-go/listers/core/v1"
-	v1beta1 "k8s.io/client-go/listers/policy/v1beta1"
+	"k8s.io/client-go/listers/policy/v1beta1"
 	schedulercache "k8s.io/kubernetes/pkg/scheduler/cache"
 	"k8s.io/kubernetes/pkg/scheduler/core"
 )

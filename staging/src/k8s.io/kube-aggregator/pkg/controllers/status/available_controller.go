@@ -243,8 +243,8 @@ func (c *AvailableConditionController) sync(key string) error {
 		select {
 		case err = <-errCh:
 
-		// we had trouble with slow dial and DNS responses causing us to wait too long.
-		// we added this as insurance
+			// we had trouble with slow dial and DNS responses causing us to wait too long.
+			// we added this as insurance
 		case <-time.After(6 * time.Second):
 			err = fmt.Errorf("timed out waiting for %v", discoveryURL)
 		}

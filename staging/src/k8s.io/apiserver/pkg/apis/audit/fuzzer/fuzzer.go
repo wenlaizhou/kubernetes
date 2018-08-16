@@ -19,7 +19,7 @@ package fuzzer
 import (
 	"strings"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	runtimeserializer "k8s.io/apimachinery/pkg/runtime/serializer"

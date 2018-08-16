@@ -87,10 +87,10 @@ func (m *Helper) WatchSingle(namespace, name, resourceVersion string) (watch.Int
 		NamespaceIfScoped(namespace, m.NamespaceScoped).
 		Resource(m.Resource).
 		VersionedParams(&metav1.ListOptions{
-			ResourceVersion: resourceVersion,
-			Watch:           true,
-			FieldSelector:   fields.OneTermEqualSelector("metadata.name", name).String(),
-		}, metav1.ParameterCodec).
+		ResourceVersion: resourceVersion,
+		Watch:           true,
+		FieldSelector:   fields.OneTermEqualSelector("metadata.name", name).String(),
+	}, metav1.ParameterCodec).
 		Watch()
 }
 

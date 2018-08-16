@@ -19,17 +19,17 @@ limitations under the License.
 package internalversion
 
 import (
-	reflect "reflect"
-	sync "sync"
-	time "time"
+	"reflect"
+	"sync"
+	"time"
 
-	internalclientset "k8s.io/apiextensions-apiserver/pkg/client/clientset/internalclientset"
-	apiextensions "k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/apiextensions"
-	internalinterfaces "k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
+	"k8s.io/apiextensions-apiserver/pkg/client/clientset/internalclientset"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/apiextensions"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/client-go/tools/cache"
 )
 
 // SharedInformerOption defines the functional option type for SharedInformerFactory.

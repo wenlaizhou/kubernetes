@@ -119,7 +119,7 @@ func (manager *gceServiceManager) CreateDiskOnCloudProvider(
 	diskType string,
 	zone string) error {
 	diskTypeURI, err := manager.getDiskTypeURI(
-		manager.gce.region /* diskRegion */, singleZone{zone}, diskType, false /* useBetaAPI */)
+		manager.gce.region /* diskRegion */ , singleZone{zone}, diskType, false /* useBetaAPI */)
 	if err != nil {
 		return err
 	}
@@ -148,7 +148,7 @@ func (manager *gceServiceManager) CreateRegionalDiskOnCloudProvider(
 	}
 
 	diskTypeURI, err := manager.getDiskTypeURI(
-		manager.gce.region /* diskRegion */, multiZone{replicaZones}, diskType, true /* useBetaAPI */)
+		manager.gce.region /* diskRegion */ , multiZone{replicaZones}, diskType, true /* useBetaAPI */)
 	if err != nil {
 		return err
 	}

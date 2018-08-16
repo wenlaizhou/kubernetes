@@ -19,8 +19,8 @@ limitations under the License.
 package admissionregistration
 
 import (
-	internalversion "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/admissionregistration/internalversion"
-	internalinterfaces "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/admissionregistration/internalversion"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

@@ -46,8 +46,8 @@ type podDNSType int
 
 const (
 	podDNSCluster podDNSType = iota
-	podDNSHost
-	podDNSNone
+	podDNSHost    
+	podDNSNone    
 )
 
 // Configurer is used for setting up DNS resolver configuration when launching pods.

@@ -23,7 +23,7 @@ import (
 	"sync"
 	"time"
 
-	restful "github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful"
 	"github.com/go-openapi/spec"
 
 	"k8s.io/apiserver/pkg/server"

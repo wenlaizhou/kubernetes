@@ -32,7 +32,7 @@ func TestSetImplicitFlags(t *testing.T) {
 		expectedFlags applyFlags
 		errExpected   bool
 	}{
-		{ // if not dryRun or force is set; the nonInteractiveMode field should not be touched
+		{// if not dryRun or force is set; the nonInteractiveMode field should not be touched
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             false,
@@ -46,7 +46,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: false,
 			},
 		},
-		{ // if not dryRun or force is set; the nonInteractiveMode field should not be touched
+		{// if not dryRun or force is set; the nonInteractiveMode field should not be touched
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             false,
@@ -60,7 +60,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: true,
 			},
 		},
-		{ // if dryRun or force is set; the nonInteractiveMode field should be set to true
+		{// if dryRun or force is set; the nonInteractiveMode field should be set to true
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             true,
@@ -74,7 +74,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: true,
 			},
 		},
-		{ // if dryRun or force is set; the nonInteractiveMode field should be set to true
+		{// if dryRun or force is set; the nonInteractiveMode field should be set to true
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             false,
@@ -88,7 +88,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: true,
 			},
 		},
-		{ // if dryRun or force is set; the nonInteractiveMode field should be set to true
+		{// if dryRun or force is set; the nonInteractiveMode field should be set to true
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             true,
@@ -102,7 +102,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: true,
 			},
 		},
-		{ // if dryRun or force is set; the nonInteractiveMode field should be set to true
+		{// if dryRun or force is set; the nonInteractiveMode field should be set to true
 			flags: &applyFlags{
 				newK8sVersionStr:   "v1.8.0",
 				dryRun:             true,
@@ -116,7 +116,7 @@ func TestSetImplicitFlags(t *testing.T) {
 				nonInteractiveMode: true,
 			},
 		},
-		{ // if the new version is empty; it should error out
+		{// if the new version is empty; it should error out
 			flags: &applyFlags{
 				newK8sVersionStr: "",
 			},

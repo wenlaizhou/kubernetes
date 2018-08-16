@@ -174,7 +174,7 @@ func getDefaultInitConfigBytes() ([]byte, error) {
 
 func getDefaultNodeConfigBytes() ([]byte, error) {
 	internalcfg, err := configutil.NodeConfigFileAndDefaultsToInternalConfig("", &kubeadmapiv1alpha3.JoinConfiguration{
-		Token: sillyToken.Token.String(),
+		Token:                                  sillyToken.Token.String(),
 		DiscoveryTokenAPIServers:               []string{"kube-apiserver:6443"},
 		DiscoveryTokenUnsafeSkipCAVerification: true, // TODO: DiscoveryTokenUnsafeSkipCAVerification: true needs to be set for validation to pass, but shouldn't be recommended as the default
 	})
@@ -508,7 +508,7 @@ func AddImagesCommonConfigFlags(flagSet *flag.FlagSet, cfg *kubeadmapiv1alpha3.I
 		`Choose a specific Kubernetes version for the control plane.`,
 	)
 	flagSet.StringVar(featureGatesString, "feature-gates", *featureGatesString, "A set of key=value pairs that describe feature gates for various features. "+
-		"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+		"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 	flagSet.StringVar(cfgPath, "config", *cfgPath, "Path to kubeadm config file.")
 }
 

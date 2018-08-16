@@ -210,9 +210,9 @@ func ResourceLocation(getter ResourceGetter, connection client.ConnectionInfoGet
 	// - the requested port matches the kubelet port for this node
 	if portReq == "" || portReq == info.Port {
 		return &url.URL{
-				Scheme: info.Scheme,
-				Host:   net.JoinHostPort(info.Hostname, info.Port),
-			},
+			Scheme: info.Scheme,
+			Host:   net.JoinHostPort(info.Hostname, info.Port),
+		},
 			info.Transport,
 			nil
 	}

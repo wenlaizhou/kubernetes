@@ -231,7 +231,7 @@ func (t *Transport) rewriteResponse(req *http.Request, resp *http.Response) (*ht
 		gzw := gzip.NewWriter(writer)
 		defer gzw.Close()
 		writer = gzw
-	// TODO: support flate, other encodings.
+		// TODO: support flate, other encodings.
 	case "":
 		// This is fine
 	default:

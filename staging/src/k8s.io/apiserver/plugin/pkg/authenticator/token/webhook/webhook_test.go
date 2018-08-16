@@ -222,13 +222,13 @@ func TestTLSConfig(t *testing.T) {
 			test:       "Client does not trust server",
 			clientCert: clientCert, clientKey: clientKey,
 			serverCert: serverCert, serverKey: serverKey,
-			wantErr: true,
+			wantErr:    true,
 		},
 		{
 			test:       "Server does not trust client",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: badCACert,
-			wantErr: true,
+			wantErr:    true,
 		},
 		{
 			// Plugin does not support insecure configurations.

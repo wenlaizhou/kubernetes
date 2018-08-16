@@ -39,25 +39,25 @@ func TestLogOptions(t *testing.T) {
 		apiOpts *v1.PodLogOptions
 		expect  *LogOptions
 	}{
-		{ // empty options
+		{// empty options
 			apiOpts: &v1.PodLogOptions{},
-			expect:  &LogOptions{tail: -1, bytes: -1},
+			expect: &LogOptions{tail: -1, bytes: -1},
 		},
-		{ // test tail lines
+		{// test tail lines
 			apiOpts: &v1.PodLogOptions{TailLines: &line},
-			expect:  &LogOptions{tail: line, bytes: -1},
+			expect: &LogOptions{tail: line, bytes: -1},
 		},
-		{ // test limit bytes
+		{// test limit bytes
 			apiOpts: &v1.PodLogOptions{LimitBytes: &bytes},
-			expect:  &LogOptions{tail: -1, bytes: bytes},
+			expect: &LogOptions{tail: -1, bytes: bytes},
 		},
-		{ // test since timestamp
+		{// test since timestamp
 			apiOpts: &v1.PodLogOptions{SinceTime: &timestamp},
-			expect:  &LogOptions{tail: -1, bytes: -1, since: timestamp.Time},
+			expect: &LogOptions{tail: -1, bytes: -1, since: timestamp.Time},
 		},
-		{ // test since seconds
+		{// test since seconds
 			apiOpts: &v1.PodLogOptions{SinceSeconds: &sinceseconds},
-			expect:  &LogOptions{tail: -1, bytes: -1, since: timestamp.Add(-10 * time.Second)},
+			expect: &LogOptions{tail: -1, bytes: -1, since: timestamp.Add(-10 * time.Second)},
 		},
 	} {
 		t.Logf("TestCase #%d: %+v", c, test)
@@ -75,7 +75,7 @@ func TestParseLog(t *testing.T) {
 		msg  *logMessage
 		err  bool
 	}{
-		{ // Docker log format stdout
+		{// Docker log format stdout
 			line: `{"log":"docker stdout test log","stream":"stdout","time":"2016-10-20T18:39:20.57606443Z"}` + "\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -83,7 +83,7 @@ func TestParseLog(t *testing.T) {
 				log:       []byte("docker stdout test log"),
 			},
 		},
-		{ // Docker log format stderr
+		{// Docker log format stderr
 			line: `{"log":"docker stderr test log","stream":"stderr","time":"2016-10-20T18:39:20.57606443Z"}` + "\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -91,7 +91,7 @@ func TestParseLog(t *testing.T) {
 				log:       []byte("docker stderr test log"),
 			},
 		},
-		{ // CRI log format stdout
+		{// CRI log format stdout
 			line: "2016-10-20T18:39:20.57606443Z stdout F cri stdout test log\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -99,7 +99,7 @@ func TestParseLog(t *testing.T) {
 				log:       []byte("cri stdout test log\n"),
 			},
 		},
-		{ // CRI log format stderr
+		{// CRI log format stderr
 			line: "2016-10-20T18:39:20.57606443Z stderr F cri stderr test log\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -107,12 +107,12 @@ func TestParseLog(t *testing.T) {
 				log:       []byte("cri stderr test log\n"),
 			},
 		},
-		{ // Unsupported Log format
+		{// Unsupported Log format
 			line: "unsupported log format test log\n",
-			msg:  &logMessage{},
-			err:  true,
+			msg: &logMessage{},
+			err: true,
 		},
-		{ // Partial CRI log line
+		{// Partial CRI log line
 			line: "2016-10-20T18:39:20.57606443Z stdout P cri stdout partial test log\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -120,7 +120,7 @@ func TestParseLog(t *testing.T) {
 				log:       []byte("cri stdout partial test log"),
 			},
 		},
-		{ // Partial CRI log line with multiple log tags.
+		{// Partial CRI log line with multiple log tags.
 			line: "2016-10-20T18:39:20.57606443Z stdout P:TAG1:TAG2 cri stdout partial test log\n",
 			msg: &logMessage{
 				timestamp: timestamp,
@@ -153,21 +153,21 @@ func TestWriteLogs(t *testing.T) {
 		expectStdout string
 		expectStderr string
 	}{
-		{ // stderr log
-			stream:       runtimeapi.Stderr,
+		{// stderr log
+			stream: runtimeapi.Stderr,
 			expectStderr: log,
 		},
-		{ // stdout log
-			stream:       runtimeapi.Stdout,
+		{// stdout log
+			stream: runtimeapi.Stdout,
 			expectStdout: log,
 		},
-		{ // since is after timestamp
+		{// since is after timestamp
 			stream: runtimeapi.Stdout,
-			since:  timestamp.Add(1 * time.Second),
+			since: timestamp.Add(1 * time.Second),
 		},
-		{ // timestamp enabled
-			stream:       runtimeapi.Stderr,
-			timestamp:    true,
+		{// timestamp enabled
+			stream: runtimeapi.Stderr,
+			timestamp: true,
 			expectStderr: timestamp.Format(timeFormat) + " " + log,
 		},
 	} {
@@ -200,37 +200,37 @@ func TestWriteLogsWithBytesLimit(t *testing.T) {
 		expectStdout string
 		expectStderr string
 	}{
-		{ // limit bytes less than one line
-			stdoutLines:  3,
-			bytes:        3,
+		{// limit bytes less than one line
+			stdoutLines: 3,
+			bytes: 3,
 			expectStdout: "abc",
 		},
-		{ // limit bytes across lines
-			stdoutLines:  3,
-			bytes:        len(log) + 3,
+		{// limit bytes across lines
+			stdoutLines: 3,
+			bytes: len(log) + 3,
 			expectStdout: "abcdefg\nabc",
 		},
-		{ // limit bytes more than all lines
-			stdoutLines:  3,
-			bytes:        3 * len(log),
+		{// limit bytes more than all lines
+			stdoutLines: 3,
+			bytes: 3 * len(log),
 			expectStdout: "abcdefg\nabcdefg\nabcdefg\n",
 		},
-		{ // limit bytes for stderr
-			stderrLines:  3,
-			bytes:        len(log) + 3,
+		{// limit bytes for stderr
+			stderrLines: 3,
+			bytes: len(log) + 3,
 			expectStderr: "abcdefg\nabc",
 		},
-		{ // limit bytes for both stdout and stderr, stdout first.
-			stdoutLines:  1,
-			stderrLines:  2,
-			bytes:        len(log) + 3,
+		{// limit bytes for both stdout and stderr, stdout first.
+			stdoutLines: 1,
+			stderrLines: 2,
+			bytes: len(log) + 3,
 			expectStdout: "abcdefg\n",
 			expectStderr: "abc",
 		},
-		{ // limit bytes with timestamp
-			stdoutLines:  3,
-			timestamp:    true,
-			bytes:        len(timestampStr) + 1 + len(log) + 2,
+		{// limit bytes with timestamp
+			stdoutLines: 3,
+			timestamp: true,
+			bytes: len(timestampStr) + 1 + len(log) + 2,
 			expectStdout: timestampStr + " " + log + timestampStr[:2],
 		},
 	} {

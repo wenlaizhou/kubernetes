@@ -272,13 +272,13 @@ type kind int
 
 const (
 	invalidKind kind = iota
-	boolKind
-	complexKind
-	intKind
-	floatKind
-	integerKind
-	stringKind
-	uintKind
+	boolKind    
+	complexKind 
+	intKind     
+	floatKind   
+	integerKind 
+	stringKind  
+	uintKind    
 )
 
 func basicKind(v reflect.Value) (kind, error) {
@@ -525,14 +525,14 @@ func JSEscape(w io.Writer, b []byte) {
 			default:
 				w.Write(jsLowUni)
 				t, b := c>>4, c&0x0f
-				w.Write(hex[t : t+1])
-				w.Write(hex[b : b+1])
+				w.Write(hex[t: t+1])
+				w.Write(hex[b: b+1])
 			}
 		} else {
 			// Unicode rune.
 			r, size := utf8.DecodeRune(b[i:])
 			if unicode.IsPrint(r) {
-				w.Write(b[i : i+size])
+				w.Write(b[i: i+size])
 			} else {
 				fmt.Fprintf(w, "\\u%04X", r)
 			}

@@ -27,7 +27,6 @@ import (
 	"k8s.io/apimachinery/pkg/util/clock"
 	"k8s.io/client-go/tools/record"
 	"k8s.io/client-go/util/flowcontrol"
-	. "k8s.io/kubernetes/pkg/kubelet/container"
 	ctest "k8s.io/kubernetes/pkg/kubelet/container/testing"
 )
 
@@ -46,20 +45,20 @@ type pullerTestCase struct {
 
 func pullerTestCases() []pullerTestCase {
 	return []pullerTestCase{
-		{ // pull missing image
+		{// pull missing image
 			containerImage: "missing_image",
-			policy:         v1.PullIfNotPresent,
-			inspectErr:     nil,
-			pullerErr:      nil,
+			policy: v1.PullIfNotPresent,
+			inspectErr: nil,
+			pullerErr: nil,
 			expected: []pullerExpects{
 				{[]string{"GetImageRef", "PullImage"}, nil},
 			}},
 
-		{ // image present, don't pull
+		{// image present, don't pull
 			containerImage: "present_image",
-			policy:         v1.PullIfNotPresent,
-			inspectErr:     nil,
-			pullerErr:      nil,
+			policy: v1.PullIfNotPresent,
+			inspectErr: nil,
+			pullerErr: nil,
 			expected: []pullerExpects{
 				{[]string{"GetImageRef"}, nil},
 				{[]string{"GetImageRef"}, nil},
@@ -67,9 +66,9 @@ func pullerTestCases() []pullerTestCase {
 			}},
 		// image present, pull it
 		{containerImage: "present_image",
-			policy:     v1.PullAlways,
+			policy: v1.PullAlways,
 			inspectErr: nil,
-			pullerErr:  nil,
+			pullerErr: nil,
 			expected: []pullerExpects{
 				{[]string{"GetImageRef", "PullImage"}, nil},
 				{[]string{"GetImageRef", "PullImage"}, nil},
@@ -77,9 +76,9 @@ func pullerTestCases() []pullerTestCase {
 			}},
 		// missing image, error PullNever
 		{containerImage: "missing_image",
-			policy:     v1.PullNever,
+			policy: v1.PullNever,
 			inspectErr: nil,
-			pullerErr:  nil,
+			pullerErr: nil,
 			expected: []pullerExpects{
 				{[]string{"GetImageRef"}, ErrImageNeverPull},
 				{[]string{"GetImageRef"}, ErrImageNeverPull},
@@ -87,9 +86,9 @@ func pullerTestCases() []pullerTestCase {
 			}},
 		// missing image, unable to inspect
 		{containerImage: "missing_image",
-			policy:     v1.PullIfNotPresent,
+			policy: v1.PullIfNotPresent,
 			inspectErr: errors.New("unknown inspectError"),
-			pullerErr:  nil,
+			pullerErr: nil,
 			expected: []pullerExpects{
 				{[]string{"GetImageRef"}, ErrImageInspect},
 				{[]string{"GetImageRef"}, ErrImageInspect},
@@ -97,9 +96,9 @@ func pullerTestCases() []pullerTestCase {
 			}},
 		// missing image, unable to fetch
 		{containerImage: "typo_image",
-			policy:     v1.PullIfNotPresent,
+			policy: v1.PullIfNotPresent,
 			inspectErr: nil,
-			pullerErr:  errors.New("404"),
+			pullerErr: errors.New("404"),
 			expected: []pullerExpects{
 				{[]string{"GetImageRef", "PullImage"}, ErrImagePull},
 				{[]string{"GetImageRef", "PullImage"}, ErrImagePull},

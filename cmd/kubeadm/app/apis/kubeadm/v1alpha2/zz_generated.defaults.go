@@ -21,9 +21,9 @@ limitations under the License.
 package v1alpha2
 
 import (
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	v1beta1 "k8s.io/kubernetes/pkg/kubelet/apis/kubeletconfig/v1beta1"
-	v1alpha1 "k8s.io/kubernetes/pkg/proxy/apis/kubeproxyconfig/v1alpha1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/kubernetes/pkg/kubelet/apis/kubeletconfig/v1beta1"
+	"k8s.io/kubernetes/pkg/proxy/apis/kubeproxyconfig/v1alpha1"
 )
 
 // RegisterDefaults adds defaulters functions to the given scheme.

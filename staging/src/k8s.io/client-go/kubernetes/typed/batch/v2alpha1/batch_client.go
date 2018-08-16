@@ -19,10 +19,10 @@ limitations under the License.
 package v2alpha1
 
 import (
-	v2alpha1 "k8s.io/api/batch/v2alpha1"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/api/batch/v2alpha1"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"
-	rest "k8s.io/client-go/rest"
+	"k8s.io/client-go/rest"
 )
 
 type BatchV2alpha1Interface interface {

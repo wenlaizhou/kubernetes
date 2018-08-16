@@ -21,10 +21,10 @@ limitations under the License.
 package testing
 
 import (
-	os "os"
-	time "time"
+	"os"
+	"time"
 
-	gomock "github.com/golang/mock/gomock"
+	"github.com/golang/mock/gomock"
 )
 
 // Mock of FileInfo interface

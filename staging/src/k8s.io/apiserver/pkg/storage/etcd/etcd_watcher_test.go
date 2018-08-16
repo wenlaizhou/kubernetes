@@ -274,7 +274,7 @@ func TestSendResultDeleteEventHaveLatestIndex(t *testing.T) {
 	tests := []struct {
 		response *etcd.Response
 		expRV    string
-	}{{ // Delete event
+	}{{// Delete event
 		response: &etcd.Response{
 			Action: EtcdDelete,
 			Node: &etcd.Node{
@@ -286,7 +286,7 @@ func TestSendResultDeleteEventHaveLatestIndex(t *testing.T) {
 			},
 		},
 		expRV: "2",
-	}, { // Modify event with uninterested data
+	}, {// Modify event with uninterested data
 		response: &etcd.Response{
 			Action: EtcdSet,
 			Node: &etcd.Node{

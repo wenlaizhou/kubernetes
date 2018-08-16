@@ -237,8 +237,8 @@ func podMapWithUIDs(uids []string) map[types.UID]*v1.PodList {
 	for _, uid := range uids {
 		podMap[types.UID(uid)] = &v1.PodList{
 			Items: []v1.Pod{
-				{ /* supposedly a pod */ },
-				{ /* supposedly another pod pod */ },
+				{/* supposedly a pod */ },
+				{/* supposedly another pod pod */ },
 			},
 		}
 	}

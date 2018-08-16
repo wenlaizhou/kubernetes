@@ -19,16 +19,16 @@ limitations under the License.
 package internalversion
 
 import (
-	time "time"
+	"time"
 
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	watch "k8s.io/apimachinery/pkg/watch"
-	cache "k8s.io/client-go/tools/cache"
-	certificates "k8s.io/kubernetes/pkg/apis/certificates"
-	internalclientset "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset"
-	internalinterfaces "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
-	internalversion "k8s.io/kubernetes/pkg/client/listers/certificates/internalversion"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/tools/cache"
+	"k8s.io/kubernetes/pkg/apis/certificates"
+	"k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
+	"k8s.io/kubernetes/pkg/client/listers/certificates/internalversion"
 )
 
 // CertificateSigningRequestInformer provides access to a shared informer and lister for

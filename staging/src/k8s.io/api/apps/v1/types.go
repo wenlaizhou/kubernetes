@@ -19,7 +19,7 @@ package v1
 import (
 	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/util/intstr"
 )
 
@@ -239,8 +239,8 @@ type StatefulSetCondition struct {
 type StatefulSetList struct {
 	metav1.TypeMeta `json:",inline"`
 	// +optional
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []StatefulSet `json:"items" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta     `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	Items []StatefulSet `json:"items" protobuf:"bytes,2,rep,name=items"`
 }
 
 // +genclient

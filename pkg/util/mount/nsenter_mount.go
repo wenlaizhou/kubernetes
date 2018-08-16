@@ -395,7 +395,7 @@ func doNsEnterBindSubPath(mounter *NsenterMounter, subpath Subpath) (hostPath st
 	// expanded evalSubPath with evil symlinks and bind-mount it.
 	// Mount is done on the host! don't use kubelet path!
 	glog.V(5).Infof("bind mounting %q at %q", evaluatedHostSubpath, bindPathTarget)
-	if err = mounter.Mount(evaluatedHostSubpath, bindPathTarget, "" /*fstype*/, []string{"bind"}); err != nil {
+	if err = mounter.Mount(evaluatedHostSubpath, bindPathTarget, "" /*fstype*/ , []string{"bind"}); err != nil {
 		return "", fmt.Errorf("error mounting %s: %s", evaluatedHostSubpath, err)
 	}
 

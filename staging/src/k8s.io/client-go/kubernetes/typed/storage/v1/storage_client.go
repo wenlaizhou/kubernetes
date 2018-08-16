@@ -19,10 +19,10 @@ limitations under the License.
 package v1
 
 import (
-	v1 "k8s.io/api/storage/v1"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/api/storage/v1"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"
-	rest "k8s.io/client-go/rest"
+	"k8s.io/client-go/rest"
 )
 
 type StorageV1Interface interface {

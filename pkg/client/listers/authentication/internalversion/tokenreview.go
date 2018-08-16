@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	authentication "k8s.io/kubernetes/pkg/apis/authentication"
+	"k8s.io/kubernetes/pkg/apis/authentication"
 )
 
 // TokenReviewLister helps list TokenReviews.

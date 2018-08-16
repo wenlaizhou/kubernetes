@@ -28,21 +28,21 @@ func TestSortedSliceFromStringIntMap(t *testing.T) {
 	var tests = []struct {
 		strMap        map[string]uint16
 		expectedSlice []string
-	}{ // The returned slice should be alphabetically sorted based on the string keys in the map
+	}{// The returned slice should be alphabetically sorted based on the string keys in the map
 		{
 			strMap:        map[string]uint16{"foo": 1, "bar": 2},
 			expectedSlice: []string{"bar", "foo"},
 		},
-		{ // The int value should not affect this func
-			strMap:        map[string]uint16{"foo": 2, "bar": 1},
+		{// The int value should not affect this func
+			strMap: map[string]uint16{"foo": 2, "bar": 1},
 			expectedSlice: []string{"bar", "foo"},
 		},
 		{
 			strMap:        map[string]uint16{"b": 2, "a": 1, "cb": 0, "ca": 1000},
 			expectedSlice: []string{"a", "b", "ca", "cb"},
 		},
-		{ // This should work for version numbers as well; and the lowest version should come first
-			strMap:        map[string]uint16{"v1.7.0": 1, "v1.6.1": 1, "v1.6.2": 1, "v1.8.0": 1, "v1.8.0-alpha.1": 1},
+		{// This should work for version numbers as well; and the lowest version should come first
+			strMap: map[string]uint16{"v1.7.0": 1, "v1.6.1": 1, "v1.6.2": 1, "v1.8.0": 1, "v1.8.0-alpha.1": 1},
 			expectedSlice: []string{"v1.6.1", "v1.6.2", "v1.7.0", "v1.8.0", "v1.8.0-alpha.1"},
 		},
 	}

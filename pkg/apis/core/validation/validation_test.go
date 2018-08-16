@@ -3671,7 +3671,7 @@ func TestValidateVolumes(t *testing.T) {
 
 func TestAlphaHugePagesIsolation(t *testing.T) {
 	successCases := []core.Pod{
-		{ // Basic fields.
+		{// Basic fields.
 			ObjectMeta: metav1.ObjectMeta{Name: "123", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Containers: []core.Container{
@@ -3697,7 +3697,7 @@ func TestAlphaHugePagesIsolation(t *testing.T) {
 		},
 	}
 	failureCases := []core.Pod{
-		{ // Basic fields.
+		{// Basic fields.
 			ObjectMeta: metav1.ObjectMeta{Name: "hugepages-requireCpuOrMemory", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Containers: []core.Container{
@@ -3717,7 +3717,7 @@ func TestAlphaHugePagesIsolation(t *testing.T) {
 				DNSPolicy:     core.DNSClusterFirst,
 			},
 		},
-		{ // Basic fields.
+		{// Basic fields.
 			ObjectMeta: metav1.ObjectMeta{Name: "hugepages-shared", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Containers: []core.Container{
@@ -3741,7 +3741,7 @@ func TestAlphaHugePagesIsolation(t *testing.T) {
 				DNSPolicy:     core.DNSClusterFirst,
 			},
 		},
-		{ // Basic fields.
+		{// Basic fields.
 			ObjectMeta: metav1.ObjectMeta{Name: "hugepages-multiple", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Containers: []core.Container{
@@ -6034,43 +6034,43 @@ func TestValidatePodSpec(t *testing.T) {
 	defer utilfeaturetesting.SetFeatureGateDuringTest(t, utilfeature.DefaultFeatureGate, features.PodShareProcessNamespace, true)()
 
 	successCases := []core.PodSpec{
-		{ // Populate basic fields, leave defaults for most.
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+		{// Populate basic fields, leave defaults for most.
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate all fields.
+		{// Populate all fields.
 			Volumes: []core.Volume{
 				{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}},
 			},
-			Containers:     []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			InitContainers: []core.Container{{Name: "ictr", Image: "iimage", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
-			RestartPolicy:  core.RestartPolicyAlways,
+			RestartPolicy: core.RestartPolicyAlways,
 			NodeSelector: map[string]string{
 				"key": "value",
 			},
-			NodeName:              "foobar",
-			DNSPolicy:             core.DNSClusterFirst,
+			NodeName: "foobar",
+			DNSPolicy: core.DNSClusterFirst,
 			ActiveDeadlineSeconds: &activeDeadlineSeconds,
-			ServiceAccountName:    "acct",
+			ServiceAccountName: "acct",
 		},
-		{ // Populate all fields with larger active deadline.
+		{// Populate all fields with larger active deadline.
 			Volumes: []core.Volume{
 				{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}},
 			},
-			Containers:     []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			InitContainers: []core.Container{{Name: "ictr", Image: "iimage", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
-			RestartPolicy:  core.RestartPolicyAlways,
+			RestartPolicy: core.RestartPolicyAlways,
 			NodeSelector: map[string]string{
 				"key": "value",
 			},
-			NodeName:              "foobar",
-			DNSPolicy:             core.DNSClusterFirst,
+			NodeName: "foobar",
+			DNSPolicy: core.DNSClusterFirst,
 			ActiveDeadlineSeconds: &activeDeadlineSecondsMax,
-			ServiceAccountName:    "acct",
+			ServiceAccountName: "acct",
 		},
-		{ // Populate HostNetwork.
+		{// Populate HostNetwork.
 			Containers: []core.Container{
 				{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File",
 					Ports: []core.ContainerPort{
@@ -6081,9 +6081,9 @@ func TestValidatePodSpec(t *testing.T) {
 				HostNetwork: true,
 			},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate RunAsUser SupplementalGroups FSGroup with minID 0
+		{// Populate RunAsUser SupplementalGroups FSGroup with minID 0
 			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			SecurityContext: &core.PodSecurityContext{
 				SupplementalGroups: []int64{minGroupID},
@@ -6091,9 +6091,9 @@ func TestValidatePodSpec(t *testing.T) {
 				FSGroup:            &minGroupID,
 			},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate RunAsUser SupplementalGroups FSGroup with maxID 2147483647
+		{// Populate RunAsUser SupplementalGroups FSGroup with maxID 2147483647
 			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			SecurityContext: &core.PodSecurityContext{
 				SupplementalGroups: []int64{maxGroupID},
@@ -6101,67 +6101,67 @@ func TestValidatePodSpec(t *testing.T) {
 				FSGroup:            &maxGroupID,
 			},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate HostIPC.
+		{// Populate HostIPC.
 			SecurityContext: &core.PodSecurityContext{
 				HostIPC: true,
 			},
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate HostPID.
+		{// Populate HostPID.
 			SecurityContext: &core.PodSecurityContext{
 				HostPID: true,
 			},
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate Affinity.
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+		{// Populate Affinity.
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate HostAliases.
-			HostAliases:   []core.HostAlias{{IP: "12.34.56.78", Hostnames: []string{"host1", "host2"}}},
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+		{// Populate HostAliases.
+			HostAliases: []core.HostAlias{{IP: "12.34.56.78", Hostnames: []string{"host1", "host2"}}},
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate HostAliases with `foo.bar` hostnames.
-			HostAliases:   []core.HostAlias{{IP: "12.34.56.78", Hostnames: []string{"host1.foo", "host2.bar"}}},
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
-			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
-		},
-		{ // Populate HostAliases with HostNetwork.
+		{// Populate HostAliases with `foo.bar` hostnames.
 			HostAliases: []core.HostAlias{{IP: "12.34.56.78", Hostnames: []string{"host1.foo", "host2.bar"}}},
-			Containers:  []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			RestartPolicy: core.RestartPolicyAlways,
+			DNSPolicy: core.DNSClusterFirst,
+		},
+		{// Populate HostAliases with HostNetwork.
+			HostAliases: []core.HostAlias{{IP: "12.34.56.78", Hostnames: []string{"host1.foo", "host2.bar"}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			SecurityContext: &core.PodSecurityContext{
 				HostNetwork: true,
 			},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 		},
-		{ // Populate PriorityClassName.
-			Volumes:           []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:        []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
-			RestartPolicy:     core.RestartPolicyAlways,
-			DNSPolicy:         core.DNSClusterFirst,
+		{// Populate PriorityClassName.
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+			RestartPolicy: core.RestartPolicyAlways,
+			DNSPolicy: core.DNSClusterFirst,
 			PriorityClassName: "valid-name",
 		},
-		{ // Populate ShareProcessNamespace
-			Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
-			Containers:    []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
+		{// Populate ShareProcessNamespace
+			Volumes: []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
+			Containers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
 			RestartPolicy: core.RestartPolicyAlways,
-			DNSPolicy:     core.DNSClusterFirst,
+			DNSPolicy: core.DNSClusterFirst,
 			SecurityContext: &core.PodSecurityContext{
 				ShareProcessNamespace: &[]bool{true}[0],
 			},
@@ -6398,7 +6398,7 @@ func TestValidatePod(t *testing.T) {
 	}
 
 	successCases := []core.Pod{
-		{ // Basic fields.
+		{// Basic fields.
 			ObjectMeta: metav1.ObjectMeta{Name: "123", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Volumes:       []core.Volume{{Name: "vol", VolumeSource: core.VolumeSource{EmptyDir: &core.EmptyDirVolumeSource{}}}},
@@ -6407,7 +6407,7 @@ func TestValidatePod(t *testing.T) {
 				DNSPolicy:     core.DNSClusterFirst,
 			},
 		},
-		{ // Just about everything.
+		{// Just about everything.
 			ObjectMeta: metav1.ObjectMeta{Name: "abc.123.do-re-mi", Namespace: "ns"},
 			Spec: core.PodSpec{
 				Volumes: []core.Volume{
@@ -6422,7 +6422,7 @@ func TestValidatePod(t *testing.T) {
 				NodeName: "foobar",
 			},
 		},
-		{ // Serialized node affinity requirements.
+		{// Serialized node affinity requirements.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6482,7 +6482,7 @@ func TestValidatePod(t *testing.T) {
 				},
 			),
 		},
-		{ // Serialized node affinity requirements.
+		{// Serialized node affinity requirements.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6523,7 +6523,7 @@ func TestValidatePod(t *testing.T) {
 				},
 			),
 		},
-		{ // Serialized pod affinity in affinity requirements in annotations.
+		{// Serialized pod affinity in affinity requirements in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6579,7 +6579,7 @@ func TestValidatePod(t *testing.T) {
 				},
 			}),
 		},
-		{ // Serialized pod anti affinity with different Label Operators in affinity requirements in annotations.
+		{// Serialized pod anti affinity with different Label Operators in affinity requirements in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6633,63 +6633,63 @@ func TestValidatePod(t *testing.T) {
 				},
 			}),
 		},
-		{ // populate forgiveness tolerations with exists operator in annotations.
+		{// populate forgiveness tolerations with exists operator in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "foo", Operator: "Exists", Value: "", Effect: "NoExecute", TolerationSeconds: &[]int64{60}[0]}}),
 		},
-		{ // populate forgiveness tolerations with equal operator in annotations.
+		{// populate forgiveness tolerations with equal operator in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "foo", Operator: "Equal", Value: "bar", Effect: "NoExecute", TolerationSeconds: &[]int64{60}[0]}}),
 		},
-		{ // populate tolerations equal operator in annotations.
+		{// populate tolerations equal operator in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "foo", Operator: "Equal", Value: "bar", Effect: "NoSchedule"}}),
 		},
-		{ // populate tolerations exists operator in annotations.
+		{// populate tolerations exists operator in annotations.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // empty key with Exists operator is OK for toleration, empty toleration key means match all taint keys.
+		{// empty key with Exists operator is OK for toleration, empty toleration key means match all taint keys.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Operator: "Exists", Effect: "NoSchedule"}}),
 		},
-		{ // empty operator is OK for toleration, defaults to Equal.
+		{// empty operator is OK for toleration, defaults to Equal.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "foo", Value: "bar", Effect: "NoSchedule"}}),
 		},
-		{ // empty effect is OK for toleration, empty toleration effect means match all taint effects.
+		{// empty effect is OK for toleration, empty toleration effect means match all taint effects.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "foo", Operator: "Equal", Value: "bar"}}),
 		},
-		{ // negative tolerationSeconds is OK for toleration.
+		{// negative tolerationSeconds is OK for toleration.
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "pod-forgiveness-invalid",
 				Namespace: "ns",
 			},
 			Spec: extendPodSpecwithTolerations(validPodSpec(nil), []core.Toleration{{Key: "node.kubernetes.io/not-ready", Operator: "Exists", Effect: "NoExecute", TolerationSeconds: &[]int64{-2}[0]}}),
 		},
-		{ // runtime default seccomp profile
+		{// runtime default seccomp profile
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6699,7 +6699,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // docker default seccomp profile
+		{// docker default seccomp profile
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6709,7 +6709,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // unconfined seccomp profile
+		{// unconfined seccomp profile
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6719,7 +6719,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // localhost seccomp profile
+		{// localhost seccomp profile
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6729,7 +6729,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // localhost seccomp profile for a container
+		{// localhost seccomp profile for a container
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6739,7 +6739,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // default AppArmor profile for a container
+		{// default AppArmor profile for a container
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6749,7 +6749,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // default AppArmor profile for an init container
+		{// default AppArmor profile for an init container
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6764,7 +6764,7 @@ func TestValidatePod(t *testing.T) {
 				DNSPolicy:      core.DNSClusterFirst,
 			},
 		},
-		{ // localhost AppArmor profile for a container
+		{// localhost AppArmor profile for a container
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6774,7 +6774,7 @@ func TestValidatePod(t *testing.T) {
 			},
 			Spec: validPodSpec(nil),
 		},
-		{ // syntactically valid sysctls
+		{// syntactically valid sysctls
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      "123",
 				Namespace: "ns",
@@ -6801,7 +6801,7 @@ func TestValidatePod(t *testing.T) {
 				},
 			},
 		},
-		{ // valid extended resources for init container
+		{// valid extended resources for init container
 			ObjectMeta: metav1.ObjectMeta{Name: "valid-extended", Namespace: "ns"},
 			Spec: core.PodSpec{
 				InitContainers: []core.Container{
@@ -6825,7 +6825,7 @@ func TestValidatePod(t *testing.T) {
 				DNSPolicy:     core.DNSClusterFirst,
 			},
 		},
-		{ // valid extended resources for regular container
+		{// valid extended resources for regular container
 			ObjectMeta: metav1.ObjectMeta{Name: "valid-extended", Namespace: "ns"},
 			Spec: core.PodSpec{
 				InitContainers: []core.Container{{Name: "ctr", Image: "image", ImagePullPolicy: "IfNotPresent", TerminationMessagePolicy: "File"}},
@@ -12127,7 +12127,7 @@ func TestValidateBasicAuthSecret(t *testing.T) {
 		secret core.Secret
 		valid  bool
 	}{
-		"valid": {validBasicAuthSecret(), true},
+		"valid":                         {validBasicAuthSecret(), true},
 		"missing username and password": {missingBasicAuthUsernamePasswordKeys, false},
 	}
 

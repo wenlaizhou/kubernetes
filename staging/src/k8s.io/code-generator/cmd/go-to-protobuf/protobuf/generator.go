@@ -328,14 +328,14 @@ func (b bodyGen) doStruct(sw *generator.SnippetWriter) error {
 					options = append(options, fmt.Sprintf("%s = %s", key, v[0]))
 				}
 			}
-		// protobuf.as allows a type to have the same message contents as another Go type
+			// protobuf.as allows a type to have the same message contents as another Go type
 		case k == "protobuf.as":
 			fields = nil
 			if alias = b.locator.GoTypeForName(types.Name{Name: v[0]}); alias == nil {
 				return fmt.Errorf("type %v references alias %q which does not exist", b.t, v[0])
 			}
-		// protobuf.embed instructs the generator to use the named type in this package
-		// as an embedded message.
+			// protobuf.embed instructs the generator to use the named type in this package
+			// as an embedded message.
 		case k == "protobuf.embed":
 			fields = []protoField{
 				{

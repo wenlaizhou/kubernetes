@@ -639,8 +639,8 @@ func GetUniqueVolumeNameFromSpec(
 	}
 
 	return GetUniqueVolumeName(
-			volumePlugin.GetPluginName(),
-			volumeName),
+		volumePlugin.GetPluginName(),
+		volumeName),
 		nil
 }
 

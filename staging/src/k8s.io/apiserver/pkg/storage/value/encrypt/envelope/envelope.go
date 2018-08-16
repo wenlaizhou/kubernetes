@@ -28,7 +28,7 @@ import (
 
 	"k8s.io/apiserver/pkg/storage/value"
 
-	lru "github.com/hashicorp/golang-lru"
+	"github.com/hashicorp/golang-lru"
 )
 
 // defaultCacheSize is the number of decrypted DEKs which would be cached by the transformer.
@@ -84,7 +84,7 @@ func (t *envelopeTransformer) TransformFromStorage(data []byte, context value.Co
 	if keyLen+2 > len(data) {
 		return nil, false, fmt.Errorf("invalid data encountered by envelope transformer, length longer than available bytes: %q", data)
 	}
-	encKey := data[2 : keyLen+2]
+	encKey := data[2: keyLen+2]
 	encData := data[2+keyLen:]
 
 	// Look up the decrypted DEK from cache or Envelope.

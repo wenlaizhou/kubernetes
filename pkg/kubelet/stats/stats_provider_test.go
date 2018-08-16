@@ -23,7 +23,7 @@ import (
 
 	cadvisorapiv1 "github.com/google/cadvisor/info/v1"
 	cadvisorapiv2 "github.com/google/cadvisor/info/v2"
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -40,7 +40,7 @@ import (
 
 const (
 	// Offsets from seed value in generated container stats.
-	offsetCPUUsageCores = iota
+	offsetCPUUsageCores       = iota
 	offsetCPUUsageCoreSeconds
 	offsetMemPageFaults
 	offsetMemMajorPageFaults
@@ -130,7 +130,7 @@ func TestRootFsStats(t *testing.T) {
 
 	assert.Equal(metav1.NewTime(containerInfo.Stats[0].Timestamp), stats.Time)
 	assert.Equal(rootFsInfo.Usage, *stats.UsedBytes)
-	assert.Equal(*rootFsInfo.Inodes-*rootFsInfo.InodesFree, *stats.InodesUsed)
+	assert.Equal(*rootFsInfo.Inodes - *rootFsInfo.InodesFree, *stats.InodesUsed)
 
 	mockCadvisor.AssertExpectations(t)
 }

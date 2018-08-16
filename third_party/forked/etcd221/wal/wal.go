@@ -36,10 +36,10 @@ import (
 
 const (
 	metadataType int64 = iota + 1
-	entryType
-	stateType
-	crcType
-	snapshotType
+	entryType    
+	stateType    
+	crcType      
+	snapshotType 
 
 	// the owner can make/remove files inside the directory
 	privateDirMode = 0700

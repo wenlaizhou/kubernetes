@@ -122,8 +122,8 @@ type probeKey struct {
 type probeType int
 
 const (
-	liveness probeType = iota
-	readiness
+	liveness  probeType = iota
+	readiness 
 )
 
 // For debugging.

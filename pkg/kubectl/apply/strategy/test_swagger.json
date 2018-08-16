@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-   "title": "Kubernetes",
-   "version": "v1.9.0"
+    "title": "Kubernetes",
+    "version": "v1.9.0"
   },
   "paths": {
   },
@@ -203,7 +203,6 @@
           "description": "Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status",
           "$ref": "#/definitions/io.k8s.api.extensions.v1beta1.ReplicaSetSpec",
           "x-kubernetes-patch-strategy": "replace"
-
         }
       },
       "x-kubernetes-group-version-kind": [
@@ -235,16 +234,16 @@
     }
   },
   "securityDefinitions": {
-   "BearerToken": {
-    "description": "Bearer Token authentication",
-    "type": "apiKey",
-    "name": "authorization",
-    "in": "header"
-   }
+    "BearerToken": {
+      "description": "Bearer Token authentication",
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
   },
   "security": [
-   {
-    "BearerToken": []
-   }
+    {
+      "BearerToken": []
+    }
   ]
- }
+}

@@ -47,7 +47,6 @@ import (
 	utiltesting "k8s.io/client-go/util/testing"
 	"k8s.io/client-go/util/workqueue"
 	"k8s.io/kubernetes/pkg/controller"
-	. "k8s.io/kubernetes/pkg/controller/testutil"
 	"k8s.io/kubernetes/pkg/securitycontext"
 )
 
@@ -101,7 +100,7 @@ func newReplicaSet(replicas int, selectorMap map[string]string) *apps.ReplicaSet
 				Spec: v1.PodSpec{
 					Containers: []v1.Container{
 						{
-							Image: "foo/bar",
+							Image:                  "foo/bar",
 							TerminationMessagePath: v1.TerminationMessagePathDefault,
 							ImagePullPolicy:        v1.PullIfNotPresent,
 							SecurityContext:        securitycontext.ValidSecurityContextWithContainerDefaults(),

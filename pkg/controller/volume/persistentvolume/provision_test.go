@@ -278,7 +278,7 @@ func TestProvisionSync(t *testing.T) {
 			},
 			wrapTestWithPluginCalls(
 				nil, // recycle calls
-				[]error{ // delete calls
+				[]error{// delete calls
 					errors.New("Mock deletion error1"),
 					errors.New("Mock deletion error2"),
 					errors.New("Mock deletion error3"),
@@ -308,10 +308,10 @@ func TestProvisionSync(t *testing.T) {
 			},
 			wrapTestWithPluginCalls(
 				nil, // recycle calls
-				[]error{ // delete calls
+				[]error{// delete calls
 					errors.New("Mock deletion error1"),
 					nil,
-				}, //  provison calls
+				},   //  provison calls
 				[]provisionCall{provision1Success},
 				testSyncClaim,
 			),

@@ -32,7 +32,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 
-	pkiutil "k8s.io/kubernetes/cmd/kubeadm/app/phases/certs/pkiutil"
+	"k8s.io/kubernetes/cmd/kubeadm/app/phases/certs/pkiutil"
 
 	kubeadmutil "k8s.io/kubernetes/cmd/kubeadm/app/util"
 	testutil "k8s.io/kubernetes/cmd/kubeadm/test"
@@ -205,22 +205,22 @@ func TestCreateKubeConfigFileIfNotExists(t *testing.T) {
 		kubeConfig         *clientcmdapi.Config
 		expectedError      bool
 	}{
-		{ // if there is no existing KubeConfig, creates the kubeconfig
+		{// if there is no existing KubeConfig, creates the kubeconfig
 			kubeConfig: config,
 		},
-		{ // if KubeConfig is equal to the existingKubeConfig - refers to the same cluster -, use the existing (Test idempotency)
+		{// if KubeConfig is equal to the existingKubeConfig - refers to the same cluster -, use the existing (Test idempotency)
 			existingKubeConfig: config,
-			kubeConfig:         config,
+			kubeConfig: config,
 		},
-		{ // if KubeConfig is not equal to the existingKubeConfig - refers to the another cluster (a cluster with another Ca) -, raise error
+		{// if KubeConfig is not equal to the existingKubeConfig - refers to the another cluster (a cluster with another Ca) -, raise error
 			existingKubeConfig: config,
-			kubeConfig:         configWithAnotherClusterCa,
-			expectedError:      true,
+			kubeConfig: configWithAnotherClusterCa,
+			expectedError: true,
 		},
-		{ // if KubeConfig is not equal to the existingKubeConfig - refers to the another cluster (a cluster with another address) -, raise error
+		{// if KubeConfig is not equal to the existingKubeConfig - refers to the another cluster (a cluster with another address) -, raise error
 			existingKubeConfig: config,
-			kubeConfig:         configWithAnotherClusterAddress,
-			expectedError:      true,
+			kubeConfig: configWithAnotherClusterAddress,
+			expectedError: true,
 		},
 	}
 
@@ -256,13 +256,13 @@ func TestCreateKubeconfigFilesAndWrappers(t *testing.T) {
 		expectedFiles            []string
 		expectedError            bool
 	}{
-		{ // Test createKubeConfigFiles fails for unknown kubeconfig is requested
+		{// Test createKubeConfigFiles fails for unknown kubeconfig is requested
 			createKubeConfigFunction: func(outDir string, cfg *kubeadmapi.InitConfiguration) error {
 				return createKubeConfigFiles(outDir, cfg, "unknown.conf")
 			},
 			expectedError: true,
 		},
-		{ // Test CreateInitKubeConfigFiles (wrapper to createKubeConfigFile)
+		{// Test CreateInitKubeConfigFiles (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateInitKubeConfigFiles,
 			expectedFiles: []string{
 				kubeadmconstants.AdminKubeConfigFileName,
@@ -271,7 +271,7 @@ func TestCreateKubeconfigFilesAndWrappers(t *testing.T) {
 				kubeadmconstants.SchedulerKubeConfigFileName,
 			},
 		},
-		{ // Test CreateJoinMasterKubeConfigFiles (wrapper to createKubeConfigFile)
+		{// Test CreateJoinMasterKubeConfigFiles (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateJoinMasterKubeConfigFiles,
 			expectedFiles: []string{
 				kubeadmconstants.AdminKubeConfigFileName,
@@ -279,21 +279,21 @@ func TestCreateKubeconfigFilesAndWrappers(t *testing.T) {
 				kubeadmconstants.SchedulerKubeConfigFileName,
 			},
 		},
-		{ // Test CreateAdminKubeConfigFile (wrapper to createKubeConfigFile)
+		{// Test CreateAdminKubeConfigFile (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateAdminKubeConfigFile,
-			expectedFiles:            []string{kubeadmconstants.AdminKubeConfigFileName},
+			expectedFiles: []string{kubeadmconstants.AdminKubeConfigFileName},
 		},
-		{ // Test CreateKubeletKubeConfigFile (wrapper to createKubeConfigFile)
+		{// Test CreateKubeletKubeConfigFile (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateKubeletKubeConfigFile,
-			expectedFiles:            []string{kubeadmconstants.KubeletKubeConfigFileName},
+			expectedFiles: []string{kubeadmconstants.KubeletKubeConfigFileName},
 		},
-		{ // Test CreateControllerManagerKubeConfigFile (wrapper to createKubeConfigFile)
+		{// Test CreateControllerManagerKubeConfigFile (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateControllerManagerKubeConfigFile,
-			expectedFiles:            []string{kubeadmconstants.ControllerManagerKubeConfigFileName},
+			expectedFiles: []string{kubeadmconstants.ControllerManagerKubeConfigFileName},
 		},
-		{ // Test createKubeConfigFile (wrapper to createKubeConfigFile)
+		{// Test createKubeConfigFile (wrapper to createKubeConfigFile)
 			createKubeConfigFunction: CreateSchedulerKubeConfigFile,
-			expectedFiles:            []string{kubeadmconstants.SchedulerKubeConfigFileName},
+			expectedFiles: []string{kubeadmconstants.SchedulerKubeConfigFileName},
 		},
 	}
 
@@ -341,12 +341,12 @@ func TestWriteKubeConfigFailsIfCADoesntExists(t *testing.T) {
 	var tests = []struct {
 		writeKubeConfigFunction func(out io.Writer) error
 	}{
-		{ // Test WriteKubeConfigWithClientCert
+		{// Test WriteKubeConfigWithClientCert
 			writeKubeConfigFunction: func(out io.Writer) error {
 				return WriteKubeConfigWithClientCert(out, cfg, "myUser", []string{"myOrg"})
 			},
 		},
-		{ // Test WriteKubeConfigWithToken
+		{// Test WriteKubeConfigWithToken
 			writeKubeConfigFunction: func(out io.Writer) error {
 				return WriteKubeConfigWithToken(out, cfg, "myUser", "12345")
 			},
@@ -389,13 +389,13 @@ func TestWriteKubeConfig(t *testing.T) {
 		withClientCert          bool
 		withToken               bool
 	}{
-		{ // Test WriteKubeConfigWithClientCert
+		{// Test WriteKubeConfigWithClientCert
 			writeKubeConfigFunction: func(out io.Writer) error {
 				return WriteKubeConfigWithClientCert(out, cfg, "myUser", []string{"myOrg"})
 			},
 			withClientCert: true,
 		},
-		{ // Test WriteKubeConfigWithToken
+		{// Test WriteKubeConfigWithToken
 			writeKubeConfigFunction: func(out io.Writer) error {
 				return WriteKubeConfigWithToken(out, cfg, "myUser", "12345")
 			},

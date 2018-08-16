@@ -109,24 +109,24 @@ func TestPrepullImagesInParallel(t *testing.T) {
 		timeout     time.Duration
 		expectedErr bool
 	}{
-		{ // should error out; create failed
-			p:           NewFailedCreatePrepuller(),
-			timeout:     10 * time.Second,
+		{// should error out; create failed
+			p: NewFailedCreatePrepuller(),
+			timeout: 10 * time.Second,
 			expectedErr: true,
 		},
-		{ // should error out; timeout exceeded
-			p:           NewForeverWaitPrepuller(),
-			timeout:     10 * time.Second,
+		{// should error out; timeout exceeded
+			p: NewForeverWaitPrepuller(),
+			timeout: 10 * time.Second,
 			expectedErr: true,
 		},
-		{ // should error out; delete failed
-			p:           NewFailedDeletePrepuller(),
-			timeout:     10 * time.Second,
+		{// should error out; delete failed
+			p: NewFailedDeletePrepuller(),
+			timeout: 10 * time.Second,
 			expectedErr: true,
 		},
-		{ // should work just fine
-			p:           NewGoodPrepuller(),
-			timeout:     10 * time.Second,
+		{// should work just fine
+			p: NewGoodPrepuller(),
+			timeout: 10 * time.Second,
 			expectedErr: false,
 		},
 	}

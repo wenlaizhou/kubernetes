@@ -284,7 +284,7 @@ nodePortAddresses:
 		expBindAddr := tc.bindAddress
 		if tc.bindAddress[0] == '"' {
 			// Surrounding double quotes will get stripped by the yaml parser.
-			expBindAddr = expBindAddr[1 : len(tc.bindAddress)-1]
+			expBindAddr = expBindAddr[1: len(tc.bindAddress)-1]
 		}
 		expected := &kubeproxyconfig.KubeProxyConfiguration{
 			BindAddress: expBindAddr,

@@ -21,16 +21,16 @@ package informers
 import (
 	"fmt"
 
-	v1alpha1 "k8s.io/api/admissionregistration/v1alpha1"
-	v1beta1 "k8s.io/api/admissionregistration/v1beta1"
-	v1 "k8s.io/api/apps/v1"
+	"k8s.io/api/admissionregistration/v1alpha1"
+	"k8s.io/api/admissionregistration/v1beta1"
+	"k8s.io/api/apps/v1"
 	appsv1beta1 "k8s.io/api/apps/v1beta1"
-	v1beta2 "k8s.io/api/apps/v1beta2"
+	"k8s.io/api/apps/v1beta2"
 	autoscalingv1 "k8s.io/api/autoscaling/v1"
-	v2beta1 "k8s.io/api/autoscaling/v2beta1"
+	"k8s.io/api/autoscaling/v2beta1"
 	batchv1 "k8s.io/api/batch/v1"
 	batchv1beta1 "k8s.io/api/batch/v1beta1"
-	v2alpha1 "k8s.io/api/batch/v2alpha1"
+	"k8s.io/api/batch/v2alpha1"
 	certificatesv1beta1 "k8s.io/api/certificates/v1beta1"
 	coordinationv1beta1 "k8s.io/api/coordination/v1beta1"
 	corev1 "k8s.io/api/core/v1"
@@ -47,8 +47,8 @@ import (
 	storagev1 "k8s.io/api/storage/v1"
 	storagev1alpha1 "k8s.io/api/storage/v1alpha1"
 	storagev1beta1 "k8s.io/api/storage/v1beta1"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/client-go/tools/cache"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other

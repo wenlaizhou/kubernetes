@@ -36,21 +36,21 @@ limitations under the License.
 */
 package deviceplugin
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 import _ "github.com/gogo/protobuf/gogoproto"
 
 import (
-	context "golang.org/x/net/context"
-	grpc "google.golang.org/grpc"
+	"golang.org/x/net/context"
+	"google.golang.org/grpc"
 )
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

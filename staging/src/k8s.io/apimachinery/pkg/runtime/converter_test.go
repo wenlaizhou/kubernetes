@@ -59,8 +59,8 @@ type B struct {
 }
 
 type C struct {
-	A []A `json:"ca"`
-	B `json:",inline"`
+	A []A            `json:"ca"`
+	B                `json:",inline"`
 	C string         `json:"cc"`
 	D *int64         `json:"cd"`
 	E map[string]int `json:"ce"`

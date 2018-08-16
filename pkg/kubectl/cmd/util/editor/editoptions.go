@@ -28,7 +28,6 @@ import (
 	goruntime "runtime"
 	"strings"
 
-	"github.com/evanphx/json-patch"
 	"github.com/golang/glog"
 	"github.com/spf13/cobra"
 
@@ -389,7 +388,7 @@ func (o *EditOptions) Run() error {
 			return errors.New("no last-applied-configuration annotation found on resources, to create the annotation, use command `kubectl apply set-last-applied --create-annotation`")
 		}
 		return editFn(annotationInfos)
-	// If doing an edit before created, we don't want a list and instead want the normal behavior as kubectl create.
+		// If doing an edit before created, we don't want a list and instead want the normal behavior as kubectl create.
 	case EditBeforeCreateMode:
 		return o.OriginalResult.Visit(func(info *resource.Info, err error) error {
 			return editFn([]*resource.Info{info})

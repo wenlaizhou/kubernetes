@@ -189,7 +189,7 @@ func AddJoinConfigFlags(flagSet *flag.FlagSet, cfg *kubeadmapiv1alpha3.JoinConfi
 	flagSet.StringVar(
 		featureGatesString, "feature-gates", *featureGatesString,
 		"A set of key=value pairs that describe feature gates for various features. "+
-			"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+			"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 	flagSet.StringVar(
 		&cfg.NodeRegistration.CRISocket, "cri-socket", cfg.NodeRegistration.CRISocket,
 		`Specify the CRI socket to connect to.`,

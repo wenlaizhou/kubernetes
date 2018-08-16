@@ -67,10 +67,10 @@ func (handler *mockOsIOHandler) EvalSymlinks(path string) (string, error) {
 		"/returns/non/dev":                                            "/sys/block",
 		"/dev/disk/by-path/127.0.0.1:3260-eui.02004567A425678D-lun-0": "/dev/sda",
 		"/dev/disk/by-path/127.0.0.3:3260-eui.03004567A425678D-lun-0": "/dev/sdb",
-		"/dev/dm-2": "/dev/dm-2",
-		"/dev/dm-3": "/dev/dm-3",
-		"/dev/sdc":  "/dev/sdc",
-		"/dev/sde":  "/dev/sde",
+		"/dev/dm-2":                                                   "/dev/dm-2",
+		"/dev/dm-3":                                                   "/dev/dm-3",
+		"/dev/sdc":                                                    "/dev/sdc",
+		"/dev/sde":                                                    "/dev/sde",
 	}
 	return links[path], nil
 }

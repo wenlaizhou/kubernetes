@@ -46,9 +46,9 @@ type SimpleRoot struct {
 
 type SimpleGetOptions struct {
 	metav1.TypeMeta `json:",inline"`
-	Param1          string `json:"param1"`
-	Param2          string `json:"param2"`
-	Path            string `json:"atAPath"`
+	Param1 string   `json:"param1"`
+	Param2 string   `json:"param2"`
+	Path   string   `json:"atAPath"`
 }
 
 func (SimpleGetOptions) SwaggerDoc() map[string]string {
@@ -72,8 +72,8 @@ type SimpleList struct {
 // SimpleXGSubresource is a cross group subresource, i.e. the subresource does not belong to the
 // same group as its parent resource.
 type SimpleXGSubresource struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata"`
-	SubresourceInfo   string            `json:"subresourceInfo,omitempty"`
-	Labels            map[string]string `json:"labels,omitempty"`
+	metav1.TypeMeta                   `json:",inline"`
+	metav1.ObjectMeta                 `json:"metadata"`
+	SubresourceInfo string            `json:"subresourceInfo,omitempty"`
+	Labels          map[string]string `json:"labels,omitempty"`
 }

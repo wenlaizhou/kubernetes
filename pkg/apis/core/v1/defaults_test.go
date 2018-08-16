@@ -1046,21 +1046,21 @@ func TestSetDefaultNodeStatusAllocatable(t *testing.T) {
 		capacity            v1.ResourceList
 		allocatable         v1.ResourceList
 		expectedAllocatable v1.ResourceList
-	}{{ // Everything set, no defaulting.
-		capacity:            capacity,
-		allocatable:         allocatable,
+	}{{// Everything set, no defaulting.
+		capacity: capacity,
+		allocatable: allocatable,
 		expectedAllocatable: allocatable,
-	}, { // Allocatable set, no defaulting.
-		capacity:            nil,
-		allocatable:         allocatable,
+	}, {// Allocatable set, no defaulting.
+		capacity: nil,
+		allocatable: allocatable,
 		expectedAllocatable: allocatable,
-	}, { // Capacity set, allocatable defaults to capacity.
-		capacity:            capacity,
-		allocatable:         nil,
+	}, {// Capacity set, allocatable defaults to capacity.
+		capacity: capacity,
+		allocatable: nil,
 		expectedAllocatable: capacity,
-	}, { // Nothing set, allocatable "defaults" to capacity.
-		capacity:            nil,
-		allocatable:         nil,
+	}, {// Nothing set, allocatable "defaults" to capacity.
+		capacity: nil,
+		allocatable: nil,
 		expectedAllocatable: nil,
 	}}
 

@@ -106,7 +106,7 @@ func TestRunOnce(t *testing.T) {
 		kb.getPodsDir(),
 		kb.recorder,
 		false, /* experimentalCheckNodeCapabilitiesBeforeMount */
-		false /* keepTerminatedPodVolumes */)
+		false  /* keepTerminatedPodVolumes */)
 
 	// TODO: Factor out "StatsProvider" from Kubelet so we don't have a cyclic dependency
 	volumeStatsAggPeriod := time.Second * 10

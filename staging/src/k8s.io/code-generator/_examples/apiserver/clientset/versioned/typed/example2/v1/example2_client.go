@@ -19,9 +19,9 @@ limitations under the License.
 package v1
 
 import (
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
-	rest "k8s.io/client-go/rest"
-	v1 "k8s.io/code-generator/_examples/apiserver/apis/example2/v1"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/client-go/rest"
+	"k8s.io/code-generator/_examples/apiserver/apis/example2/v1"
 	"k8s.io/code-generator/_examples/apiserver/clientset/versioned/scheme"
 )
 

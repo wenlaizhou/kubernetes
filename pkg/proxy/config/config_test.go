@@ -119,8 +119,8 @@ func (h *ServiceHandlerMock) ValidateServices(t *testing.T, expectedServices []*
 			if reflect.DeepEqual(services, expectedServices) {
 				return
 			}
-		// Unittests will hard timeout in 5m with a stack trace, prevent that
-		// and surface a clearer reason for failure.
+			// Unittests will hard timeout in 5m with a stack trace, prevent that
+			// and surface a clearer reason for failure.
 		case <-time.After(wait.ForeverTestTimeout):
 			t.Errorf("Timed out. Expected %#v, Got %#v", expectedServices, services)
 			return
@@ -214,8 +214,8 @@ func (h *EndpointsHandlerMock) ValidateEndpoints(t *testing.T, expectedEndpoints
 			if reflect.DeepEqual(endpoints, expectedEndpoints) {
 				return
 			}
-		// Unittests will hard timeout in 5m with a stack trace, prevent that
-		// and surface a clearer reason for failure.
+			// Unittests will hard timeout in 5m with a stack trace, prevent that
+			// and surface a clearer reason for failure.
 		case <-time.After(wait.ForeverTestTimeout):
 			t.Errorf("Timed out. Expected %#v, Got %#v", expectedEndpoints, endpoints)
 			return

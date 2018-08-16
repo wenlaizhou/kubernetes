@@ -35,9 +35,9 @@ limitations under the License.
 */
 package v1alpha1
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
 import k8s_io_api_authentication_v1 "k8s.io/api/authentication/v1"
 import k8s_io_apimachinery_pkg_apis_meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -47,10 +47,10 @@ import k8s_io_apimachinery_pkg_types "k8s.io/apimachinery/pkg/types"
 
 import github_com_gogo_protobuf_sortkeys "github.com/gogo/protobuf/sortkeys"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

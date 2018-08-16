@@ -38,9 +38,9 @@ import (
 type podEventType int
 
 const (
-	podAdd podEventType = iota
-	podModify
-	podDelete
+	podAdd    podEventType = iota
+	podModify 
+	podDelete 
 
 	eventBufferLen = 10
 )

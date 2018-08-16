@@ -30,13 +30,13 @@ import (
 
 func LegacyClaims(serviceAccount v1.ServiceAccount, secret v1.Secret) (*jwt.Claims, interface{}) {
 	return &jwt.Claims{
-			Subject: apiserverserviceaccount.MakeUsername(serviceAccount.Namespace, serviceAccount.Name),
-		}, &legacyPrivateClaims{
-			Namespace:          serviceAccount.Namespace,
-			ServiceAccountName: serviceAccount.Name,
-			ServiceAccountUID:  string(serviceAccount.UID),
-			SecretName:         secret.Name,
-		}
+		Subject: apiserverserviceaccount.MakeUsername(serviceAccount.Namespace, serviceAccount.Name),
+	}, &legacyPrivateClaims{
+		Namespace:          serviceAccount.Namespace,
+		ServiceAccountName: serviceAccount.Name,
+		ServiceAccountUID:  string(serviceAccount.UID),
+		SecretName:         secret.Name,
+	}
 }
 
 const LegacyIssuer = "kubernetes/serviceaccount"

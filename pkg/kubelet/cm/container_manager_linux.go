@@ -108,7 +108,7 @@ type containerManagerImpl struct {
 	cadvisorInterface cadvisor.Interface
 	mountUtil         mount.Interface
 	NodeConfig
-	status Status
+	status            Status
 	// External containers being managed.
 	systemContainers []*systemContainer
 	qosContainers    QOSContainersInfo

@@ -638,7 +638,7 @@ func (q *Quantity) UnmarshalJSON(value []byte) error {
 		return nil
 	}
 	if l >= 2 && value[0] == '"' && value[l-1] == '"' {
-		value = value[1 : l-1]
+		value = value[1: l-1]
 	}
 
 	parsed, err := ParseQuantity(strings.TrimSpace(string(value)))

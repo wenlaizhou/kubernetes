@@ -48,22 +48,22 @@ var (
 
 	adminKubeconfigLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the kubeconfig file for the admin and for kubeadm itself, and saves it to %s file.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.AdminKubeConfigFileName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.AdminKubeConfigFileName)
 
 	kubeletKubeconfigLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the kubeconfig file for the kubelet to use and saves it to %s file.
 
 		Please note that this should *only* be used for bootstrapping purposes. After your control plane is up,
 		you should request all kubelet credentials from the CSR API.
-		`+cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.KubeletKubeConfigFileName))
+		`+ cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.KubeletKubeConfigFileName))
 
 	controllerManagerKubeconfigLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the kubeconfig file for the controller manager to use and saves it to %s file.
-		`+cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.ControllerManagerKubeConfigFileName))
+		`+ cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.ControllerManagerKubeConfigFileName))
 
 	schedulerKubeconfigLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the kubeconfig file for the scheduler to use and saves it to %s file.
-		`+cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.SchedulerKubeConfigFileName))
+		`+ cmdutil.AlphaDisclaimer), filepath.Join(kubeadmconstants.KubernetesDir, kubeadmconstants.SchedulerKubeConfigFileName))
 
 	userKubeconfigLongDesc = normalizer.LongDesc(`
 		Outputs a kubeconfig file for an additional user.

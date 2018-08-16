@@ -97,7 +97,7 @@ func fmtRawDoc(rawDoc string) string {
 func fieldName(field *ast.Field) string {
 	jsonTag := ""
 	if field.Tag != nil {
-		jsonTag = reflect.StructTag(field.Tag.Value[1 : len(field.Tag.Value)-1]).Get("json") // Delete first and last quotation
+		jsonTag = reflect.StructTag(field.Tag.Value[1: len(field.Tag.Value)-1]).Get("json") // Delete first and last quotation
 		if strings.Contains(jsonTag, "inline") {
 			return "-"
 		}

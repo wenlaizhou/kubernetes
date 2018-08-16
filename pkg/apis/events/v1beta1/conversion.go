@@ -17,8 +17,8 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1beta1 "k8s.io/api/events/v1beta1"
-	conversion "k8s.io/apimachinery/pkg/conversion"
+	"k8s.io/api/events/v1beta1"
+	"k8s.io/apimachinery/pkg/conversion"
 	k8s_api "k8s.io/kubernetes/pkg/apis/core"
 	k8s_api_v1 "k8s.io/kubernetes/pkg/apis/core/v1"
 )

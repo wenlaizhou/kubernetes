@@ -21,19 +21,19 @@ limitations under the License.
 package v1beta1
 
 import (
-	unsafe "unsafe"
+	"unsafe"
 
-	v1 "k8s.io/api/core/v1"
-	v1beta1 "k8s.io/api/extensions/v1beta1"
+	"k8s.io/api/core/v1"
+	"k8s.io/api/extensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	conversion "k8s.io/apimachinery/pkg/conversion"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	autoscaling "k8s.io/kubernetes/pkg/apis/autoscaling"
-	core "k8s.io/kubernetes/pkg/apis/core"
+	"k8s.io/apimachinery/pkg/conversion"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/kubernetes/pkg/apis/autoscaling"
+	"k8s.io/kubernetes/pkg/apis/core"
 	corev1 "k8s.io/kubernetes/pkg/apis/core/v1"
-	extensions "k8s.io/kubernetes/pkg/apis/extensions"
-	networking "k8s.io/kubernetes/pkg/apis/networking"
-	policy "k8s.io/kubernetes/pkg/apis/policy"
+	"k8s.io/kubernetes/pkg/apis/extensions"
+	"k8s.io/kubernetes/pkg/apis/networking"
+	"k8s.io/kubernetes/pkg/apis/policy"
 )
 
 func init() {

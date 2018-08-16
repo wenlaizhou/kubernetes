@@ -36,7 +36,6 @@ import (
 
 	"github.com/golang/glog"
 	"github.com/vmware/photon-controller-go-sdk/photon"
-	"gopkg.in/gcfg.v1"
 	"k8s.io/api/core/v1"
 	k8stypes "k8s.io/apimachinery/pkg/types"
 	v1helper "k8s.io/kubernetes/pkg/apis/core/v1/helper"
@@ -67,7 +66,7 @@ type PCCloud struct {
 	localK8sHostname string
 	// Photon project ID. We assume that there is only one Photon Controller project
 	// in the environment per current Photon Controller deployment methodology.
-	projID string
+	projID       string
 	cloudprovider.Zone
 	photonClient *photon.Client
 	logger       *log.Logger

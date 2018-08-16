@@ -54,7 +54,6 @@ func NewManager(c clientset.Interface) *Manager {
 
 // Manager manages service account tokens for pods.
 type Manager struct {
-
 	// cacheMutex guards the cache
 	cacheMutex sync.RWMutex
 	cache      map[string]*authenticationv1.TokenRequest

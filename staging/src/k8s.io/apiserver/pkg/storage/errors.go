@@ -23,11 +23,11 @@ import (
 )
 
 const (
-	ErrCodeKeyNotFound int = iota + 1
-	ErrCodeKeyExists
-	ErrCodeResourceVersionConflicts
-	ErrCodeInvalidObj
-	ErrCodeUnreachable
+	ErrCodeKeyNotFound              int = iota + 1
+	ErrCodeKeyExists                
+	ErrCodeResourceVersionConflicts 
+	ErrCodeInvalidObj               
+	ErrCodeUnreachable              
 )
 
 var errCodeToMessage = map[int]string{

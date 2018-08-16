@@ -66,14 +66,14 @@ const Base64ChannelWebSocketProtocol = "base64.channel.k8s.io"
 type codecType int
 
 const (
-	rawCodec codecType = iota
+	rawCodec    codecType = iota
 	base64Codec
 )
 
 type ChannelType int
 
 const (
-	IgnoreChannel ChannelType = iota
+	IgnoreChannel    ChannelType = iota
 	ReadChannel
 	WriteChannel
 	ReadWriteChannel
@@ -137,7 +137,7 @@ type ChannelProtocolConfig struct {
 // channels.
 func NewDefaultChannelProtocols(channels []ChannelType) map[string]ChannelProtocolConfig {
 	return map[string]ChannelProtocolConfig{
-		"": {Binary: true, Channels: channels},
+		"":                             {Binary: true, Channels: channels},
 		ChannelWebSocketProtocol:       {Binary: true, Channels: channels},
 		Base64ChannelWebSocketProtocol: {Binary: false, Channels: channels},
 	}

@@ -26,7 +26,7 @@ import (
 
 	"k8s.io/apimachinery/pkg/util/wait"
 
-	units "github.com/docker/go-units"
+	"github.com/docker/go-units"
 	cgroupfs "github.com/opencontainers/runc/libcontainer/cgroups/fs"
 	"k8s.io/api/core/v1"
 	utilfeature "k8s.io/apiserver/pkg/util/feature"

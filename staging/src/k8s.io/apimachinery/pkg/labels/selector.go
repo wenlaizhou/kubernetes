@@ -353,31 +353,31 @@ const (
 	// ErrorToken represents scan error
 	ErrorToken Token = iota
 	// EndOfStringToken represents end of string
-	EndOfStringToken
+	EndOfStringToken 
 	// ClosedParToken represents close parenthesis
-	ClosedParToken
+	ClosedParToken 
 	// CommaToken represents the comma
-	CommaToken
+	CommaToken 
 	// DoesNotExistToken represents logic not
-	DoesNotExistToken
+	DoesNotExistToken 
 	// DoubleEqualsToken represents double equals
-	DoubleEqualsToken
+	DoubleEqualsToken 
 	// EqualsToken represents equal
-	EqualsToken
+	EqualsToken 
 	// GreaterThanToken represents greater than
-	GreaterThanToken
+	GreaterThanToken 
 	// IdentifierToken represents identifier, e.g. keys and values
-	IdentifierToken
+	IdentifierToken 
 	// InToken represents in
-	InToken
+	InToken 
 	// LessThanToken represents less than
-	LessThanToken
+	LessThanToken 
 	// NotEqualsToken represents not equal
-	NotEqualsToken
+	NotEqualsToken 
 	// NotInToken represents not in
-	NotInToken
+	NotInToken 
 	// OpenParToken represents open parenthesis
-	OpenParToken
+	OpenParToken 
 )
 
 // string2token contains the mapping between lexer Token and token literal
@@ -535,7 +535,7 @@ const (
 	// KeyAndOperator represents key and operator
 	KeyAndOperator ParserContext = iota
 	// Values represents values
-	Values
+	Values 
 )
 
 // lookahead func returns the current token and string. No increment of current position

@@ -231,7 +231,7 @@ var testCases = []struct {
 	addCombinedOutputLog [][]string
 	delCombinedOutputLog []string
 }{
-	{ // case 0
+	{// case 0
 		entry: &Entry{
 			IP:       "192.168.1.1",
 			Port:     53,
@@ -247,7 +247,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "ZERO", "192.168.1.1,udp:53"},
 	},
-	{ // case 1
+	{// case 1
 		entry: &Entry{
 			IP:       "192.168.1.2",
 			Port:     80,
@@ -263,7 +263,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "UN", "192.168.1.2,tcp:80"},
 	},
-	{ // case 2
+	{// case 2
 		entry: &Entry{
 			IP:       "192.168.1.3",
 			Port:     53,
@@ -280,7 +280,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "DEUX", "192.168.1.3,udp:53,10.20.30.1"},
 	},
-	{ // case 3
+	{// case 3
 		entry: &Entry{
 			IP:       "192.168.1.4",
 			Port:     80,
@@ -297,7 +297,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "TROIS", "192.168.1.4,tcp:80,10.20.30.2"},
 	},
-	{ // case 4
+	{// case 4
 		entry: &Entry{
 			IP:       "192.168.1.5",
 			Port:     53,
@@ -314,7 +314,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "QUATRE", "192.168.1.5,udp:53,10.20.30.0/24"},
 	},
-	{ // case 5
+	{// case 5
 		entry: &Entry{
 			IP:       "192.168.1.6",
 			Port:     80,
@@ -331,7 +331,7 @@ var testCases = []struct {
 		},
 		delCombinedOutputLog: []string{"ipset", "del", "CINQ", "192.168.1.6,tcp:80,10.20.40.0/24"},
 	},
-	{ // case 6
+	{// case 6
 		entry: &Entry{
 			Port:     80,
 			Protocol: ProtocolTCP,
@@ -600,29 +600,29 @@ func Test_validIPSetType(t *testing.T) {
 		setType Type
 		valid   bool
 	}{
-		{ // case[0]
+		{// case[0]
 			setType: Type("foo"),
-			valid:   false,
+			valid: false,
 		},
-		{ // case[1]
+		{// case[1]
 			setType: HashIPPortNet,
-			valid:   true,
+			valid: true,
 		},
-		{ // case[2]
+		{// case[2]
 			setType: HashIPPort,
-			valid:   true,
+			valid: true,
 		},
-		{ // case[3]
+		{// case[3]
 			setType: HashIPPortIP,
-			valid:   true,
+			valid: true,
 		},
-		{ // case[4]
+		{// case[4]
 			setType: BitmapPort,
-			valid:   true,
+			valid: true,
 		},
-		{ // case[5]
+		{// case[5]
 			setType: Type(""),
-			valid:   false,
+			valid: false,
 		},
 	}
 	for i := range testCases {
@@ -639,75 +639,75 @@ func Test_validatePortRange(t *testing.T) {
 		valid     bool
 		desc      string
 	}{
-		{ // case[0]
+		{// case[0]
 			portRange: "a-b",
-			valid:     false,
-			desc:      "invalid port number",
+			valid: false,
+			desc: "invalid port number",
 		},
-		{ // case[1]
+		{// case[1]
 			portRange: "1-2",
-			valid:     true,
-			desc:      "valid",
+			valid: true,
+			desc: "valid",
 		},
-		{ // case[2]
+		{// case[2]
 			portRange: "90-1",
-			valid:     true,
-			desc:      "ipset util can accept the input of begin port number can be less than end port number",
+			valid: true,
+			desc: "ipset util can accept the input of begin port number can be less than end port number",
 		},
-		{ // case[3]
+		{// case[3]
 			portRange: DefaultPortRange,
-			valid:     true,
-			desc:      "default port range is valid, of course",
+			valid: true,
+			desc: "default port range is valid, of course",
 		},
-		{ // case[4]
+		{// case[4]
 			portRange: "12",
-			valid:     false,
-			desc:      "a single number is invalid",
+			valid: false,
+			desc: "a single number is invalid",
 		},
-		{ // case[5]
+		{// case[5]
 			portRange: "1-",
-			valid:     false,
-			desc:      "should specify end port",
+			valid: false,
+			desc: "should specify end port",
 		},
-		{ // case[6]
+		{// case[6]
 			portRange: "-100",
-			valid:     false,
-			desc:      "should specify begin port",
+			valid: false,
+			desc: "should specify begin port",
 		},
-		{ // case[7]
+		{// case[7]
 			portRange: "1:100",
-			valid:     false,
-			desc:      "delimiter should be -",
+			valid: false,
+			desc: "delimiter should be -",
 		},
-		{ // case[8]
+		{// case[8]
 			portRange: "1~100",
-			valid:     false,
-			desc:      "delimiter should be -",
+			valid: false,
+			desc: "delimiter should be -",
 		},
-		{ // case[9]
+		{// case[9]
 			portRange: "1,100",
-			valid:     false,
-			desc:      "delimiter should be -",
+			valid: false,
+			desc: "delimiter should be -",
 		},
-		{ // case[10]
+		{// case[10]
 			portRange: "100-100",
-			valid:     true,
-			desc:      "begin port number can be equal to end port number",
+			valid: true,
+			desc: "begin port number can be equal to end port number",
 		},
-		{ // case[11]
+		{// case[11]
 			portRange: "",
-			valid:     false,
-			desc:      "empty string is invalid",
+			valid: false,
+			desc: "empty string is invalid",
 		},
-		{ // case[12]
+		{// case[12]
 			portRange: "-1-12",
-			valid:     false,
-			desc:      "port number can not be negative value",
+			valid: false,
+			desc: "port number can not be negative value",
 		},
-		{ // case[13]
+		{// case[13]
 			portRange: "-1--8",
-			valid:     false,
-			desc:      "port number can not be negative value",
+			valid: false,
+			desc: "port number can not be negative value",
 		},
 	}
 	for i := range testCases {
@@ -723,37 +723,37 @@ func Test_validateFamily(t *testing.T) {
 		family string
 		valid  bool
 	}{
-		{ // case[0]
+		{// case[0]
 			family: "foo",
-			valid:  false,
+			valid: false,
 		},
-		{ // case[1]
+		{// case[1]
 			family: ProtocolFamilyIPV4,
-			valid:  true,
+			valid: true,
 		},
-		{ // case[2]
+		{// case[2]
 			family: ProtocolFamilyIPV6,
-			valid:  true,
+			valid: true,
 		},
-		{ // case[3]
+		{// case[3]
 			family: "ipv4",
-			valid:  false,
+			valid: false,
 		},
-		{ // case[4]
+		{// case[4]
 			family: "ipv6",
-			valid:  false,
+			valid: false,
 		},
-		{ // case[5]
+		{// case[5]
 			family: "tcp",
-			valid:  false,
+			valid: false,
 		},
-		{ // case[6]
+		{// case[6]
 			family: "udp",
-			valid:  false,
+			valid: false,
 		},
-		{ // case[7]
+		{// case[7]
 			family: "",
-			valid:  false,
+			valid: false,
 		},
 	}
 	for i := range testCases {
@@ -770,39 +770,39 @@ func Test_validateProtocol(t *testing.T) {
 		valid    bool
 		desc     string
 	}{
-		{ // case[0]
+		{// case[0]
 			protocol: "foo",
-			valid:    false,
+			valid: false,
 		},
-		{ // case[1]
+		{// case[1]
 			protocol: ProtocolTCP,
-			valid:    true,
+			valid: true,
 		},
-		{ // case[2]
+		{// case[2]
 			protocol: ProtocolUDP,
-			valid:    true,
+			valid: true,
 		},
-		{ // case[3]
+		{// case[3]
 			protocol: "ipv4",
-			valid:    false,
+			valid: false,
 		},
-		{ // case[4]
+		{// case[4]
 			protocol: "ipv6",
-			valid:    false,
+			valid: false,
 		},
-		{ // case[5]
+		{// case[5]
 			protocol: "TCP",
-			valid:    false,
-			desc:     "should be low case",
+			valid: false,
+			desc: "should be low case",
 		},
-		{ // case[6]
+		{// case[6]
 			protocol: "UDP",
-			valid:    false,
-			desc:     "should be low case",
+			valid: false,
+			desc: "should be low case",
 		},
-		{ // case[7]
+		{// case[7]
 			protocol: "",
-			valid:    false,
+			valid: false,
 		},
 	}
 	for i := range testCases {
@@ -819,7 +819,7 @@ func TestValidateIPSet(t *testing.T) {
 		valid bool
 		desc  string
 	}{
-		{ // case[0]
+		{// case[0]
 			ipset: &IPSet{
 				Name:       "test",
 				SetType:    HashIPPort,
@@ -829,7 +829,7 @@ func TestValidateIPSet(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[1]
+		{// case[1]
 			ipset: &IPSet{
 				Name:       "SET",
 				SetType:    BitmapPort,
@@ -840,7 +840,7 @@ func TestValidateIPSet(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[2]
+		{// case[2]
 			ipset: &IPSet{
 				Name:       "foo",
 				SetType:    BitmapPort,
@@ -849,9 +849,9 @@ func TestValidateIPSet(t *testing.T) {
 				MaxElem:    2048,
 			},
 			valid: false,
-			desc:  "should specify right port range for bitmap type set",
+			desc: "should specify right port range for bitmap type set",
 		},
-		{ // case[3]
+		{// case[3]
 			ipset: &IPSet{
 				Name:       "bar",
 				SetType:    BitmapPort,
@@ -860,9 +860,9 @@ func TestValidateIPSet(t *testing.T) {
 				MaxElem:    2048,
 			},
 			valid: false,
-			desc:  "wrong hash size number",
+			desc: "wrong hash size number",
 		},
-		{ // case[4]
+		{// case[4]
 			ipset: &IPSet{
 				Name:       "baz",
 				SetType:    BitmapPort,
@@ -871,9 +871,9 @@ func TestValidateIPSet(t *testing.T) {
 				MaxElem:    -1,
 			},
 			valid: false,
-			desc:  "wrong hash max elem number",
+			desc: "wrong hash max elem number",
 		},
-		{ // case[5]
+		{// case[5]
 			ipset: &IPSet{
 				Name:       "baz",
 				SetType:    HashIPPortNet,
@@ -882,9 +882,9 @@ func TestValidateIPSet(t *testing.T) {
 				MaxElem:    1024,
 			},
 			valid: false,
-			desc:  "wrong protocol",
+			desc: "wrong protocol",
 		},
-		{ // case[6]
+		{// case[6]
 			ipset: &IPSet{
 				Name:       "foo-bar",
 				SetType:    "xxx",
@@ -893,7 +893,7 @@ func TestValidateIPSet(t *testing.T) {
 				MaxElem:    1024,
 			},
 			valid: false,
-			desc:  "wrong set type",
+			desc: "wrong set type",
 		},
 	}
 	for i := range testCases {
@@ -912,83 +912,83 @@ func Test_parsePortRange(t *testing.T) {
 		endPort   int
 		desc      string
 	}{
-		{ // case[0]
+		{// case[0]
 			portRange: "1-100",
 			expectErr: false,
 			beginPort: 1,
-			endPort:   100,
+			endPort: 100,
 		},
-		{ // case[1]
+		{// case[1]
 			portRange: "0-0",
 			expectErr: false,
 			beginPort: 0,
-			endPort:   0,
+			endPort: 0,
 		},
-		{ // case[2]
+		{// case[2]
 			portRange: "100-10",
 			expectErr: false,
 			beginPort: 10,
-			endPort:   100,
+			endPort: 100,
 		},
-		{ // case[3]
+		{// case[3]
 			portRange: "1024",
 			expectErr: true,
-			desc:      "single port number is not allowed",
+			desc: "single port number is not allowed",
 		},
-		{ // case[4]
+		{// case[4]
 			portRange: DefaultPortRange,
 			expectErr: false,
 			beginPort: 0,
-			endPort:   65535,
+			endPort: 65535,
 		},
-		{ // case[5]
+		{// case[5]
 			portRange: "1-",
 			expectErr: true,
-			desc:      "should specify end port",
+			desc: "should specify end port",
 		},
-		{ // case[6]
+		{// case[6]
 			portRange: "-100",
 			expectErr: true,
-			desc:      "should specify begin port",
+			desc: "should specify begin port",
 		},
-		{ // case[7]
+		{// case[7]
 			portRange: "1:100",
 			expectErr: true,
-			desc:      "delimiter should be -",
+			desc: "delimiter should be -",
 		},
-		{ // case[8]
+		{// case[8]
 			portRange: "1~100",
 			expectErr: true,
-			desc:      "delimiter should be -",
+			desc: "delimiter should be -",
 		},
-		{ // case[9]
+		{// case[9]
 			portRange: "1,100",
 			expectErr: true,
-			desc:      "delimiter should be -",
+			desc: "delimiter should be -",
 		},
-		{ // case[10]
+		{// case[10]
 			portRange: "100-100",
 			expectErr: false,
-			desc:      "begin port number can be equal to end port number",
+			desc: "begin port number can be equal to end port number",
 			beginPort: 100,
-			endPort:   100,
+			endPort: 100,
 		},
-		{ // case[11]
+		{// case[11]
 			portRange: "",
 			expectErr: false,
-			desc:      "empty string indicates default port range",
+			desc: "empty string indicates default port range",
 			beginPort: 0,
-			endPort:   65535,
+			endPort: 65535,
 		},
-		{ // case[12]
+		{// case[12]
 			portRange: "-1-12",
 			expectErr: true,
-			desc:      "port number can not be negative value",
+			desc: "port number can not be negative value",
 		},
-		{ // case[13]
+		{// case[13]
 			portRange: "-1--8",
 			expectErr: true,
-			desc:      "port number can not be negative value",
+			desc: "port number can not be negative value",
 		},
 	}
 	for i := range testCases {
@@ -1013,7 +1013,7 @@ func TestValidateEntry(t *testing.T) {
 		valid bool
 		desc  string
 	}{
-		{ // case[0]
+		{// case[0]
 			entry: &Entry{
 				SetType: BitmapPort,
 			},
@@ -1021,9 +1021,9 @@ func TestValidateEntry(t *testing.T) {
 				PortRange: DefaultPortRange,
 			},
 			valid: true,
-			desc:  "port number can be empty, default is 0. And port number is in the range of its ipset's port range",
+			desc: "port number can be empty, default is 0. And port number is in the range of its ipset's port range",
 		},
-		{ // case[1]
+		{// case[1]
 			entry: &Entry{
 				SetType: BitmapPort,
 				Port:    0,
@@ -1032,17 +1032,17 @@ func TestValidateEntry(t *testing.T) {
 				PortRange: DefaultPortRange,
 			},
 			valid: true,
-			desc:  "port number can be 0. And port number is in the range of its ipset's port range",
+			desc: "port number can be 0. And port number is in the range of its ipset's port range",
 		},
-		{ // case[2]
+		{// case[2]
 			entry: &Entry{
 				SetType: BitmapPort,
 				Port:    -1,
 			},
 			valid: false,
-			desc:  "port number can not be negative value",
+			desc: "port number can not be negative value",
 		},
-		{ // case[3]
+		{// case[3]
 			entry: &Entry{
 				SetType: BitmapPort,
 				Port:    1080,
@@ -1051,10 +1051,10 @@ func TestValidateEntry(t *testing.T) {
 				Name:      "baz",
 				PortRange: DefaultPortRange,
 			},
-			desc:  "port number is in the range of its ipset's port range",
+			desc: "port number is in the range of its ipset's port range",
 			valid: true,
 		},
-		{ // case[4]
+		{// case[4]
 			entry: &Entry{
 				SetType: BitmapPort,
 				Port:    1080,
@@ -1063,10 +1063,10 @@ func TestValidateEntry(t *testing.T) {
 				Name:      "foo",
 				PortRange: "0-1079",
 			},
-			desc:  "port number is NOT in the range of its ipset's port range",
+			desc: "port number is NOT in the range of its ipset's port range",
 			valid: false,
 		},
-		{ // case[5]
+		{// case[5]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "1.2.3.4",
@@ -1078,7 +1078,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[6]
+		{// case[6]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "1.2.3.4",
@@ -1090,7 +1090,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[7]
+		{// case[7]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "FE80:0000:0000:0000:0202:B3FF:FE1E:8329",
@@ -1102,7 +1102,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[8]
+		{// case[8]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "",
@@ -1114,7 +1114,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[9]
+		{// case[9]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "1-2-3-4",
@@ -1126,7 +1126,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[10]
+		{// case[10]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "10.20.30.40",
@@ -1138,7 +1138,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[11]
+		{// case[11]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "10.20.30.40",
@@ -1150,7 +1150,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[11]
+		{// case[11]
 			entry: &Entry{
 				SetType:  HashIPPort,
 				IP:       "10.20.30.40",
@@ -1163,7 +1163,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[12]
+		{// case[12]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1176,7 +1176,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[13]
+		{// case[13]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1189,7 +1189,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[14]
+		{// case[14]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1202,7 +1202,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[15]
+		{// case[15]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1215,7 +1215,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[16]
+		{// case[16]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10::40",
@@ -1229,7 +1229,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[17]
+		{// case[17]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "",
@@ -1242,7 +1242,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[18]
+		{// case[18]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "1-2-3-4",
@@ -1255,20 +1255,20 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[19]
+		{// case[19]
 			entry: &Entry{
-				SetType: HashIPPortIP,
-				IP:      "10.20.30.40",
+				SetType:  HashIPPortIP,
+				IP:       "10.20.30.40",
 				Protocol: "SCTP	",
-				Port: 8090,
-				IP2:  "10.20.30.41",
+				Port:     8090,
+				IP2:      "10.20.30.41",
 			},
 			set: &IPSet{
 				Name: "unsupported-protocol",
 			},
 			valid: false,
 		},
-		{ // case[20]
+		{// case[20]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1281,7 +1281,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[21]
+		{// case[21]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "10.20.30.40",
@@ -1295,7 +1295,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[22]
+		{// case[22]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "11.21.31.41",
@@ -1308,7 +1308,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[23]
+		{// case[23]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "10.20.30.40",
@@ -1321,7 +1321,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[24]
+		{// case[24]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "10.20.30.40",
@@ -1334,7 +1334,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[25]
+		{// case[25]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "10::40",
@@ -1348,7 +1348,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: true,
 		},
-		{ // case[26]
+		{// case[26]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "",
@@ -1361,7 +1361,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[27]
+		{// case[27]
 			entry: &Entry{
 				SetType:  HashIPPortNet,
 				IP:       "1-2-3-4",
@@ -1374,7 +1374,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[28]
+		{// case[28]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",
@@ -1387,7 +1387,7 @@ func TestValidateEntry(t *testing.T) {
 			},
 			valid: false,
 		},
-		{ // case[29]
+		{// case[29]
 			entry: &Entry{
 				SetType:  HashIPPortIP,
 				IP:       "10.20.30.40",

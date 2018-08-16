@@ -54,7 +54,7 @@ func IsQualifiedName(value string) []string {
 			errs = append(errs, prefixEach(msgs, "prefix part ")...)
 		}
 	default:
-		return append(errs, "a qualified name "+RegexError(qualifiedNameErrMsg, qualifiedNameFmt, "MyName", "my.name", "123-abc")+
+		return append(errs, "a qualified name " + RegexError(qualifiedNameErrMsg, qualifiedNameFmt, "MyName", "my.name", "123-abc")+
 			" with an optional DNS subdomain prefix and '/' (e.g. 'example.com/MyName')")
 	}
 

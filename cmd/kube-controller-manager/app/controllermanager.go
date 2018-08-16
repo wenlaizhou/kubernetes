@@ -66,7 +66,7 @@ type ControllerLoopMode int
 
 const (
 	IncludeCloudLoops ControllerLoopMode = iota
-	ExternalLoops
+	ExternalLoops     
 )
 
 // NewControllerManagerCommand creates a *cobra.Command object with default parameters

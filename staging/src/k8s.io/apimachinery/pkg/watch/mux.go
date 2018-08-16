@@ -29,7 +29,7 @@ type FullChannelBehavior int
 
 const (
 	WaitIfChannelFull FullChannelBehavior = iota
-	DropIfChannelFull
+	DropIfChannelFull 
 )
 
 // Buffer the incoming queue a little bit even though it should rarely ever accumulate

@@ -54,9 +54,9 @@ func (e eventType) String() string {
 }
 
 const (
-	addEvent eventType = iota
-	updateEvent
-	deleteEvent
+	addEvent    eventType = iota
+	updateEvent 
+	deleteEvent 
 )
 
 type event struct {

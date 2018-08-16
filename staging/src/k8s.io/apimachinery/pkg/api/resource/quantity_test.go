@@ -23,7 +23,7 @@ import (
 	"testing"
 	"unicode"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	inf "gopkg.in/inf.v0"
 )

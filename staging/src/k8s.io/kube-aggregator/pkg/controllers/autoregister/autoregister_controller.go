@@ -226,36 +226,36 @@ func (c *autoRegisterController) checkAPIService(name string) (err error) {
 	case err != nil && !apierrors.IsNotFound(err):
 		return err
 
-	// we don't have an entry and we don't want one (2A)
+		// we don't have an entry and we don't want one (2A)
 	case apierrors.IsNotFound(err) && desired == nil:
 		return nil
 
-	// the local object only wants to sync on start and has already synced (2B,5B,6B "once" enforcement)
+		// the local object only wants to sync on start and has already synced (2B,5B,6B "once" enforcement)
 	case isAutomanagedOnStart(desired) && hasSynced:
 		return nil
 
-	// we don't have an entry and we do want one (2B,2C)
+		// we don't have an entry and we do want one (2B,2C)
 	case apierrors.IsNotFound(err) && desired != nil:
 		_, err := c.apiServiceClient.APIServices().Create(desired)
 		return err
 
-	// we aren't trying to manage this APIService (3A,3B,3C)
+		// we aren't trying to manage this APIService (3A,3B,3C)
 	case !isAutomanaged(curr):
 		return nil
 
-	// the remote object only wants to sync on start, but was added after we started (4A,4B,4C)
+		// the remote object only wants to sync on start, but was added after we started (4A,4B,4C)
 	case isAutomanagedOnStart(curr) && !c.apiServicesAtStart[name]:
 		return nil
 
-	// the remote object only wants to sync on start and has already synced (5A,5B,5C "once" enforcement)
+		// the remote object only wants to sync on start and has already synced (5A,5B,5C "once" enforcement)
 	case isAutomanagedOnStart(curr) && hasSynced:
 		return nil
 
-	// we have a spurious APIService that we're managing, delete it (5A,6A)
+		// we have a spurious APIService that we're managing, delete it (5A,6A)
 	case desired == nil:
 		return c.apiServiceClient.APIServices().Delete(curr.Name, nil)
 
-	// if the specs already match, nothing for us to do
+		// if the specs already match, nothing for us to do
 	case reflect.DeepEqual(curr.Spec, desired.Spec):
 		return nil
 	}

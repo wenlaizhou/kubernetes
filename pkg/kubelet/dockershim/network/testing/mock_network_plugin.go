@@ -21,10 +21,10 @@ limitations under the License.
 package testing
 
 import (
-	gomock "github.com/golang/mock/gomock"
-	sets "k8s.io/apimachinery/pkg/util/sets"
+	"github.com/golang/mock/gomock"
+	"k8s.io/apimachinery/pkg/util/sets"
 	"k8s.io/kubernetes/pkg/kubelet/apis/kubeletconfig"
-	container "k8s.io/kubernetes/pkg/kubelet/container"
+	"k8s.io/kubernetes/pkg/kubelet/container"
 	"k8s.io/kubernetes/pkg/kubelet/dockershim/network"
 )
 

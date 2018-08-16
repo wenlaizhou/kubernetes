@@ -189,13 +189,13 @@ func TestVolumeAttachAndMountControllerDisabled(t *testing.T) {
 	}
 	assert.True(t, testKubelet.volumePlugin.GetNewAttacherCallCount() >= 1, "Expected plugin NewAttacher to be called at least once")
 	assert.NoError(t, volumetest.VerifyWaitForAttachCallCount(
-		1 /* expectedWaitForAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedWaitForAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyAttachCallCount(
-		1 /* expectedAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyMountDeviceCallCount(
-		1 /* expectedMountDeviceCallCount */, testKubelet.volumePlugin))
+		1 /* expectedMountDeviceCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifySetUpCallCount(
-		1 /* expectedSetUpCallCount */, testKubelet.volumePlugin))
+		1 /* expectedSetUpCallCount */ , testKubelet.volumePlugin))
 }
 
 func TestVolumeUnmountAndDetachControllerDisabled(t *testing.T) {
@@ -237,13 +237,13 @@ func TestVolumeUnmountAndDetachControllerDisabled(t *testing.T) {
 
 	assert.True(t, testKubelet.volumePlugin.GetNewAttacherCallCount() >= 1, "Expected plugin NewAttacher to be called at least once")
 	assert.NoError(t, volumetest.VerifyWaitForAttachCallCount(
-		1 /* expectedWaitForAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedWaitForAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyAttachCallCount(
-		1 /* expectedAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyMountDeviceCallCount(
-		1 /* expectedMountDeviceCallCount */, testKubelet.volumePlugin))
+		1 /* expectedMountDeviceCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifySetUpCallCount(
-		1 /* expectedSetUpCallCount */, testKubelet.volumePlugin))
+		1 /* expectedSetUpCallCount */ , testKubelet.volumePlugin))
 
 	// Remove pod
 	kubelet.podManager.SetPods([]*v1.Pod{})
@@ -258,13 +258,13 @@ func TestVolumeUnmountAndDetachControllerDisabled(t *testing.T) {
 		"Expected volumes to be unmounted and detached. But some volumes are still mounted: %#v", podVolumes)
 
 	assert.NoError(t, volumetest.VerifyTearDownCallCount(
-		1 /* expectedTearDownCallCount */, testKubelet.volumePlugin))
+		1 /* expectedTearDownCallCount */ , testKubelet.volumePlugin))
 
 	// Verify volumes detached and no longer reported as in use
 	assert.NoError(t, waitForVolumeDetach(v1.UniqueVolumeName("fake/fake-device"), kubelet.volumeManager))
 	assert.True(t, testKubelet.volumePlugin.GetNewAttacherCallCount() >= 1, "Expected plugin NewAttacher to be called at least once")
 	assert.NoError(t, volumetest.VerifyDetachCallCount(
-		1 /* expectedDetachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedDetachCallCount */ , testKubelet.volumePlugin))
 }
 
 func TestVolumeAttachAndMountControllerEnabled(t *testing.T) {
@@ -325,12 +325,12 @@ func TestVolumeAttachAndMountControllerEnabled(t *testing.T) {
 	}
 	assert.True(t, testKubelet.volumePlugin.GetNewAttacherCallCount() >= 1, "Expected plugin NewAttacher to be called at least once")
 	assert.NoError(t, volumetest.VerifyWaitForAttachCallCount(
-		1 /* expectedWaitForAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedWaitForAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyZeroAttachCalls(testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyMountDeviceCallCount(
-		1 /* expectedMountDeviceCallCount */, testKubelet.volumePlugin))
+		1 /* expectedMountDeviceCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifySetUpCallCount(
-		1 /* expectedSetUpCallCount */, testKubelet.volumePlugin))
+		1 /* expectedSetUpCallCount */ , testKubelet.volumePlugin))
 }
 
 func TestVolumeUnmountAndDetachControllerEnabled(t *testing.T) {
@@ -394,12 +394,12 @@ func TestVolumeUnmountAndDetachControllerEnabled(t *testing.T) {
 
 	assert.True(t, testKubelet.volumePlugin.GetNewAttacherCallCount() >= 1, "Expected plugin NewAttacher to be called at least once")
 	assert.NoError(t, volumetest.VerifyWaitForAttachCallCount(
-		1 /* expectedWaitForAttachCallCount */, testKubelet.volumePlugin))
+		1 /* expectedWaitForAttachCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyZeroAttachCalls(testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifyMountDeviceCallCount(
-		1 /* expectedMountDeviceCallCount */, testKubelet.volumePlugin))
+		1 /* expectedMountDeviceCallCount */ , testKubelet.volumePlugin))
 	assert.NoError(t, volumetest.VerifySetUpCallCount(
-		1 /* expectedSetUpCallCount */, testKubelet.volumePlugin))
+		1 /* expectedSetUpCallCount */ , testKubelet.volumePlugin))
 
 	// Remove pod
 	kubelet.podManager.SetPods([]*v1.Pod{})
@@ -414,7 +414,7 @@ func TestVolumeUnmountAndDetachControllerEnabled(t *testing.T) {
 		"Expected volumes to be unmounted and detached. But some volumes are still mounted: %#v", podVolumes)
 
 	assert.NoError(t, volumetest.VerifyTearDownCallCount(
-		1 /* expectedTearDownCallCount */, testKubelet.volumePlugin))
+		1 /* expectedTearDownCallCount */ , testKubelet.volumePlugin))
 
 	// Verify volumes detached and no longer reported as in use
 	assert.NoError(t, waitForVolumeDetach(v1.UniqueVolumeName("fake/fake-device"), kubelet.volumeManager))

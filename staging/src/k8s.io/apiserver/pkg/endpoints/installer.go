@@ -26,7 +26,7 @@ import (
 	"time"
 	"unicode"
 
-	restful "github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/conversion"
@@ -584,7 +584,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.GET(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("read"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("read" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Returns(http.StatusOK, "OK", producedObject).
 				Writes(producedObject)
@@ -612,7 +612,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.GET(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("list"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("list" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), allMediaTypes...)...).
 				Returns(http.StatusOK, "OK", versionedList).
 				Writes(versionedList)
@@ -644,11 +644,11 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.PUT(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("replace"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("replace" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Returns(http.StatusOK, "OK", producedObject).
-				// TODO: in some cases, the API may return a v1.Status instead of the versioned object
-				// but currently go-restful can't handle multiple different objects being returned.
+			// TODO: in some cases, the API may return a v1.Status instead of the versioned object
+			// but currently go-restful can't handle multiple different objects being returned.
 				Returns(http.StatusCreated, "Created", producedObject).
 				Reads(defaultVersionedObject).
 				Writes(producedObject)
@@ -669,7 +669,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
 				Consumes(string(types.JSONPatchType), string(types.MergePatchType), string(types.StrategicMergePatchType)).
-				Operation("patch"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("patch" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Returns(http.StatusOK, "OK", producedObject).
 				Reads(metav1.Patch{}).
@@ -692,11 +692,11 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.POST(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("create"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("create" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Returns(http.StatusOK, "OK", producedObject).
-				// TODO: in some cases, the API may return a v1.Status instead of the versioned object
-				// but currently go-restful can't handle multiple different objects being returned.
+			// TODO: in some cases, the API may return a v1.Status instead of the versioned object
+			// but currently go-restful can't handle multiple different objects being returned.
 				Returns(http.StatusCreated, "Created", producedObject).
 				Returns(http.StatusAccepted, "Accepted", producedObject).
 				Reads(defaultVersionedObject).
@@ -713,7 +713,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.DELETE(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("delete"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("delete" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Writes(versionedStatus).
 				Returns(http.StatusOK, "OK", versionedStatus).
@@ -735,7 +735,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.DELETE(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("deletecollection"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("deletecollection" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(append(storageMeta.ProducesMIMETypes(action.Verb), mediaTypes...)...).
 				Writes(versionedStatus).
 				Returns(http.StatusOK, "OK", versionedStatus)
@@ -744,7 +744,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			}
 			addParams(route, action.Params)
 			routes = append(routes, route)
-		// TODO: deprecated
+			// TODO: deprecated
 		case "WATCH": // Watch a resource.
 			doc := "watch changes to an object of kind " + kind
 			if isSubresource {
@@ -754,7 +754,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.GET(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("watch"+namespaced+kind+strings.Title(subresource)+operationSuffix).
+				Operation("watch" + namespaced + kind + strings.Title(subresource) + operationSuffix).
 				Produces(allMediaTypes...).
 				Returns(http.StatusOK, "OK", versionedWatchEvent).
 				Writes(versionedWatchEvent)
@@ -763,7 +763,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			}
 			addParams(route, action.Params)
 			routes = append(routes, route)
-		// TODO: deprecated
+			// TODO: deprecated
 		case "WATCHLIST": // Watch all resources of a kind.
 			doc := "watch individual changes to a list of " + kind
 			if isSubresource {
@@ -773,7 +773,7 @@ func (a *APIInstaller) registerResourceHandlers(path string, storage rest.Storag
 			route := ws.GET(action.Path).To(handler).
 				Doc(doc).
 				Param(ws.QueryParameter("pretty", "If 'true', then the output is pretty printed.")).
-				Operation("watch"+namespaced+kind+strings.Title(subresource)+"List"+operationSuffix).
+				Operation("watch" + namespaced + kind + strings.Title(subresource) + "List" + operationSuffix).
 				Produces(allMediaTypes...).
 				Returns(http.StatusOK, "OK", versionedWatchEvent).
 				Writes(versionedWatchEvent)
@@ -936,8 +936,8 @@ func typeToJSON(typeName string) string {
 	case "v1.DeletionPropagation", "*v1.DeletionPropagation":
 		return "string"
 
-	// TODO: Fix these when go-restful supports a way to specify an array query param:
-	// https://github.com/emicklei/go-restful/issues/225
+		// TODO: Fix these when go-restful supports a way to specify an array query param:
+		// https://github.com/emicklei/go-restful/issues/225
 	case "[]string", "[]*string":
 		return "string"
 	case "[]int32", "[]*int32":

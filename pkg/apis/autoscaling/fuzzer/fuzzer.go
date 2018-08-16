@@ -17,7 +17,7 @@ limitations under the License.
 package fuzzer
 
 import (
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -63,7 +63,7 @@ var Funcs = func(codecs runtimeserializer.CodecFactory) []interface{} {
 				{
 					Type: autoscaling.ResourceMetricSourceType,
 					Resource: &autoscaling.ResourceMetricSource{
-						Name: api.ResourceCPU,
+						Name:                     api.ResourceCPU,
 						TargetAverageUtilization: &targetUtilization,
 					},
 				},
@@ -90,7 +90,7 @@ var Funcs = func(codecs runtimeserializer.CodecFactory) []interface{} {
 				{
 					Type: autoscaling.ResourceMetricSourceType,
 					Resource: &autoscaling.ResourceMetricStatus{
-						Name: api.ResourceCPU,
+						Name:                      api.ResourceCPU,
 						CurrentAverageUtilization: &currentUtilization,
 					},
 				},

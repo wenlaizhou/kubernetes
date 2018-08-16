@@ -19,8 +19,8 @@ limitations under the License.
 package autoscaling
 
 import (
-	internalversion "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/autoscaling/internalversion"
-	internalinterfaces "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/autoscaling/internalversion"
+	"k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

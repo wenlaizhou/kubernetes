@@ -45,41 +45,41 @@ func TestNodeConfigFileAndDefaultsToInternalConfig(t *testing.T) {
 	}{
 		// These tests are reading one file, loading it using NodeConfigFileAndDefaultsToInternalConfig that all of kubeadm is using for unmarshal of our API types,
 		// and then marshals the internal object to the expected groupVersion
-		{ // v1alpha2 -> internal
-			name:         "v1alpha2ToInternal",
-			in:           node_v1alpha2YAML,
-			out:          node_internalYAML,
+		{// v1alpha2 -> internal
+			name: "v1alpha2ToInternal",
+			in: node_v1alpha2YAML,
+			out: node_internalYAML,
 			groupVersion: kubeadm.SchemeGroupVersion,
 		},
-		{ // v1alpha3 -> internal
-			name:         "v1alpha3ToInternal",
-			in:           node_v1alpha3YAML,
-			out:          node_internalYAML,
+		{// v1alpha3 -> internal
+			name: "v1alpha3ToInternal",
+			in: node_v1alpha3YAML,
+			out: node_internalYAML,
 			groupVersion: kubeadm.SchemeGroupVersion,
 		},
-		{ // v1alpha2 -> internal -> v1alpha3
-			name:         "v1alpha2Tov1alpha3",
-			in:           node_v1alpha2YAML,
-			out:          node_v1alpha3YAML,
+		{// v1alpha2 -> internal -> v1alpha3
+			name: "v1alpha2Tov1alpha3",
+			in: node_v1alpha2YAML,
+			out: node_v1alpha3YAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
-		{ // v1alpha3 -> internal -> v1alpha3
-			name:         "v1alpha3Tov1alpha3",
-			in:           node_v1alpha3YAML,
-			out:          node_v1alpha3YAML,
+		{// v1alpha3 -> internal -> v1alpha3
+			name: "v1alpha3Tov1alpha3",
+			in: node_v1alpha3YAML,
+			out: node_v1alpha3YAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
 		// These tests are reading one file that has only a subset of the fields populated, loading it using NodeConfigFileAndDefaultsToInternalConfig,
 		// and then marshals the internal object to the expected groupVersion
-		{ // v1alpha2 -> default -> validate -> internal -> v1alpha3
-			name:         "incompleteYAMLToDefaulted",
-			in:           node_incompleteYAML,
-			out:          node_defaultedYAML,
+		{// v1alpha2 -> default -> validate -> internal -> v1alpha3
+			name: "incompleteYAMLToDefaulted",
+			in: node_incompleteYAML,
+			out: node_defaultedYAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
-		{ // v1alpha2 -> validation should fail
-			name:        "invalidYAMLShouldFail",
-			in:          node_invalidYAML,
+		{// v1alpha2 -> validation should fail
+			name: "invalidYAMLShouldFail",
+			in: node_invalidYAML,
 			expectedErr: true,
 		},
 	}

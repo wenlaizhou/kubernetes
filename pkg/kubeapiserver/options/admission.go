@@ -71,7 +71,7 @@ func (a *AdmissionOptions) AddFlags(fs *pflag.FlagSet) {
 		"In the second phase, only validating admission plugins run. "+
 		"The names in the below list may represent a validating plugin, a mutating plugin, or both. "+
 		"The order of plugins in which they are passed to this flag does not matter. "+
-		"Comma-delimited list of: "+strings.Join(a.GenericAdmission.Plugins.Registered(), ", ")+".")
+		"Comma-delimited list of: "+ strings.Join(a.GenericAdmission.Plugins.Registered(), ", ")+ ".")
 	fs.MarkDeprecated("admission-control", "Use --enable-admission-plugins or --disable-admission-plugins instead. Will be removed in a future version.")
 	fs.Lookup("admission-control").Hidden = false
 

@@ -32,14 +32,14 @@ limitations under the License.
 */
 package v1alpha1
 
-import proto "github.com/gogo/protobuf/proto"
-import fmt "fmt"
-import math "math"
+import "github.com/gogo/protobuf/proto"
+import "fmt"
+import "math"
 
-import strings "strings"
-import reflect "reflect"
+import "strings"
+import "reflect"
 
-import io "io"
+import "io"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal

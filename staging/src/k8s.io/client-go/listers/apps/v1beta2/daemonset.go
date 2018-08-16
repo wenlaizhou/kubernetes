@@ -19,7 +19,7 @@ limitations under the License.
 package v1beta2
 
 import (
-	v1beta2 "k8s.io/api/apps/v1beta2"
+	"k8s.io/api/apps/v1beta2"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"

@@ -19,8 +19,8 @@ limitations under the License.
 package apiextensions
 
 import (
-	internalversion "k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/apiextensions/internalversion"
-	internalinterfaces "k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/apiextensions/internalversion"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/internalversion/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

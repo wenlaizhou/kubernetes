@@ -248,7 +248,7 @@ func (dsw *desiredStateOfWorld) MarkVolumesReportedInUse(
 	defer dsw.Unlock()
 
 	reportedVolumesMap := make(
-		map[v1.UniqueVolumeName]bool, len(reportedVolumes) /* capacity */)
+	map[v1.UniqueVolumeName]bool, len(reportedVolumes) /* capacity */)
 
 	for _, reportedVolume := range reportedVolumes {
 		reportedVolumesMap[reportedVolume] = true
@@ -339,7 +339,7 @@ func (dsw *desiredStateOfWorld) GetVolumesToMount() []VolumeToMount {
 	dsw.RLock()
 	defer dsw.RUnlock()
 
-	volumesToMount := make([]VolumeToMount, 0 /* len */, len(dsw.volumesToMount) /* cap */)
+	volumesToMount := make([]VolumeToMount, 0 /* len */ , len(dsw.volumesToMount) /* cap */)
 	for volumeName, volumeObj := range dsw.volumesToMount {
 		for podName, podObj := range volumeObj.podsToMount {
 			volumesToMount = append(

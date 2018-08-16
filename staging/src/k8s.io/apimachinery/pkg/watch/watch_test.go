@@ -21,7 +21,6 @@ import (
 
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-	. "k8s.io/apimachinery/pkg/watch"
 )
 
 type testType string

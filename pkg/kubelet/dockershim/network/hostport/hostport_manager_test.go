@@ -261,7 +261,7 @@ func TestHostportManager(t *testing.T) {
 
 	lines := strings.Split(string(raw.Bytes()), "\n")
 	expectedLines := map[string]bool{
-		`*nat`: true,
+		`*nat`:                                                                                                                            true,
 		`:KUBE-HOSTPORTS - [0:0]`:                                                                                                         true,
 		`:OUTPUT - [0:0]`:                                                                                                                 true,
 		`:PREROUTING - [0:0]`:                                                                                                             true,
@@ -281,7 +281,7 @@ func TestHostportManager(t *testing.T) {
 		"-A KUBE-HP-63UPIDJXVRSZGSUZ -m comment --comment \"pod1_ns1 hostport 8081\" -m udp -p udp -j DNAT --to-destination 10.1.1.2:81":  true,
 		"-A KUBE-HP-WFBOALXEP42XEMJK -m comment --comment \"pod3_ns1 hostport 8443\" -s 10.1.1.4/32 -j KUBE-MARK-MASQ":                    true,
 		"-A KUBE-HP-WFBOALXEP42XEMJK -m comment --comment \"pod3_ns1 hostport 8443\" -m tcp -p tcp -j DNAT --to-destination 10.1.1.4:443": true,
-		`COMMIT`: true,
+		`COMMIT`:                                                                                                                          true,
 	}
 	for _, line := range lines {
 		if len(strings.TrimSpace(line)) > 0 {

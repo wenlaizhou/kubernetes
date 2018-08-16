@@ -718,7 +718,7 @@ func TestAuthFilters(t *testing.T) {
 		case isSubpath(path, metricsPath):
 			return "metrics"
 
-		// Cases for subpaths we expect to map to the "proxy" subresource
+			// Cases for subpaths we expect to map to the "proxy" subresource
 		case isSubpath(path, "/attach"),
 			isSubpath(path, "/configz"),
 			isSubpath(path, "/containerLogs"),

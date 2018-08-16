@@ -155,8 +155,8 @@ type source int
 
 const (
 	recorded source = iota
-	local
-	remote
+	local    
+	remote   
 )
 
 // CombinedPrimitiveSlice implements a slice of primitives

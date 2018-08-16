@@ -692,12 +692,12 @@ func doMakeRShared(path string, mountInfoFilename string) error {
 
 	glog.V(2).Infof("Bind-mounting %q with shared mount propagation", path)
 	// mount --bind /var/lib/kubelet /var/lib/kubelet
-	if err := syscall.Mount(path, path, "" /*fstype*/, syscall.MS_BIND, "" /*data*/); err != nil {
+	if err := syscall.Mount(path, path, "" /*fstype*/ , syscall.MS_BIND, "" /*data*/); err != nil {
 		return fmt.Errorf("failed to bind-mount %s: %v", path, err)
 	}
 
 	// mount --make-rshared /var/lib/kubelet
-	if err := syscall.Mount(path, path, "" /*fstype*/, syscall.MS_SHARED|syscall.MS_REC, "" /*data*/); err != nil {
+	if err := syscall.Mount(path, path, "" /*fstype*/ , syscall.MS_SHARED|syscall.MS_REC, "" /*data*/); err != nil {
 		return fmt.Errorf("failed to make %s rshared: %v", path, err)
 	}
 
@@ -854,7 +854,7 @@ func doBindSubPath(mounter Interface, subpath Subpath) (hostPath string, err err
 	// Do the bind mount
 	options := []string{"bind"}
 	glog.V(5).Infof("bind mounting %q at %q", mountSource, bindPathTarget)
-	if err = mounter.Mount(mountSource, bindPathTarget, "" /*fstype*/, options); err != nil {
+	if err = mounter.Mount(mountSource, bindPathTarget, "" /*fstype*/ , options); err != nil {
 		return "", fmt.Errorf("error mounting %s: %s", subpath.Path, err)
 	}
 	success = true

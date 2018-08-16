@@ -40,7 +40,7 @@ type BuiltInAuthorizationOptions struct {
 
 func NewBuiltInAuthorizationOptions() *BuiltInAuthorizationOptions {
 	return &BuiltInAuthorizationOptions{
-		Modes: []string{authzmodes.ModeAlwaysAllow},
+		Modes:                       []string{authzmodes.ModeAlwaysAllow},
 		WebhookCacheAuthorizedTTL:   5 * time.Minute,
 		WebhookCacheUnauthorizedTTL: 30 * time.Second,
 	}
@@ -92,7 +92,7 @@ func (s *BuiltInAuthorizationOptions) Validate() []error {
 func (s *BuiltInAuthorizationOptions) AddFlags(fs *pflag.FlagSet) {
 	fs.StringSliceVar(&s.Modes, "authorization-mode", s.Modes, ""+
 		"Ordered list of plug-ins to do authorization on secure port. Comma-delimited list of: "+
-		strings.Join(authzmodes.AuthorizationModeChoices, ",")+".")
+		strings.Join(authzmodes.AuthorizationModeChoices, ",")+ ".")
 
 	fs.StringVar(&s.PolicyFile, "authorization-policy-file", s.PolicyFile, ""+
 		"File with authorization policy in csv format, used with --authorization-mode=ABAC, on the secure port.")

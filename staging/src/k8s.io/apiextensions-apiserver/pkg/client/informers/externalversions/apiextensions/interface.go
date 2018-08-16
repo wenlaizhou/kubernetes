@@ -19,8 +19,8 @@ limitations under the License.
 package apiextensions
 
 import (
-	v1beta1 "k8s.io/apiextensions-apiserver/pkg/client/informers/externalversions/apiextensions/v1beta1"
-	internalinterfaces "k8s.io/apiextensions-apiserver/pkg/client/informers/externalversions/internalinterfaces"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/externalversions/apiextensions/v1beta1"
+	"k8s.io/apiextensions-apiserver/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

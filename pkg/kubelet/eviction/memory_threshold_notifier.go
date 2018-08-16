@@ -91,8 +91,8 @@ func (m *memoryThresholdNotifier) UpdateThreshold(summary *statsapi.Summary) err
 	}
 	// Set threshold on usage to capacity - eviction_hard + inactive_file,
 	// since we want to be notified when working_set = capacity - eviction_hard
-	inactiveFile := resource.NewQuantity(int64(*memoryStats.UsageBytes-*memoryStats.WorkingSetBytes), resource.BinarySI)
-	capacity := resource.NewQuantity(int64(*memoryStats.AvailableBytes+*memoryStats.WorkingSetBytes), resource.BinarySI)
+	inactiveFile := resource.NewQuantity(int64(*memoryStats.UsageBytes - *memoryStats.WorkingSetBytes), resource.BinarySI)
+	capacity := resource.NewQuantity(int64(*memoryStats.AvailableBytes + *memoryStats.WorkingSetBytes), resource.BinarySI)
 	evictionThresholdQuantity := evictionapi.GetThresholdQuantity(m.threshold.Value, capacity)
 	memcgThreshold := capacity.DeepCopy()
 	memcgThreshold.Sub(*evictionThresholdQuantity)

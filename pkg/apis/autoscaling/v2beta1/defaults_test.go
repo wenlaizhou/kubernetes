@@ -27,7 +27,6 @@ import (
 	"k8s.io/kubernetes/pkg/api/legacyscheme"
 	"k8s.io/kubernetes/pkg/apis/autoscaling"
 	_ "k8s.io/kubernetes/pkg/apis/autoscaling/install"
-	. "k8s.io/kubernetes/pkg/apis/autoscaling/v2beta1"
 	_ "k8s.io/kubernetes/pkg/apis/core/install"
 	utilpointer "k8s.io/kubernetes/pkg/util/pointer"
 )
@@ -39,7 +38,7 @@ func TestSetDefaultHPA(t *testing.T) {
 		{
 			Type: autoscalingv2beta1.ResourceMetricSourceType,
 			Resource: &autoscalingv2beta1.ResourceMetricSource{
-				Name: v1.ResourceCPU,
+				Name:                     v1.ResourceCPU,
 				TargetAverageUtilization: &utilizationDefaultVal,
 			},
 		},
@@ -49,7 +48,7 @@ func TestSetDefaultHPA(t *testing.T) {
 		original *autoscalingv2beta1.HorizontalPodAutoscaler
 		expected *autoscalingv2beta1.HorizontalPodAutoscaler
 	}{
-		{ // MinReplicas default value
+		{// MinReplicas default value
 			original: &autoscalingv2beta1.HorizontalPodAutoscaler{
 				Spec: autoscalingv2beta1.HorizontalPodAutoscalerSpec{
 					Metrics: defaultTemplate,
@@ -62,7 +61,7 @@ func TestSetDefaultHPA(t *testing.T) {
 				},
 			},
 		},
-		{ // MinReplicas update
+		{// MinReplicas update
 			original: &autoscalingv2beta1.HorizontalPodAutoscaler{
 				Spec: autoscalingv2beta1.HorizontalPodAutoscalerSpec{
 					MinReplicas: utilpointer.Int32Ptr(3),
@@ -76,7 +75,7 @@ func TestSetDefaultHPA(t *testing.T) {
 				},
 			},
 		},
-		{ // Metrics default value
+		{// Metrics default value
 			original: &autoscalingv2beta1.HorizontalPodAutoscaler{
 				Spec: autoscalingv2beta1.HorizontalPodAutoscalerSpec{
 					MinReplicas: defaultReplicas,

@@ -109,7 +109,7 @@ func (k *portMapKey) String() string {
 
 // A value for the portMap
 type portMapValue struct {
-	owner  ServicePortPortalName
+	owner ServicePortPortalName
 	socket interface {
 		Close() error
 	}

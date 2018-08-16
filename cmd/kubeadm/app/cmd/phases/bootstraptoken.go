@@ -66,7 +66,7 @@ var (
 		before the client trusts the API server.
 
 		See online documentation about Authenticating with Bootstrap Tokens for more details.
-		`+cmdutil.AlphaDisclaimer), bootstrapapi.ConfigMapClusterInfo, metav1.NamespacePublic)
+		`+ cmdutil.AlphaDisclaimer), bootstrapapi.ConfigMapClusterInfo, metav1.NamespacePublic)
 
 	nodePostCSRsLongDesc = normalizer.LongDesc(`
 		Configures RBAC rules to allow node bootstrap tokens to post a certificate signing request,

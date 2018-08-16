@@ -19,10 +19,10 @@ limitations under the License.
 package scheme
 
 import (
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
 	admissionregistration "k8s.io/kubernetes/pkg/apis/admissionregistration/install"
 	apps "k8s.io/kubernetes/pkg/apis/apps/install"
 	authentication "k8s.io/kubernetes/pkg/apis/authentication/install"

@@ -21,9 +21,9 @@ package internalversion
 import (
 	"fmt"
 
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
-	cache "k8s.io/client-go/tools/cache"
-	apiregistration "k8s.io/kube-aggregator/pkg/apis/apiregistration"
+	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/client-go/tools/cache"
+	"k8s.io/kube-aggregator/pkg/apis/apiregistration"
 )
 
 // GenericInformer is type of SharedIndexInformer which will locate and delegate to other

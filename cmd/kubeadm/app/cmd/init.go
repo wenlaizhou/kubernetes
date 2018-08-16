@@ -207,7 +207,7 @@ func AddInitConfigFlags(flagSet *flag.FlagSet, cfg *kubeadmapiv1alpha3.InitConfi
 		`Specify the CRI socket to connect to.`,
 	)
 	flagSet.StringVar(featureGatesString, "feature-gates", *featureGatesString, "A set of key=value pairs that describe feature gates for various features. "+
-		"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+		"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 }
 
 // AddInitOtherFlags adds init flags that are not bound to a configuration file to the given flagset

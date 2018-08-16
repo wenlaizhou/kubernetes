@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	coordination "k8s.io/kubernetes/pkg/apis/coordination"
+	"k8s.io/kubernetes/pkg/apis/coordination"
 )
 
 // LeaseLister helps list Leases.

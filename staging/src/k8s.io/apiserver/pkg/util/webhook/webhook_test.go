@@ -49,7 +49,7 @@ const (
 var (
 	defaultCluster = v1.NamedCluster{
 		Cluster: v1.Cluster{
-			Server: "https://webhook.example.com",
+			Server:                   "https://webhook.example.com",
 			CertificateAuthorityData: caCert,
 		},
 	}
@@ -61,7 +61,7 @@ var (
 	}
 	namedCluster = v1.NamedCluster{
 		Cluster: v1.Cluster{
-			Server: "https://webhook.example.com",
+			Server:                   "https://webhook.example.com",
 			CertificateAuthorityData: caCert,
 		},
 		Name: "test-cluster",
@@ -159,7 +159,7 @@ func TestKubeConfigFile(t *testing.T) {
 			test: "cluster with invalid CA certificate ",
 			cluster: &v1.NamedCluster{
 				Cluster: v1.Cluster{
-					Server: namedCluster.Cluster.Server,
+					Server:                   namedCluster.Cluster.Server,
 					CertificateAuthorityData: caKey,
 				},
 			},
@@ -303,49 +303,49 @@ func TestTLSConfig(t *testing.T) {
 			test:       "invalid server CA",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: invalidCert,
-			errRegex: errBadCertificate,
+			errRegex:   errBadCertificate,
 		},
 		{
 			test:       "invalid client certificate",
 			clientCert: invalidCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: caCert,
-			errRegex: "tls: failed to find any PEM data in certificate input",
+			errRegex:   "tls: failed to find any PEM data in certificate input",
 		},
 		{
 			test:       "invalid client key",
 			clientCert: clientCert, clientKey: invalidCert, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: caCert,
-			errRegex: "tls: failed to find any PEM data in key input",
+			errRegex:   "tls: failed to find any PEM data in key input",
 		},
 		{
 			test:       "client does not trust server",
 			clientCert: clientCert, clientKey: clientKey,
 			serverCert: serverCert, serverKey: serverKey,
-			errRegex: errSignedByUnknownCA,
+			errRegex:   errSignedByUnknownCA,
 		},
 		{
 			test:       "server does not trust client",
 			clientCert: clientCert, clientKey: clientKey, clientCA: badCACert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: caCert,
-			errRegex: errSignedByUnknownCA + " .*",
+			errRegex:   errSignedByUnknownCA + " .*",
 		},
 		{
 			test:       "server requires auth, client provides it",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey, serverCA: caCert,
-			errRegex: "",
+			errRegex:   "",
 		},
 		{
 			test:       "server does not require client auth",
 			clientCA:   caCert,
 			serverCert: serverCert, serverKey: serverKey,
-			errRegex: "",
+			errRegex:   "",
 		},
 		{
 			test:       "server does not require client auth, client provides it",
 			clientCert: clientCert, clientKey: clientKey, clientCA: caCert,
 			serverCert: serverCert, serverKey: serverKey,
-			errRegex: "",
+			errRegex:   "",
 		},
 		{
 			test:     "webhook does not support insecure servers",
@@ -371,7 +371,7 @@ func TestTLSConfig(t *testing.T) {
 				Clusters: []v1.NamedCluster{
 					{
 						Cluster: v1.Cluster{
-							Server: server.URL,
+							Server:                   server.URL,
 							CertificateAuthorityData: tt.clientCA,
 						},
 					},
@@ -436,7 +436,7 @@ func TestRequestTimeout(t *testing.T) {
 		Clusters: []v1.NamedCluster{
 			{
 				Cluster: v1.Cluster{
-					Server: server.URL,
+					Server:                   server.URL,
 					CertificateAuthorityData: caCert,
 				},
 			},
@@ -522,7 +522,7 @@ func TestWithExponentialBackoff(t *testing.T) {
 		Clusters: []v1.NamedCluster{
 			{
 				Cluster: v1.Cluster{
-					Server: server.URL,
+					Server:                   server.URL,
 					CertificateAuthorityData: caCert,
 				},
 			},

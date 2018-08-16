@@ -19,8 +19,8 @@ limitations under the License.
 package apiregistration
 
 import (
-	internalversion "k8s.io/kube-aggregator/pkg/client/informers/internalversion/apiregistration/internalversion"
-	internalinterfaces "k8s.io/kube-aggregator/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/kube-aggregator/pkg/client/informers/internalversion/apiregistration/internalversion"
+	"k8s.io/kube-aggregator/pkg/client/informers/internalversion/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

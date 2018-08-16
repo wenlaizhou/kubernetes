@@ -101,8 +101,8 @@ func NewHorizontalController(
 		hpaNamespacer:            hpaNamespacer,
 		upscaleForbiddenWindow:   upscaleForbiddenWindow,
 		downscaleForbiddenWindow: downscaleForbiddenWindow,
-		queue:  workqueue.NewNamedRateLimitingQueue(NewDefaultHPARateLimiter(resyncPeriod), "horizontalpodautoscaler"),
-		mapper: mapper,
+		queue:                    workqueue.NewNamedRateLimitingQueue(NewDefaultHPARateLimiter(resyncPeriod), "horizontalpodautoscaler"),
+		mapper:                   mapper,
 	}
 
 	hpaInformer.Informer().AddEventHandlerWithResyncPeriod(
@@ -350,7 +350,7 @@ func (a *HorizontalController) computeStatusForResourceMetric(currentReplicas in
 		*status = autoscalingv2.MetricStatus{
 			Type: autoscalingv2.ResourceMetricSourceType,
 			Resource: &autoscalingv2.ResourceMetricStatus{
-				Name: metricSpec.Resource.Name,
+				Name:                      metricSpec.Resource.Name,
 				CurrentAverageUtilization: &percentageProposal,
 				CurrentAverageValue:       *resource.NewMilliQuantity(rawProposal, resource.DecimalSI),
 			},

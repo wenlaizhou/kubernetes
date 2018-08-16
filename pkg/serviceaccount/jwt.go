@@ -30,7 +30,7 @@ import (
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 	"k8s.io/apiserver/pkg/authentication/user"
 
-	jose "gopkg.in/square/go-jose.v2"
+	"gopkg.in/square/go-jose.v2"
 	"gopkg.in/square/go-jose.v2/jwt"
 )
 
@@ -102,8 +102,8 @@ func (j *jwtTokenGenerator) GenerateToken(claims *jwt.Claims, privateClaims inte
 		Claims(privateClaims).
 		Claims(claims).
 		Claims(&jwt.Claims{
-			Issuer: j.iss,
-		}).
+		Issuer: j.iss,
+	}).
 		CompactSerialize()
 }
 

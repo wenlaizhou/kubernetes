@@ -266,7 +266,7 @@ Loop:
 		}
 	}
 	text := p.consumeText()
-	text = text[1 : len(text)-1]
+	text = text[1: len(text)-1]
 	if text == "*" {
 		text = ":"
 	}
@@ -486,7 +486,7 @@ func UnquoteExtend(s string) (string, error) {
 	if quote != s[n-1] {
 		return "", ErrSyntax
 	}
-	s = s[1 : n-1]
+	s = s[1: n-1]
 
 	if quote != '"' && quote != '\'' {
 		return "", ErrSyntax

@@ -34,17 +34,17 @@ func (alwaysAllowAuthorizer) Authorize(a authorizer.Attributes) (authorized auth
 
 func (alwaysAllowAuthorizer) RulesFor(user user.Info, namespace string) ([]authorizer.ResourceRuleInfo, []authorizer.NonResourceRuleInfo, bool, error) {
 	return []authorizer.ResourceRuleInfo{
-			&authorizer.DefaultResourceRuleInfo{
-				Verbs:     []string{"*"},
-				APIGroups: []string{"*"},
-				Resources: []string{"*"},
-			},
-		}, []authorizer.NonResourceRuleInfo{
-			&authorizer.DefaultNonResourceRuleInfo{
-				Verbs:           []string{"*"},
-				NonResourceURLs: []string{"*"},
-			},
-		}, false, nil
+		&authorizer.DefaultResourceRuleInfo{
+			Verbs:     []string{"*"},
+			APIGroups: []string{"*"},
+			Resources: []string{"*"},
+		},
+	}, []authorizer.NonResourceRuleInfo{
+		&authorizer.DefaultNonResourceRuleInfo{
+			Verbs:           []string{"*"},
+			NonResourceURLs: []string{"*"},
+		},
+	}, false, nil
 }
 
 func NewAlwaysAllowAuthorizer() *alwaysAllowAuthorizer {

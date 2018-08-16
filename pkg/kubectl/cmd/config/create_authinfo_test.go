@@ -150,7 +150,7 @@ func TestCreateAuthInfoOptions(t *testing.T) {
 			wantCompleteErr: true,
 		},
 		{
-			name:  "test9",
+			name: "test9",
 			flags: []string{
 				// No name for authinfo provided.
 			},

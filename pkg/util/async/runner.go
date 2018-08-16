@@ -23,9 +23,9 @@ import (
 // Runner is an abstraction to make it easy to start and stop groups of things that can be
 // described by a single function which waits on a channel close to exit.
 type Runner struct {
-	lock      sync.Mutex
+	lock sync.Mutex
 	loopFuncs []func(stop chan struct{})
-	stop      *chan struct{}
+	stop *chan struct{}
 }
 
 // NewRunner makes a runner for the given function(s). The function(s) should loop until

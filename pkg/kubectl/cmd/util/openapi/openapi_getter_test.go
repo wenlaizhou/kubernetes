@@ -19,10 +19,7 @@ package openapi_test
 import (
 	"fmt"
 
-	openapi_v2 "github.com/googleapis/gnostic/OpenAPIv2"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-
+	"github.com/googleapis/gnostic/OpenAPIv2"
 	"k8s.io/kubernetes/pkg/kubectl/cmd/util/openapi"
 )
 

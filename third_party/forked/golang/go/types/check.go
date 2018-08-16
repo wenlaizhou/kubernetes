@@ -72,9 +72,9 @@ type importKey struct {
 type Checker struct {
 	// package information
 	// (initialized by NewChecker, valid for the life-time of checker)
-	conf *Config
-	fset *token.FileSet
-	pkg  *Package
+	conf   *Config
+	fset   *token.FileSet
+	pkg    *Package
 	*Info
 	objMap map[Object]*declInfo   // maps package-level object to declaration info
 	impMap map[importKey]*Package // maps (import path, source directory) to (complete or fake) package

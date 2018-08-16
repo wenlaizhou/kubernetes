@@ -21,7 +21,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	cr "k8s.io/apiextensions-apiserver/examples/client-go/pkg/apis/cr"
+	"k8s.io/apiextensions-apiserver/examples/client-go/pkg/apis/cr"
 )
 
 // SchemeGroupVersion is group version used to register these objects

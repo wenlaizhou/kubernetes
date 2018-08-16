@@ -250,7 +250,7 @@ type recorderImpl struct {
 	scheme *runtime.Scheme
 	source v1.EventSource
 	*watch.Broadcaster
-	clock clock.Clock
+	clock  clock.Clock
 }
 
 func (recorder *recorderImpl) generateEvent(object runtime.Object, annotations map[string]string, timestamp metav1.Time, eventtype, reason, message string) {

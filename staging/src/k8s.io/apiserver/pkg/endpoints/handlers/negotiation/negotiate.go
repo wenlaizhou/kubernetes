@@ -208,28 +208,28 @@ func acceptMediaTypeOptions(params map[string]string, accepts *AcceptedMediaType
 			}
 			options.Convert.Version = v
 
-		// controls the streaming schema
+			// controls the streaming schema
 		case "stream":
 			if len(v) > 0 && (accepts.Serializer.StreamSerializer == nil || !endpoint.AllowsStreamSchema(v)) {
 				return MediaTypeOptions{}, false
 			}
 			options.Stream = v
 
-		// controls the version of the server API group used
-		// for generic output
+			// controls the version of the server API group used
+			// for generic output
 		case "sv":
 			if len(v) > 0 && !endpoint.AllowsServerVersion(v) {
 				return MediaTypeOptions{}, false
 			}
 			options.UseServerVersion = v
 
-		// if specified, the server should transform the returned
-		// output and remove fields that are always server specified,
-		// or which fit the default behavior.
+			// if specified, the server should transform the returned
+			// output and remove fields that are always server specified,
+			// or which fit the default behavior.
 		case "export":
 			options.Export = v == "1"
 
-		// if specified, the pretty serializer will be used
+			// if specified, the pretty serializer will be used
 		case "pretty":
 			options.Pretty = v == "1"
 

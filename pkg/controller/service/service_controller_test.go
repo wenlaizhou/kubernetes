@@ -561,7 +561,6 @@ func TestDoesExternalLoadBalancerNeedsUpdate(t *testing.T) {
 		testName            string //Name of the test case
 		updateFn            func() //Function to update the service object
 		expectedNeedsUpdate bool   //needsupdate always returns bool
-
 	}{
 		{
 			testName: "If the service type is changed from LoadBalancer to ClusterIP",

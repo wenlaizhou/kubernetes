@@ -174,7 +174,7 @@ func (resizeMap *volumeResizeMap) MarkForFSResize(pvcr *PVCWithResizeRequest) er
 	conditions := []v1.PersistentVolumeClaimCondition{pvcCondition}
 	newPVC := pvcr.PVC.DeepCopy()
 	newPVC = util.MergeResizeConditionOnPVC(newPVC, conditions)
-	_, err := util.PatchPVCStatus(pvcr.PVC /*oldPVC*/, newPVC, resizeMap.kubeClient)
+	_, err := util.PatchPVCStatus(pvcr.PVC /*oldPVC*/ , newPVC, resizeMap.kubeClient)
 	return err
 }
 
@@ -216,6 +216,6 @@ func (resizeMap *volumeResizeMap) updatePVCCapacityAndConditions(pvcr *PVCWithRe
 	newPVC := pvcr.PVC.DeepCopy()
 	newPVC.Status.Capacity[v1.ResourceStorage] = newSize
 	newPVC = util.MergeResizeConditionOnPVC(newPVC, pvcConditions)
-	_, err := util.PatchPVCStatus(pvcr.PVC /*oldPVC*/, newPVC, resizeMap.kubeClient)
+	_, err := util.PatchPVCStatus(pvcr.PVC /*oldPVC*/ , newPVC, resizeMap.kubeClient)
 	return err
 }

@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"
-	apiregistration "k8s.io/kube-aggregator/pkg/apis/apiregistration"
+	"k8s.io/kube-aggregator/pkg/apis/apiregistration"
 )
 
 // APIServiceLister helps list APIServices.

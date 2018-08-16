@@ -39,8 +39,6 @@ import (
 	tokens3 "github.com/gophercloud/gophercloud/openstack/identity/v3/tokens"
 	"github.com/gophercloud/gophercloud/pagination"
 	"github.com/mitchellh/mapstructure"
-	"gopkg.in/gcfg.v1"
-
 	"github.com/golang/glog"
 	"k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/types"
@@ -103,7 +101,7 @@ type LoadBalancerOpts struct {
 	MonitorTimeout       MyDuration `gcfg:"monitor-timeout"`
 	MonitorMaxRetries    uint       `gcfg:"monitor-max-retries"`
 	ManageSecurityGroups bool       `gcfg:"manage-security-groups"`
-	NodeSecurityGroupIDs []string   // Do not specify, get it automatically when enable manage-security-groups. TODO(FengyunPan): move it into cache
+	NodeSecurityGroupIDs []string // Do not specify, get it automatically when enable manage-security-groups. TODO(FengyunPan): move it into cache
 }
 
 // BlockStorageOpts is used to talk to Cinder service

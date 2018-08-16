@@ -50,7 +50,7 @@ func getPlugin(t *testing.T) (string, volume.VolumePlugin) {
 	}
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 
 	plug, err := plugMgr.FindPluginByName(localVolumePluginName)
 	if err != nil {
@@ -70,7 +70,7 @@ func getBlockPlugin(t *testing.T) (string, volume.BlockVolumePlugin) {
 	}
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 	plug, err := plugMgr.FindMapperPluginByName(localVolumePluginName)
 	if err != nil {
 		os.RemoveAll(tmpDir)
@@ -89,7 +89,7 @@ func getPersistentPlugin(t *testing.T) (string, volume.PersistentVolumePlugin) {
 	}
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 
 	plug, err := plugMgr.FindPersistentPluginByName(localVolumePluginName)
 	if err != nil {
@@ -429,7 +429,7 @@ func TestUnsupportedPlugins(t *testing.T) {
 	defer os.RemoveAll(tmpDir)
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 	spec := getTestVolume(false, tmpDir, false)
 
 	recyclePlug, err := plugMgr.FindRecyclablePluginBySpec(spec)

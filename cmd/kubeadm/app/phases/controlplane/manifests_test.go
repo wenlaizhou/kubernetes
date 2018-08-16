@@ -92,21 +92,21 @@ func TestCreateStaticPodFilesAndWrappers(t *testing.T) {
 		createStaticPodFunction func(outDir string, cfg *kubeadmapi.InitConfiguration) error
 		expectedFiles           []string
 	}{
-		{ // CreateInitStaticPodManifestFiles
+		{// CreateInitStaticPodManifestFiles
 			createStaticPodFunction: CreateInitStaticPodManifestFiles,
-			expectedFiles:           []string{kubeadmconstants.KubeAPIServer, kubeadmconstants.KubeControllerManager, kubeadmconstants.KubeScheduler},
+			expectedFiles: []string{kubeadmconstants.KubeAPIServer, kubeadmconstants.KubeControllerManager, kubeadmconstants.KubeScheduler},
 		},
-		{ // CreateAPIServerStaticPodManifestFile
+		{// CreateAPIServerStaticPodManifestFile
 			createStaticPodFunction: CreateAPIServerStaticPodManifestFile,
-			expectedFiles:           []string{kubeadmconstants.KubeAPIServer},
+			expectedFiles: []string{kubeadmconstants.KubeAPIServer},
 		},
-		{ // CreateControllerManagerStaticPodManifestFile
+		{// CreateControllerManagerStaticPodManifestFile
 			createStaticPodFunction: CreateControllerManagerStaticPodManifestFile,
-			expectedFiles:           []string{kubeadmconstants.KubeControllerManager},
+			expectedFiles: []string{kubeadmconstants.KubeControllerManager},
 		},
-		{ // CreateSchedulerStaticPodManifestFile
+		{// CreateSchedulerStaticPodManifestFile
 			createStaticPodFunction: CreateSchedulerStaticPodManifestFile,
-			expectedFiles:           []string{kubeadmconstants.KubeScheduler},
+			expectedFiles: []string{kubeadmconstants.KubeScheduler},
 		},
 	}
 

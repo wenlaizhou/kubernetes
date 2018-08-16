@@ -534,7 +534,7 @@ func (asw *actualStateOfWorld) GetAttachedVolumes() []AttachedVolume {
 	asw.RLock()
 	defer asw.RUnlock()
 
-	attachedVolumes := make([]AttachedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	attachedVolumes := make([]AttachedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		for _, nodeObj := range volumeObj.nodesAttachedTo {
 			attachedVolumes = append(
@@ -552,7 +552,7 @@ func (asw *actualStateOfWorld) GetAttachedVolumesForNode(
 	defer asw.RUnlock()
 
 	attachedVolumes := make(
-		[]AttachedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	[]AttachedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		for actualNodeName, nodeObj := range volumeObj.nodesAttachedTo {
 			if actualNodeName == nodeName {
@@ -606,7 +606,7 @@ func (asw *actualStateOfWorld) GetVolumesToReportAttached() map[types.NodeName][
 	for nodeName, nodeToUpdateObj := range asw.nodesToUpdateStatusFor {
 		if nodeToUpdateObj.statusUpdateNeeded {
 			attachedVolumes := make(
-				[]v1.AttachedVolume,
+			[]v1.AttachedVolume,
 				len(nodeToUpdateObj.volumesToReportAsAttached) /* len */)
 			i := 0
 			for _, volume := range nodeToUpdateObj.volumesToReportAsAttached {

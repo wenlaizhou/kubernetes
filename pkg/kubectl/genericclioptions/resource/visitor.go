@@ -219,7 +219,7 @@ func ValidateSchema(data []byte, schema ContentValidator) error {
 // URLVisitor downloads the contents of a URL, and if successful, returns
 // an info object representing the downloaded object.
 type URLVisitor struct {
-	URL *url.URL
+	URL              *url.URL
 	*StreamVisitor
 	HttpAttemptCount int
 }

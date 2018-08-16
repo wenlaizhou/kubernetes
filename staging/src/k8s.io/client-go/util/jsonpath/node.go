@@ -31,18 +31,18 @@ func (t NodeType) String() string {
 }
 
 const (
-	NodeText NodeType = iota
-	NodeArray
-	NodeList
-	NodeField
-	NodeIdentifier
-	NodeFilter
-	NodeInt
-	NodeFloat
-	NodeWildcard
-	NodeRecursive
-	NodeUnion
-	NodeBool
+	NodeText       NodeType = iota
+	NodeArray      
+	NodeList       
+	NodeField      
+	NodeIdentifier 
+	NodeFilter     
+	NodeInt        
+	NodeFloat      
+	NodeWildcard   
+	NodeRecursive  
+	NodeUnion      
+	NodeBool       
 )
 
 var NodeTypeName = map[NodeType]string{

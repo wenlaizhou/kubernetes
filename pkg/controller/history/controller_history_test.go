@@ -487,7 +487,7 @@ func TestRealHistory_UpdateControllerRevision(t *testing.T) {
 		name        string
 		revision    *apps.ControllerRevision
 		newRevision int64
-		existing    []struct {
+		existing []struct {
 			parent   metav1.Object
 			revision *apps.ControllerRevision
 		}
@@ -639,7 +639,7 @@ func TestFakeHistory_UpdateControllerRevision(t *testing.T) {
 		name        string
 		revision    *apps.ControllerRevision
 		newRevision int64
-		existing    []struct {
+		existing []struct {
 			parent   metav1.Object
 			revision *apps.ControllerRevision
 		}
@@ -1074,7 +1074,7 @@ func TestFakeHistory_AdoptControllerRevision(t *testing.T) {
 		parent     metav1.Object
 		parentType *metav1.TypeMeta
 		revision   *apps.ControllerRevision
-		existing   []struct {
+		existing []struct {
 			parent   metav1.Object
 			revision *apps.ControllerRevision
 		}

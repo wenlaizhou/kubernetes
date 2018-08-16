@@ -350,12 +350,12 @@ func (asw *actualStateOfWorld) MarkVolumeAsUnmounted(
 
 func (asw *actualStateOfWorld) MarkDeviceAsMounted(
 	volumeName v1.UniqueVolumeName, devicePath, deviceMountPath string) error {
-	return asw.SetVolumeGloballyMounted(volumeName, true /* globallyMounted */, devicePath, deviceMountPath)
+	return asw.SetVolumeGloballyMounted(volumeName, true /* globallyMounted */ , devicePath, deviceMountPath)
 }
 
 func (asw *actualStateOfWorld) MarkDeviceAsUnmounted(
 	volumeName v1.UniqueVolumeName) error {
-	return asw.SetVolumeGloballyMounted(volumeName, false /* globallyMounted */, "", "")
+	return asw.SetVolumeGloballyMounted(volumeName, false /* globallyMounted */ , "", "")
 }
 
 // addVolume adds the given volume to the cache indicating the specified
@@ -663,7 +663,7 @@ func (asw *actualStateOfWorld) VolumeExists(
 func (asw *actualStateOfWorld) GetMountedVolumes() []MountedVolume {
 	asw.RLock()
 	defer asw.RUnlock()
-	mountedVolume := make([]MountedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	mountedVolume := make([]MountedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		for _, podObj := range volumeObj.mountedPods {
 			mountedVolume = append(
@@ -679,7 +679,7 @@ func (asw *actualStateOfWorld) GetMountedVolumesForPod(
 	podName volumetypes.UniquePodName) []MountedVolume {
 	asw.RLock()
 	defer asw.RUnlock()
-	mountedVolume := make([]MountedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	mountedVolume := make([]MountedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		for mountedPodName, podObj := range volumeObj.mountedPods {
 			if mountedPodName == podName {
@@ -697,7 +697,7 @@ func (asw *actualStateOfWorld) GetGloballyMountedVolumes() []AttachedVolume {
 	asw.RLock()
 	defer asw.RUnlock()
 	globallyMountedVolumes := make(
-		[]AttachedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	[]AttachedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		if volumeObj.globallyMounted {
 			globallyMountedVolumes = append(
@@ -712,7 +712,7 @@ func (asw *actualStateOfWorld) GetGloballyMountedVolumes() []AttachedVolume {
 func (asw *actualStateOfWorld) GetUnmountedVolumes() []AttachedVolume {
 	asw.RLock()
 	defer asw.RUnlock()
-	unmountedVolumes := make([]AttachedVolume, 0 /* len */, len(asw.attachedVolumes) /* cap */)
+	unmountedVolumes := make([]AttachedVolume, 0 /* len */ , len(asw.attachedVolumes) /* cap */)
 	for _, volumeObj := range asw.attachedVolumes {
 		if len(volumeObj.mountedPods) == 0 {
 			unmountedVolumes = append(

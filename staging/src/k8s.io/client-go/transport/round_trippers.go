@@ -349,7 +349,7 @@ type debuggingRoundTripper struct {
 type debugLevel int
 
 const (
-	debugJustURL debugLevel = iota
+	debugJustURL         debugLevel = iota
 	debugURLTiming
 	debugCurlCommand
 	debugRequestHeaders

@@ -24,7 +24,6 @@ import (
 )
 
 type ContainerRuntimeOptions struct {
-
 	// General options.
 
 	// ContainerRuntime is the container runtime to use.

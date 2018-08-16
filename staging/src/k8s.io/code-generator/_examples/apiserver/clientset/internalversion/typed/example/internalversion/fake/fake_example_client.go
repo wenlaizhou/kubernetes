@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	rest "k8s.io/client-go/rest"
-	testing "k8s.io/client-go/testing"
-	internalversion "k8s.io/code-generator/_examples/apiserver/clientset/internalversion/typed/example/internalversion"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/testing"
+	"k8s.io/code-generator/_examples/apiserver/clientset/internalversion/typed/example/internalversion"
 )
 
 type FakeExample struct {

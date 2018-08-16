@@ -19,7 +19,7 @@ limitations under the License.
 package internalversion
 
 import (
-	rest "k8s.io/client-go/rest"
+	"k8s.io/client-go/rest"
 	"k8s.io/code-generator/_examples/apiserver/clientset/internalversion/scheme"
 )
 

@@ -187,7 +187,7 @@ func (plugin *localVolumePlugin) ConstructVolumeSpec(volumeName, mountPath strin
 }
 
 func (plugin *localVolumePlugin) ConstructBlockVolumeSpec(podUID types.UID, volumeName,
-	mapPath string) (*volume.Spec, error) {
+mapPath string) (*volume.Spec, error) {
 	block := v1.PersistentVolumeBlock
 
 	localVolume := &v1.PersistentVolume{

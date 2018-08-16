@@ -677,8 +677,8 @@ func TestRequestModifier(t *testing.T) {
 				return newDefaultBuilderWith(fakeClientWith(t.Name(), t, nil)).
 					NamespaceParam("foo").
 					TransformRequests(func(req *rest.Request) {
-						*got = req
-					}).
+					*got = req
+				}).
 					ResourceNames("", "services/baz").
 					RequireObject(false)
 			},
@@ -692,8 +692,8 @@ func TestRequestModifier(t *testing.T) {
 				})).
 					NamespaceParam("foo").
 					TransformRequests(func(req *rest.Request) {
-						*got = req
-					}).
+					*got = req
+				}).
 					ResourceTypeOrNameArgs(true, "pods").
 					Flatten()
 			},

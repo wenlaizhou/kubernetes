@@ -1379,7 +1379,7 @@ func (dsc *DaemonSetsController) nodeShouldRunDaemonPod(node *v1.Node, ds *apps.
 					return false, false, false, nil
 				}
 				wantToRun, shouldSchedule = false, false
-			// unintentional
+				// unintentional
 			case
 				predicates.ErrDiskConflict,
 				predicates.ErrVolumeZoneConflict,
@@ -1391,7 +1391,7 @@ func (dsc *DaemonSetsController) nodeShouldRunDaemonPod(node *v1.Node, ds *apps.
 				// of this method.
 				shouldSchedule = false
 				emitEvent = true
-			// unexpected
+				// unexpected
 			case
 				predicates.ErrPodAffinityNotMatch,
 				predicates.ErrServiceAffinityViolated:

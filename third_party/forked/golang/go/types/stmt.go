@@ -88,12 +88,12 @@ type stmtContext uint
 
 const (
 	// permissible control-flow statements
-	breakOk stmtContext = 1 << iota
-	continueOk
-	fallthroughOk
+	breakOk       stmtContext = 1 << iota
+	continueOk    
+	fallthroughOk 
 
 	// additional context information
-	finalSwitchCase
+	finalSwitchCase 
 )
 
 func (check *Checker) simpleStmt(s ast.Stmt) {
@@ -219,7 +219,7 @@ func goVal(val constant.Value) interface{} {
 // types we need to also check the value's types (e.g., byte(1) vs myByte(1))
 // when the switch expression is of interface type.
 type (
-	valueMap  map[interface{}][]valueType // underlying Go value -> valueType
+	valueMap map[interface{}][]valueType // underlying Go value -> valueType
 	valueType struct {
 		pos token.Pos
 		typ Type
@@ -842,7 +842,7 @@ func (check *Checker) stmt(ctxt stmtContext, s ast.Stmt) {
 					// a function begins at the end of the ConstSpec or VarSpec (ShortVarDecl
 					// for short variable declarations) and ends at the end of the innermost
 					// containing block."
-					check.declare(check.scope, nil /* recordDef already called */, obj, scopePos)
+					check.declare(check.scope, nil /* recordDef already called */ , obj, scopePos)
 				}
 			} else {
 				check.error(s.TokPos, "no new variables on left side of :=")

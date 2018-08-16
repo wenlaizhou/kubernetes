@@ -43,9 +43,9 @@ const (
 	// ERROR is an error during merge
 	ERROR Operation = iota
 	// SET sets the field on an object
-	SET
+	SET 
 	// DROP drops the field from an object
-	DROP
+	DROP 
 )
 
 // Result is the result of merging fields

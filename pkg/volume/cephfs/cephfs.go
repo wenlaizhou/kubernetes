@@ -182,16 +182,16 @@ func (plugin *cephfsPlugin) ConstructVolumeSpec(volumeName, mountPath string) (*
 
 // CephFS volumes represent a bare host file or directory mount of an CephFS export.
 type cephfs struct {
-	volName     string
-	podUID      types.UID
-	mon         []string
-	path        string
-	id          string
-	secret      string
-	secret_file string
-	readonly    bool
-	mounter     mount.Interface
-	plugin      *cephfsPlugin
+	volName      string
+	podUID       types.UID
+	mon          []string
+	path         string
+	id           string
+	secret       string
+	secret_file  string
+	readonly     bool
+	mounter      mount.Interface
+	plugin       *cephfsPlugin
 	volume.MetricsNil
 	mountOptions []string
 }

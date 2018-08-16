@@ -61,29 +61,29 @@ func TestHandleGetAction(t *testing.T) {
 			expectedObjectJSON: []byte(``),
 			expectedErr:        true, // we expect a NotFound error here
 		},
-		{ // an ask for a kubernetes service in the _kube-system_ ns should not be answered
-			action:             core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "services"}, "kube-system", "kubernetes"),
-			expectedHandled:    false,
+		{// an ask for a kubernetes service in the _kube-system_ ns should not be answered
+			action: core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "services"}, "kube-system", "kubernetes"),
+			expectedHandled: false,
 			expectedObjectJSON: []byte(``),
-			expectedErr:        false,
+			expectedErr: false,
 		},
-		{ // an ask for an other service than kubernetes should not be answered
-			action:             core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "services"}, "default", "my-other-service"),
-			expectedHandled:    false,
+		{// an ask for an other service than kubernetes should not be answered
+			action: core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "services"}, "default", "my-other-service"),
+			expectedHandled: false,
 			expectedObjectJSON: []byte(``),
-			expectedErr:        false,
+			expectedErr: false,
 		},
-		{ // an ask for an other node than the master should not be answered
-			action:             core.NewRootGetAction(schema.GroupVersionResource{Version: "v1", Resource: "nodes"}, "other-node"),
-			expectedHandled:    false,
+		{// an ask for an other node than the master should not be answered
+			action: core.NewRootGetAction(schema.GroupVersionResource{Version: "v1", Resource: "nodes"}, "other-node"),
+			expectedHandled: false,
 			expectedObjectJSON: []byte(``),
-			expectedErr:        false,
+			expectedErr: false,
 		},
-		{ // an ask for a secret in any other ns than kube-system should not be answered
-			action:             core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "secrets"}, "default", "bootstrap-token-abcdef"),
-			expectedHandled:    false,
+		{// an ask for a secret in any other ns than kube-system should not be answered
+			action: core.NewGetAction(schema.GroupVersionResource{Version: "v1", Resource: "secrets"}, "default", "bootstrap-token-abcdef"),
+			expectedHandled: false,
 			expectedObjectJSON: []byte(``),
-			expectedErr:        false,
+			expectedErr: false,
 		},
 	}
 	for _, rt := range tests {

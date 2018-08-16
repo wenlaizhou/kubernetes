@@ -19,7 +19,7 @@ limitations under the License.
 package internalversion
 
 import (
-	internalinterfaces "k8s.io/kube-aggregator/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/kube-aggregator/pkg/client/informers/internalversion/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

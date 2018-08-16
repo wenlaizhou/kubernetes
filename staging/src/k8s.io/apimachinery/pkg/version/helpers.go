@@ -27,8 +27,8 @@ type versionType int
 const (
 	// Bigger the version type number, higher priority it is
 	versionTypeAlpha versionType = iota
-	versionTypeBeta
-	versionTypeGA
+	versionTypeBeta  
+	versionTypeGA    
 )
 
 var kubeVersionRegex = regexp.MustCompile("^v([\\d]+)(?:(alpha|beta)([\\d]+))?$")

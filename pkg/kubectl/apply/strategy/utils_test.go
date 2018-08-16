@@ -17,8 +17,6 @@ limitations under the License.
 package strategy_test
 
 import (
-	. "github.com/onsi/gomega"
-
 	"fmt"
 	"path/filepath"
 	"strings"

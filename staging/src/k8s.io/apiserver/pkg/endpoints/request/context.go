@@ -32,10 +32,10 @@ const (
 	namespaceKey key = iota
 
 	// userKey is the context key for the request user.
-	userKey
+	userKey 
 
 	// auditKey is the context key for the audit event.
-	auditKey
+	auditKey 
 )
 
 // NewContext instantiates a base context object for request flows.

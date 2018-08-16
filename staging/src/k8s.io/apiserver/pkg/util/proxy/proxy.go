@@ -103,7 +103,7 @@ func ResolveCluster(services listersv1.ServiceLister, namespace, id string) (*ur
 	switch {
 	case svc.Spec.Type == v1.ServiceTypeClusterIP && svc.Spec.ClusterIP == v1.ClusterIPNone:
 		return nil, fmt.Errorf(`cannot route to service with ClusterIP "None"`)
-	// use IP from a clusterIP for these service types
+		// use IP from a clusterIP for these service types
 	case svc.Spec.Type == v1.ServiceTypeClusterIP, svc.Spec.Type == v1.ServiceTypeLoadBalancer, svc.Spec.Type == v1.ServiceTypeNodePort:
 		svcPort, err := findServicePort(svc, port)
 		if err != nil {

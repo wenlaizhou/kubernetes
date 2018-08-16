@@ -277,7 +277,7 @@ func removeInt64Factors(value int64, base int64) (result int64, times int32) {
 			times++
 			result = result / 10
 		}
-	// allow the compiler to optimize the common cases
+		// allow the compiler to optimize the common cases
 	case 1024:
 		for result >= 1024 && result%1024 == 0 {
 			times++

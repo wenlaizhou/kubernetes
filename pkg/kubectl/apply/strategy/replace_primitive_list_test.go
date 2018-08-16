@@ -17,8 +17,6 @@ limitations under the License.
 package strategy_test
 
 import (
-	. "github.com/onsi/ginkgo"
-
 	"k8s.io/kubernetes/pkg/kubectl/apply/strategy"
 )
 

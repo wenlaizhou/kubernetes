@@ -19,7 +19,7 @@ package testing
 import (
 	"fmt"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	"k8s.io/api/core/v1"
 	apitesting "k8s.io/apimachinery/pkg/api/testing"

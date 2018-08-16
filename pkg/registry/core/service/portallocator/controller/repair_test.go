@@ -146,19 +146,19 @@ func TestRepairWithExisting(t *testing.T) {
 				Ports: []api.ServicePort{{NodePort: 122}, {NodePort: 133}},
 			},
 		},
-		&api.Service{ // outside range, will be dropped
+		&api.Service{// outside range, will be dropped
 			ObjectMeta: metav1.ObjectMeta{Namespace: "three", Name: "three"},
 			Spec: api.ServiceSpec{
 				Ports: []api.ServicePort{{NodePort: 201}},
 			},
 		},
-		&api.Service{ // empty, ignored
+		&api.Service{// empty, ignored
 			ObjectMeta: metav1.ObjectMeta{Namespace: "four", Name: "four"},
 			Spec: api.ServiceSpec{
 				Ports: []api.ServicePort{{}},
 			},
 		},
-		&api.Service{ // duplicate, dropped
+		&api.Service{// duplicate, dropped
 			ObjectMeta: metav1.ObjectMeta{Namespace: "five", Name: "five"},
 			Spec: api.ServiceSpec{
 				Ports: []api.ServicePort{{NodePort: 111}},

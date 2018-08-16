@@ -30,7 +30,7 @@ func TestAzureTokenSource(t *testing.T) {
 	fakeAccessToken := "fake token 1"
 	fakeSource := fakeTokenSource{
 		accessToken: fakeAccessToken,
-		expiresOn:   strconv.FormatInt(time.Now().Add(3600*time.Second).Unix(), 10),
+		expiresOn:   strconv.FormatInt(time.Now().Add(3600 * time.Second).Unix(), 10),
 	}
 	cfg := make(map[string]string)
 	persiter := &fakePersister{cache: make(map[string]string)}

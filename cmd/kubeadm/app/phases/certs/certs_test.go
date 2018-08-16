@@ -42,23 +42,23 @@ func TestWriteCertificateAuthorithyFilesIfNotExist(t *testing.T) {
 		expectedError bool
 		expectedCa    *x509.Certificate
 	}{
-		{ // ca cert does not exists > ca written
+		{// ca cert does not exists > ca written
 			expectedCa: caCert,
 		},
-		{ // ca cert exists, is ca > existing ca used
+		{// ca cert exists, is ca > existing ca used
 			setupFunc: func(pkiDir string) error {
 				return writeCertificateAuthorithyFilesIfNotExist(pkiDir, "dummy", setupCert, setupKey)
 			},
 			expectedCa: setupCert,
 		},
-		{ // some file exists, but it is not a valid ca cert > err
+		{// some file exists, but it is not a valid ca cert > err
 			setupFunc: func(pkiDir string) error {
 				testutil.SetupEmptyFiles(t, pkiDir, "dummy.crt")
 				return nil
 			},
 			expectedError: true,
 		},
-		{ // cert exists, but it is not a ca > err
+		{// cert exists, but it is not a ca > err
 			setupFunc: func(pkiDir string) error {
 				cert, key, _ := NewFrontProxyClientCertAndKey(setupCert, setupKey)
 				return writeCertificateFilesIfNotExist(pkiDir, "dummy", setupCert, cert, key)
@@ -119,23 +119,23 @@ func TestWriteCertificateFilesIfNotExist(t *testing.T) {
 		expectedError bool
 		expectedCert  *x509.Certificate
 	}{
-		{ // cert does not exists > cert written
+		{// cert does not exists > cert written
 			expectedCert: cert,
 		},
-		{ // cert exists, is signed by the same ca > existing cert used
+		{// cert exists, is signed by the same ca > existing cert used
 			setupFunc: func(pkiDir string) error {
 				return writeCertificateFilesIfNotExist(pkiDir, "dummy", caCert, setupCert, setupKey)
 			},
 			expectedCert: setupCert,
 		},
-		{ // some file exists, but it is not a valid cert > err
+		{// some file exists, but it is not a valid cert > err
 			setupFunc: func(pkiDir string) error {
 				testutil.SetupEmptyFiles(t, pkiDir, "dummy.crt")
 				return nil
 			},
 			expectedError: true,
 		},
-		{ // cert exists, is signed by another ca > err
+		{// cert exists, is signed by another ca > err
 			setupFunc: func(pkiDir string) error {
 				anotherCaCert, anotherCaKey, _ := NewFrontProxyCACertAndKey()
 				anotherCert, anotherKey, _ := NewFrontProxyClientCertAndKey(anotherCaCert, anotherCaKey)
@@ -197,16 +197,16 @@ func TestWriteKeyFilesIfNotExist(t *testing.T) {
 		expectedError bool
 		expectedKey   *rsa.PrivateKey
 	}{
-		{ // key does not exists > key written
+		{// key does not exists > key written
 			expectedKey: key,
 		},
-		{ // key exists > existing key used
+		{// key exists > existing key used
 			setupFunc: func(pkiDir string) error {
 				return writeKeyFilesIfNotExist(pkiDir, "dummy", setupKey)
 			},
 			expectedKey: setupKey,
 		},
-		{ // some file exists, but it is not a valid key > err
+		{// some file exists, but it is not a valid key > err
 			setupFunc: func(pkiDir string) error {
 				testutil.SetupEmptyFiles(t, pkiDir, "dummy.key")
 				return nil
@@ -463,7 +463,7 @@ func TestSharedCertificateExists(t *testing.T) {
 		setupFunc     func(cfg *kubeadmapi.InitConfiguration)
 		expectedError bool
 	}{
-		{ // expected certs exist, pass
+		{// expected certs exist, pass
 			setupFunc: func(cfg *kubeadmapi.InitConfiguration) {
 				CreateCACertAndKeyFiles(cfg)
 				CreateServiceAccountKeyAndPublicKeyFiles(cfg)
@@ -471,14 +471,14 @@ func TestSharedCertificateExists(t *testing.T) {
 			},
 			expectedError: false,
 		},
-		{ // expected ca.crt missing
+		{// expected ca.crt missing
 			setupFunc: func(cfg *kubeadmapi.InitConfiguration) {
 				// start from the condition created by the previous tests
 				os.Remove(filepath.Join(cfg.CertificatesDir, kubeadmconstants.CACertName))
 			},
 			expectedError: true,
 		},
-		{ // expected sa.key missing
+		{// expected sa.key missing
 			setupFunc: func(cfg *kubeadmapi.InitConfiguration) {
 				// start from the condition created by the previous tests
 				CreateCACertAndKeyFiles(cfg)
@@ -486,7 +486,7 @@ func TestSharedCertificateExists(t *testing.T) {
 			},
 			expectedError: true,
 		},
-		{ // expected front-proxy.crt missing
+		{// expected front-proxy.crt missing
 			setupFunc: func(cfg *kubeadmapi.InitConfiguration) {
 				// start from the condition created by the previous tests
 				CreateServiceAccountKeyAndPublicKeyFiles(cfg)

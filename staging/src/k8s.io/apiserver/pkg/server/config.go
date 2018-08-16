@@ -29,7 +29,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/emicklei/go-restful-swagger12"
 	"github.com/go-openapi/spec"
 	"github.com/golang/glog"
 	"github.com/pborman/uuid"

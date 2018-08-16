@@ -149,11 +149,11 @@ func TestRunAccessCheck(t *testing.T) {
 					}
 
 					return &http.Response{
-							StatusCode: http.StatusOK,
-							Body: ioutil.NopCloser(bytes.NewBufferString(
-								fmt.Sprintf(`{"kind":"SelfSubjectAccessReview","apiVersion":"authorization.k8s.io/v1","status":{"allowed":%v}}`, test.allowed),
-							)),
-						},
+						StatusCode: http.StatusOK,
+						Body: ioutil.NopCloser(bytes.NewBufferString(
+							fmt.Sprintf(`{"kind":"SelfSubjectAccessReview","apiVersion":"authorization.k8s.io/v1","status":{"allowed":%v}}`, test.allowed),
+						)),
+					},
 						test.serverErr
 				}),
 			}

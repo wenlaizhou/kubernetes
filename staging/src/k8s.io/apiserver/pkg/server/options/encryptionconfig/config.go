@@ -25,7 +25,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	yaml "github.com/ghodss/yaml"
+	"github.com/ghodss/yaml"
 
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apiserver/pkg/storage/value"

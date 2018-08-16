@@ -774,38 +774,38 @@ func TestKubeletUpgrade(t *testing.T) {
 		after    string
 		expected bool
 	}{
-		{ // upgrade available
+		{// upgrade available
 			before: map[string]uint16{
 				"v1.10.1": 1,
 			},
-			after:    "v1.10.3",
+			after: "v1.10.3",
 			expected: true,
 		},
-		{ // upgrade available
+		{// upgrade available
 			before: map[string]uint16{
 				"v1.10.1": 1,
 				"v1.10.3": 100,
 			},
-			after:    "v1.10.3",
+			after: "v1.10.3",
 			expected: true,
 		},
-		{ // upgrade not available
+		{// upgrade not available
 			before: map[string]uint16{
 				"v1.10.3": 1,
 			},
-			after:    "v1.10.3",
+			after: "v1.10.3",
 			expected: false,
 		},
-		{ // upgrade not available
+		{// upgrade not available
 			before: map[string]uint16{
 				"v1.10.3": 100,
 			},
-			after:    "v1.10.3",
+			after: "v1.10.3",
 			expected: false,
 		},
-		{ // upgrade not available if we don't know anything about the earlier state
-			before:   map[string]uint16{},
-			after:    "v1.10.3",
+		{// upgrade not available if we don't know anything about the earlier state
+			before: map[string]uint16{},
+			after: "v1.10.3",
 			expected: false,
 		},
 	}

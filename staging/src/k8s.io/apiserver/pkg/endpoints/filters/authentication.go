@@ -106,10 +106,10 @@ func compressUsername(username string) string {
 		username == "kubelet" ||
 		username == "system:serviceaccount:kube-system:default":
 		return username
-	// Probably an email address.
+		// Probably an email address.
 	case strings.Contains(username, "@"):
 		return "email_id"
-	// Anything else (custom service accounts, custom external identities, etc.)
+		// Anything else (custom service accounts, custom external identities, etc.)
 	default:
 		return "other"
 	}

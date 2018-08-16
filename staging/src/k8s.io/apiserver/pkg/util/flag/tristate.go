@@ -27,8 +27,8 @@ type Tristate int
 
 const (
 	Unset Tristate = iota // 0
-	True
-	False
+	True  
+	False 
 )
 
 func (f *Tristate) Default(value bool) {

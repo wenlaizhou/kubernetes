@@ -19,16 +19,16 @@ limitations under the License.
 package internalversion
 
 import (
-	time "time"
+	"time"
 
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	watch "k8s.io/apimachinery/pkg/watch"
-	cache "k8s.io/client-go/tools/cache"
-	wardle "k8s.io/sample-apiserver/pkg/apis/wardle"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/tools/cache"
+	"k8s.io/sample-apiserver/pkg/apis/wardle"
 	clientsetinternalversion "k8s.io/sample-apiserver/pkg/client/clientset/internalversion"
-	internalinterfaces "k8s.io/sample-apiserver/pkg/client/informers/internalversion/internalinterfaces"
-	internalversion "k8s.io/sample-apiserver/pkg/client/listers/wardle/internalversion"
+	"k8s.io/sample-apiserver/pkg/client/informers/internalversion/internalinterfaces"
+	"k8s.io/sample-apiserver/pkg/client/listers/wardle/internalversion"
 )
 
 // FischerInformer provides access to a shared informer and lister for

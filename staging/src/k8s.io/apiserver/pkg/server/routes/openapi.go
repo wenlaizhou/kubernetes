@@ -17,7 +17,7 @@ limitations under the License.
 package routes
 
 import (
-	restful "github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful"
 	"github.com/golang/glog"
 
 	"k8s.io/apiserver/pkg/server/mux"

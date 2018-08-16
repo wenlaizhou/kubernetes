@@ -36,8 +36,8 @@ func TestToSecret(t *testing.T) {
 		secret *v1.Secret
 	}{
 		{
-			&BootstrapToken{ // all together
-				Token:       &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
+			&BootstrapToken{// all together
+				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Description: "foo",
 				Expires: &metav1.Time{
 					Time: refTime,
@@ -112,7 +112,7 @@ func TestEncodeTokenSecretData(t *testing.T) {
 		data map[string][]byte
 	}{
 		{
-			&BootstrapToken{ // the minimum amount of information needed to be specified
+			&BootstrapToken{// the minimum amount of information needed to be specified
 				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 			},
 			map[string][]byte{
@@ -121,8 +121,8 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds description
-				Token:       &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
+			&BootstrapToken{// adds description
+				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Description: "foo",
 			},
 			map[string][]byte{
@@ -132,7 +132,7 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds ttl
+			&BootstrapToken{// adds ttl
 				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				TTL: &metav1.Duration{
 					Duration: mustParseDuration("2h", t),
@@ -145,7 +145,7 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds expiration
+			&BootstrapToken{// adds expiration
 				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Expires: &metav1.Time{
 					Time: refTime,
@@ -158,7 +158,7 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds ttl and expiration, should favor expiration
+			&BootstrapToken{// adds ttl and expiration, should favor expiration
 				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				TTL: &metav1.Duration{
 					Duration: mustParseDuration("2h", t),
@@ -174,8 +174,8 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds usages
-				Token:  &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
+			&BootstrapToken{// adds usages
+				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Usages: []string{"authentication", "signing"},
 			},
 			map[string][]byte{
@@ -186,8 +186,8 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // adds groups
-				Token:  &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
+			&BootstrapToken{// adds groups
+				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Groups: []string{"system:bootstrappers", "system:bootstrappers:foo"},
 			},
 			map[string][]byte{
@@ -197,8 +197,8 @@ func TestEncodeTokenSecretData(t *testing.T) {
 			},
 		},
 		{
-			&BootstrapToken{ // all together
-				Token:       &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
+			&BootstrapToken{// all together
+				Token: &BootstrapTokenString{ID: "abcdef", Secret: "abcdef0123456789"},
 				Description: "foo",
 				TTL: &metav1.Duration{
 					Duration: mustParseDuration("2h", t),
@@ -247,7 +247,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 		bt            *BootstrapToken
 		expectedError bool
 	}{
-		{ // minimum information
+		{// minimum information
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -258,7 +258,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // invalid token id
+		{// invalid token id
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdeF"),
@@ -267,7 +267,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			nil,
 			true,
 		},
-		{ // invalid secret naming
+		{// invalid secret naming
 			"foo",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -276,7 +276,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			nil,
 			true,
 		},
-		{ // invalid token secret
+		{// invalid token secret
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -285,7 +285,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			nil,
 			true,
 		},
-		{ // adds description
+		{// adds description
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -298,7 +298,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // adds expiration
+		{// adds expiration
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -313,7 +313,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // invalid expiration
+		{// invalid expiration
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":     []byte("abcdef"),
@@ -323,7 +323,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			nil,
 			true,
 		},
-		{ // adds usages
+		{// adds usages
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":                       []byte("abcdef"),
@@ -337,7 +337,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // should ignore usages that aren't set to true
+		{// should ignore usages that aren't set to true
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":                       []byte("abcdef"),
@@ -353,7 +353,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // adds groups
+		{// adds groups
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":          []byte("abcdef"),
@@ -366,7 +366,7 @@ func TestBootstrapTokenFromSecret(t *testing.T) {
 			},
 			false,
 		},
-		{ // all fields set
+		{// all fields set
 			"bootstrap-token-abcdef",
 			map[string][]byte{
 				"token-id":                       []byte("abcdef"),

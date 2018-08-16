@@ -53,7 +53,7 @@ func newTestPlugin(t *testing.T) (*csiPlugin, string) {
 		nil,
 	)
 	plugMgr := &volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, host)
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , host)
 
 	plug, err := plugMgr.FindPluginByName(csiPluginName)
 	if err != nil {

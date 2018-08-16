@@ -19,9 +19,9 @@ limitations under the License.
 package fake
 
 import (
-	rest "k8s.io/client-go/rest"
-	testing "k8s.io/client-go/testing"
-	internalversion "k8s.io/kube-aggregator/pkg/client/clientset_generated/internalclientset/typed/apiregistration/internalversion"
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/testing"
+	"k8s.io/kube-aggregator/pkg/client/clientset_generated/internalclientset/typed/apiregistration/internalversion"
 )
 
 type FakeApiregistration struct {

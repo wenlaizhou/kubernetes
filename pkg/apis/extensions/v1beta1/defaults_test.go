@@ -32,7 +32,6 @@ import (
 	api "k8s.io/kubernetes/pkg/apis/core"
 	_ "k8s.io/kubernetes/pkg/apis/core/install"
 	_ "k8s.io/kubernetes/pkg/apis/extensions/install"
-	. "k8s.io/kubernetes/pkg/apis/extensions/v1beta1"
 	utilpointer "k8s.io/kubernetes/pkg/util/pointer"
 )
 
@@ -64,7 +63,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 		original *extensionsv1beta1.DaemonSet
 		expected *extensionsv1beta1.DaemonSet
 	}{
-		{ // Labels change/defaulting test.
+		{// Labels change/defaulting test.
 			original: &extensionsv1beta1.DaemonSet{
 				Spec: extensionsv1beta1.DaemonSetSpec{
 					Template: defaultTemplate,
@@ -86,7 +85,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // Labels change/defaulting test.
+		{// Labels change/defaulting test.
 			original: &extensionsv1beta1.DaemonSet{
 				ObjectMeta: metav1.ObjectMeta{
 					Labels: map[string]string{
@@ -116,7 +115,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // Update strategy.
+		{// Update strategy.
 			original: &extensionsv1beta1.DaemonSet{},
 			expected: &extensionsv1beta1.DaemonSet{
 				Spec: extensionsv1beta1.DaemonSetSpec{
@@ -128,7 +127,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // Custom unique label key.
+		{// Custom unique label key.
 			original: &extensionsv1beta1.DaemonSet{
 				Spec: extensionsv1beta1.DaemonSetSpec{},
 			},
@@ -525,7 +524,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 		original *extensionsv1beta1.NetworkPolicy
 		expected *extensionsv1beta1.NetworkPolicy
 	}{
-		{ // Empty NetworkPolicy should be set to PolicyTypes Ingress
+		{// Empty NetworkPolicy should be set to PolicyTypes Ingress
 			original: &extensionsv1beta1.NetworkPolicy{
 				Spec: extensionsv1beta1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -542,7 +541,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Empty Ingress NetworkPolicy should be set to PolicyTypes Ingress
+		{// Empty Ingress NetworkPolicy should be set to PolicyTypes Ingress
 			original: &extensionsv1beta1.NetworkPolicy{
 				Spec: extensionsv1beta1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -561,7 +560,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Defined Ingress and Egress should be set to Ingress,Egress
+		{// Defined Ingress and Egress should be set to Ingress,Egress
 			original: &extensionsv1beta1.NetworkPolicy{
 				Spec: extensionsv1beta1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -628,7 +627,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Egress only with unset PolicyTypes should be set to Ingress, Egress
+		{// Egress only with unset PolicyTypes should be set to Ingress, Egress
 			original: &extensionsv1beta1.NetworkPolicy{
 				Spec: extensionsv1beta1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -667,7 +666,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Egress only with PolicyTypes set to Egress should be set to only Egress
+		{// Egress only with PolicyTypes set to Egress should be set to only Egress
 			original: &extensionsv1beta1.NetworkPolicy{
 				Spec: extensionsv1beta1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{

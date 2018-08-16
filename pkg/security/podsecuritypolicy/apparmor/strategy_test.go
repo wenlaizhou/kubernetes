@@ -35,15 +35,15 @@ const (
 var (
 	withoutAppArmor = map[string]string{"foo": "bar"}
 	withDefault     = map[string]string{
-		"foo": "bar",
+		"foo":                                                 "bar",
 		apparmor.ContainerAnnotationKeyPrefix + containerName: apparmor.ProfileRuntimeDefault,
 	}
 	withLocal = map[string]string{
-		"foo": "bar",
+		"foo":                                                 "bar",
 		apparmor.ContainerAnnotationKeyPrefix + containerName: apparmor.ProfileNamePrefix + "foo",
 	}
 	withDisallowed = map[string]string{
-		"foo": "bar",
+		"foo":                                                 "bar",
 		apparmor.ContainerAnnotationKeyPrefix + containerName: apparmor.ProfileNamePrefix + "bad",
 	}
 

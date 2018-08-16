@@ -28,7 +28,7 @@ func TestBuildArgumentListFromMap(t *testing.T) {
 		overrides map[string]string
 		expected  []string
 	}{
-		{ // override an argument from the base
+		{// override an argument from the base
 			base: map[string]string{
 				"admission-control":     "NamespaceLifecycle",
 				"insecure-bind-address": "127.0.0.1",
@@ -43,7 +43,7 @@ func TestBuildArgumentListFromMap(t *testing.T) {
 				"--insecure-bind-address=127.0.0.1",
 			},
 		},
-		{ // add an argument that is not in base
+		{// add an argument that is not in base
 			base: map[string]string{
 				"insecure-bind-address": "127.0.0.1",
 				"allow-privileged":      "true",
@@ -57,7 +57,7 @@ func TestBuildArgumentListFromMap(t *testing.T) {
 				"--insecure-bind-address=127.0.0.1",
 			},
 		},
-		{ // allow empty strings in base
+		{// allow empty strings in base
 			base: map[string]string{
 				"insecure-bind-address":              "127.0.0.1",
 				"allow-privileged":                   "true",
@@ -73,7 +73,7 @@ func TestBuildArgumentListFromMap(t *testing.T) {
 				"--something-that-allows-empty-string=",
 			},
 		},
-		{ // allow empty strings in overrides
+		{// allow empty strings in overrides
 			base: map[string]string{
 				"insecure-bind-address":              "127.0.0.1",
 				"allow-privileged":                   "true",

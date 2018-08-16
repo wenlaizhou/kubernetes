@@ -99,5 +99,5 @@ func markPVCResizeInProgress(pvcWithResizeRequest *cache.PVCWithResizeRequest, k
 	newPVC := pvcWithResizeRequest.PVC.DeepCopy()
 	newPVC = util.MergeResizeConditionOnPVC(newPVC, conditions)
 
-	return util.PatchPVCStatus(pvcWithResizeRequest.PVC /*oldPVC*/, newPVC, kubeClient)
+	return util.PatchPVCStatus(pvcWithResizeRequest.PVC /*oldPVC*/ , newPVC, kubeClient)
 }

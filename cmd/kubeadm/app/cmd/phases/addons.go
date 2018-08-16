@@ -155,7 +155,7 @@ func getAddonsSubCommands() []*cobra.Command {
 			cmd.Flags().StringVar(&cfg.Networking.DNSDomain, "service-dns-domain", cfg.Networking.DNSDomain, `Alternative domain for services`)
 			cmd.Flags().StringVar(&cfg.Networking.ServiceSubnet, "service-cidr", cfg.Networking.ServiceSubnet, `The range of IP address used for service VIPs`)
 			cmd.Flags().StringVar(&featureGatesString, "feature-gates", featureGatesString, "A set of key=value pairs that describe feature gates for various features."+
-				"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+				"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 		}
 		subCmds = append(subCmds, cmd)
 	}

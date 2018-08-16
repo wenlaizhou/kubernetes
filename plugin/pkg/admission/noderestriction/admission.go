@@ -31,7 +31,7 @@ import (
 	"k8s.io/kubernetes/pkg/apis/policy"
 	"k8s.io/kubernetes/pkg/auth/nodeidentifier"
 	informers "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion"
-	internalversion "k8s.io/kubernetes/pkg/client/listers/core/internalversion"
+	"k8s.io/kubernetes/pkg/client/listers/core/internalversion"
 	"k8s.io/kubernetes/pkg/features"
 	kubeapiserveradmission "k8s.io/kubernetes/pkg/kubeapiserver/admission"
 )

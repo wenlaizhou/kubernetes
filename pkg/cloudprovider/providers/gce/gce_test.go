@@ -573,8 +573,8 @@ func TestLastComponent(t *testing.T) {
 		"https://www.googleapis.com/compute/v1/projects/my-project/regions/us-central1/subnetworks/a": "a",
 		"https://www.googleapis.com/compute/v1/projects/my-project/regions/us-central1/subnetworks/b": "b",
 		"projects/my-project/regions/us-central1/subnetworks/c":                                       "c",
-		"d": "d",
-		"":  "",
+		"d":                                                                                           "d",
+		"":                                                                                            "",
 	}
 	for input, output := range cases {
 		result := lastComponent(input)

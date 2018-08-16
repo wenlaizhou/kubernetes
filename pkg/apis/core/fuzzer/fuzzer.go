@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"time"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"

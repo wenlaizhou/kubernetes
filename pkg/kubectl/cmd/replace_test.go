@@ -206,7 +206,7 @@ func TestReplaceDirectory(t *testing.T) {
 	cmd.Flags().Set("cascade", "false")
 	cmd.Run(cmd, []string{})
 
-	if buf.String() != "replicationcontroller/frontend\nreplicationcontroller/redis-master\nreplicationcontroller/redis-slave\n"+
+	if buf.String() != "replicationcontroller/frontend\nreplicationcontroller/redis-master\nreplicationcontroller/redis-slave\n" +
 		"replicationcontroller/rc1\nreplicationcontroller/rc1\nreplicationcontroller/rc1\n" {
 		t.Errorf("unexpected output: %s", buf.String())
 	}

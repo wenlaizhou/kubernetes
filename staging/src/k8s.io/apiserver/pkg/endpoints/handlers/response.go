@@ -129,7 +129,7 @@ func transformResponseObject(ctx context.Context, scope RequestScope, req *http.
 						scope.err(err, w, req)
 						return
 					}
-				// TODO: rely on defaulting for the value here?
+					// TODO: rely on defaulting for the value here?
 				case metav1beta1.IncludeMetadata, "":
 					m, err := meta.Accessor(item.Object.Object)
 					if err != nil {

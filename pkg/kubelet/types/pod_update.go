@@ -40,18 +40,18 @@ const (
 	// This is the current pod configuration
 	SET PodOperation = iota
 	// Pods with the given ids are new to this source
-	ADD
+	ADD 
 	// Pods with the given ids are gracefully deleted from this source
-	DELETE
+	DELETE 
 	// Pods with the given ids have been removed from this source
-	REMOVE
+	REMOVE 
 	// Pods with the given ids have been updated in this source
-	UPDATE
+	UPDATE 
 	// Pods with the given ids have unexpected status in this source,
 	// kubelet should reconcile status with this source
-	RECONCILE
+	RECONCILE 
 	// Pods with the given ids have been restored from a checkpoint.
-	RESTORE
+	RESTORE 
 
 	// These constants identify the sources of pods
 	// Updates from a file
@@ -117,12 +117,12 @@ const (
 	// SyncPodSync is when the pod is synced to ensure desired state
 	SyncPodSync SyncPodType = iota
 	// SyncPodUpdate is when the pod is updated from source
-	SyncPodUpdate
+	SyncPodUpdate 
 	// SyncPodCreate is when the pod is created from source
-	SyncPodCreate
+	SyncPodCreate 
 	// SyncPodKill is when the pod is killed based on a trigger internal to the kubelet for eviction.
 	// If a SyncPodKill request is made to pod workers, the request is never dropped, and will always be processed.
-	SyncPodKill
+	SyncPodKill 
 )
 
 func (sp SyncPodType) String() string {

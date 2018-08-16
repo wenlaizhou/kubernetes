@@ -38,9 +38,9 @@ const (
 type syncAction int
 
 const (
-	syncRequeue syncAction = iota
-	syncRequeueRateLimited
-	syncNothing
+	syncRequeue            syncAction = iota
+	syncRequeueRateLimited 
+	syncNothing            
 )
 
 // AggregationManager is the interface between this controller and OpenAPI Aggregator service.

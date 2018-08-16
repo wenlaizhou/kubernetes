@@ -23,33 +23,33 @@ const (
 	Invalid BasicKind = iota // type is invalid
 
 	// predeclared types
-	Bool
-	Int
-	Int8
-	Int16
-	Int32
-	Int64
-	Uint
-	Uint8
-	Uint16
-	Uint32
-	Uint64
-	Uintptr
-	Float32
-	Float64
-	Complex64
-	Complex128
-	String
-	UnsafePointer
+	Bool          
+	Int           
+	Int8          
+	Int16         
+	Int32         
+	Int64         
+	Uint          
+	Uint8         
+	Uint16        
+	Uint32        
+	Uint64        
+	Uintptr       
+	Float32       
+	Float64       
+	Complex64     
+	Complex128    
+	String        
+	UnsafePointer 
 
 	// types for untyped values
-	UntypedBool
-	UntypedInt
-	UntypedRune
-	UntypedFloat
-	UntypedComplex
-	UntypedString
-	UntypedNil
+	UntypedBool    
+	UntypedInt     
+	UntypedRune    
+	UntypedFloat   
+	UntypedComplex 
+	UntypedString  
+	UntypedNil     
 
 	// aliases
 	Byte = Uint8
@@ -61,13 +61,13 @@ type BasicInfo int
 
 // Properties of basic types.
 const (
-	IsBoolean BasicInfo = 1 << iota
-	IsInteger
-	IsUnsigned
-	IsFloat
-	IsComplex
-	IsString
-	IsUntyped
+	IsBoolean  BasicInfo = 1 << iota
+	IsInteger  
+	IsUnsigned 
+	IsFloat    
+	IsComplex  
+	IsString   
+	IsUntyped  
 
 	IsOrdered   = IsInteger | IsFloat | IsString
 	IsNumeric   = IsInteger | IsFloat | IsComplex
@@ -374,8 +374,8 @@ type ChanDir int
 // The direction of a channel is indicated by one of these constants.
 const (
 	SendRecv ChanDir = iota
-	SendOnly
-	RecvOnly
+	SendOnly 
+	RecvOnly 
 )
 
 // NewChan returns a new channel type for the given direction and element type.

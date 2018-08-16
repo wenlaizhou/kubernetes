@@ -21,9 +21,9 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/spec"
-	openapi_v2 "github.com/googleapis/gnostic/OpenAPIv2"
+	"github.com/googleapis/gnostic/OpenAPIv2"
 	"github.com/googleapis/gnostic/compiler"
-	yaml "gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v2"
 
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/kube-openapi/pkg/util/proto"

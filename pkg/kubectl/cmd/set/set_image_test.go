@@ -229,7 +229,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"replicaset", "nginx", "*=thingy"},
+			args:         []string{"replicaset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta2 ReplicaSet",
@@ -250,7 +250,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"replicaset", "nginx", "*=thingy"},
+			args:         []string{"replicaset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1 ReplicaSet",
@@ -271,7 +271,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"replicaset", "nginx", "*=thingy"},
+			args:         []string{"replicaset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image extensionsv1beta1 DaemonSet",
@@ -292,7 +292,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"daemonset", "nginx", "*=thingy"},
+			args:         []string{"daemonset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta2 DaemonSet",
@@ -313,7 +313,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"daemonset", "nginx", "*=thingy"},
+			args:         []string{"daemonset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1 DaemonSet",
@@ -334,7 +334,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"daemonset", "nginx", "*=thingy"},
+			args:         []string{"daemonset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image extensionsv1beta1 Deployment",
@@ -355,7 +355,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", "*=thingy"},
+			args:         []string{"deployment", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta1 Deployment",
@@ -376,7 +376,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", "*=thingy"},
+			args:         []string{"deployment", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta2 Deployment",
@@ -397,7 +397,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"deployment", "nginx", "*=thingy"},
+			args:         []string{"deployment", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1 Deployment",
@@ -418,7 +418,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"deployment", "nginx", "*=thingy"},
+			args:         []string{"deployment", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta1 StatefulSet",
@@ -439,7 +439,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"statefulset", "nginx", "*=thingy"},
+			args:         []string{"statefulset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1beta2 StatefulSet",
@@ -460,7 +460,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"statefulset", "nginx", "*=thingy"},
+			args:         []string{"statefulset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image appsv1 StatefulSet",
@@ -481,7 +481,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"statefulset", "nginx", "*=thingy"},
+			args:         []string{"statefulset", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image batchv1 Job",
@@ -502,7 +502,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "batch",
 			apiPrefix:    "/apis", apiGroup: "batch", apiVersion: "v1",
-			args: []string{"job", "nginx", "*=thingy"},
+			args:         []string{"job", "nginx", "*=thingy"},
 		},
 		{
 			name: "set image v1.ReplicationController",
@@ -523,7 +523,7 @@ func TestSetImageRemote(t *testing.T) {
 			},
 			testAPIGroup: "",
 			apiPrefix:    "/api", apiGroup: "", apiVersion: "v1",
-			args: []string{"replicationcontroller", "nginx", "*=thingy"},
+			args:         []string{"replicationcontroller", "nginx", "*=thingy"},
 		},
 	}
 	for _, input := range inputs {

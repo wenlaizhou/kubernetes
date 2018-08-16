@@ -35,7 +35,7 @@ import (
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 	"k8s.io/client-go/util/flowcontrol"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 	"github.com/stretchr/testify/assert"
 )
 

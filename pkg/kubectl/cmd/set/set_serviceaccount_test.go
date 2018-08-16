@@ -157,7 +157,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"replicaset", "nginx", serviceAccount},
+			args:         []string{"replicaset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta2.ReplicaSet{
@@ -177,7 +177,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"replicaset", "nginx", serviceAccount},
+			args:         []string{"replicaset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1.ReplicaSet{
@@ -197,7 +197,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"replicaset", "nginx", serviceAccount},
+			args:         []string{"replicaset", "nginx", serviceAccount},
 		},
 		{
 			object: &extensionsv1beta1.DaemonSet{
@@ -205,7 +205,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"daemonset", "nginx", serviceAccount},
+			args:         []string{"daemonset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta2.DaemonSet{
@@ -213,7 +213,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"daemonset", "nginx", serviceAccount},
+			args:         []string{"daemonset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1.DaemonSet{
@@ -221,7 +221,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"daemonset", "nginx", serviceAccount},
+			args:         []string{"daemonset", "nginx", serviceAccount},
 		},
 		{
 			object: &extensionsv1beta1.Deployment{
@@ -229,7 +229,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", serviceAccount},
+			args:         []string{"deployment", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta1.Deployment{
@@ -237,7 +237,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", serviceAccount},
+			args:         []string{"deployment", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta2.Deployment{
@@ -245,7 +245,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"deployment", "nginx", serviceAccount},
+			args:         []string{"deployment", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1.Deployment{
@@ -265,7 +265,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"deployment", "nginx", serviceAccount},
+			args:         []string{"deployment", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta1.StatefulSet{
@@ -273,7 +273,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"statefulset", "nginx", serviceAccount},
+			args:         []string{"statefulset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1beta2.StatefulSet{
@@ -281,7 +281,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"statefulset", "nginx", serviceAccount},
+			args:         []string{"statefulset", "nginx", serviceAccount},
 		},
 		{
 			object: &appsv1.StatefulSet{
@@ -301,7 +301,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"statefulset", "nginx", serviceAccount},
+			args:         []string{"statefulset", "nginx", serviceAccount},
 		},
 		{
 			object: &batchv1.Job{
@@ -309,7 +309,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "batch",
 			apiPrefix:    "/apis", apiGroup: "batch", apiVersion: "v1",
-			args: []string{"job", "nginx", serviceAccount},
+			args:         []string{"job", "nginx", serviceAccount},
 		},
 		{
 			object: &v1.ReplicationController{
@@ -317,7 +317,7 @@ func TestSetServiceAccountRemote(t *testing.T) {
 			},
 			testAPIGroup: "",
 			apiPrefix:    "/api", apiGroup: "", apiVersion: "v1",
-			args: []string{"replicationcontroller", "nginx", serviceAccount},
+			args:         []string{"replicationcontroller", "nginx", serviceAccount},
 		},
 	}
 	for _, input := range inputs {

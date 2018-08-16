@@ -202,7 +202,7 @@ func TestCmdJoinBadArgs(t *testing.T) {
 		expected bool
 	}{
 		{"--discovery-token=abcdef.1234567890123456 --discovery-file=file:///tmp/foo.bar", false}, // DiscoveryToken, DiscoveryFile can't both be set
-		{"", false}, // DiscoveryToken or DiscoveryFile must be set
+		{"", false},                                                                               // DiscoveryToken or DiscoveryFile must be set
 	}
 
 	for _, rt := range initTest {

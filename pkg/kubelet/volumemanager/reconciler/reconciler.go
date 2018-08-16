@@ -303,7 +303,7 @@ func (rc *reconciler) reconcile() {
 					// Only detach if kubelet detach is enabled
 					glog.V(5).Infof(attachedVolume.GenerateMsgDetailed("Starting operationExecutor.DetachVolume", ""))
 					err := rc.operationExecutor.DetachVolume(
-						attachedVolume.AttachedVolume, false /* verifySafeToDetach */, rc.actualStateOfWorld)
+						attachedVolume.AttachedVolume, false /* verifySafeToDetach */ , rc.actualStateOfWorld)
 					if err != nil &&
 						!nestedpendingoperations.IsAlreadyExists(err) &&
 						!exponentialbackoff.IsExponentialBackoff(err) {
@@ -597,7 +597,7 @@ func (rc *reconciler) updateStates(volumesNeedUpdate map[v1.UniqueVolumeName]*re
 	for _, volume := range volumesNeedUpdate {
 		err := rc.actualStateOfWorld.MarkVolumeAsAttached(
 			//TODO: the devicePath might not be correct for some volume plugins: see issue #54108
-			volume.volumeName, volume.volumeSpec, "" /* nodeName */, volume.devicePath)
+			volume.volumeName, volume.volumeSpec, "" /* nodeName */ , volume.devicePath)
 		if err != nil {
 			glog.Errorf("Could not add volume information to actual state of world: %v", err)
 			continue

@@ -39,99 +39,99 @@ func Test_getProxyMode(t *testing.T) {
 		ipsetError      error
 		expected        string
 	}{
-		{ // flag says userspace
-			flag:     "userspace",
+		{// flag says userspace
+			flag: "userspace",
 			expected: proxyModeUserspace,
 		},
-		{ // flag says iptables, error detecting version
-			flag:          "iptables",
+		{// flag says iptables, error detecting version
+			flag: "iptables",
 			iptablesError: fmt.Errorf("oops!"),
-			expected:      proxyModeUserspace,
+			expected: proxyModeUserspace,
 		},
-		{ // flag says iptables, version too low
-			flag:            "iptables",
+		{// flag says iptables, version too low
+			flag: "iptables",
 			iptablesVersion: "0.0.0",
-			expected:        proxyModeUserspace,
+			expected: proxyModeUserspace,
 		},
-		{ // flag says iptables, version ok, kernel not compatible
-			flag:            "iptables",
+		{// flag says iptables, version ok, kernel not compatible
+			flag: "iptables",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    false,
-			expected:        proxyModeUserspace,
+			kernelCompat: false,
+			expected: proxyModeUserspace,
 		},
-		{ // flag says iptables, version ok, kernel is compatible
-			flag:            "iptables",
+		{// flag says iptables, version ok, kernel is compatible
+			flag: "iptables",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    true,
-			expected:        proxyModeIPTables,
+			kernelCompat: true,
+			expected: proxyModeIPTables,
 		},
-		{ // detect, error
-			flag:          "",
+		{// detect, error
+			flag: "",
 			iptablesError: fmt.Errorf("oops!"),
-			expected:      proxyModeUserspace,
+			expected: proxyModeUserspace,
 		},
-		{ // detect, version too low
-			flag:            "",
+		{// detect, version too low
+			flag: "",
 			iptablesVersion: "0.0.0",
-			expected:        proxyModeUserspace,
+			expected: proxyModeUserspace,
 		},
-		{ // detect, version ok, kernel not compatible
-			flag:            "",
+		{// detect, version ok, kernel not compatible
+			flag: "",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    false,
-			expected:        proxyModeUserspace,
+			kernelCompat: false,
+			expected: proxyModeUserspace,
 		},
-		{ // detect, version ok, kernel is compatible
-			flag:            "",
+		{// detect, version ok, kernel is compatible
+			flag: "",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    true,
-			expected:        proxyModeIPTables,
+			kernelCompat: true,
+			expected: proxyModeIPTables,
 		},
-		{ // flag says ipvs, ipset version ok, kernel modules installed
-			flag:         "ipvs",
-			kmods:        []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
+		{// flag says ipvs, ipset version ok, kernel modules installed
+			flag: "ipvs",
+			kmods: []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
 			ipsetVersion: ipvs.MinIPSetCheckVersion,
-			expected:     proxyModeIPVS,
+			expected: proxyModeIPVS,
 		},
-		{ // flag says ipvs, ipset version too low, fallback on iptables mode
-			flag:            "ipvs",
-			kmods:           []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
-			ipsetVersion:    "0.0",
+		{// flag says ipvs, ipset version too low, fallback on iptables mode
+			flag: "ipvs",
+			kmods: []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
+			ipsetVersion: "0.0",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    true,
-			expected:        proxyModeIPTables,
+			kernelCompat: true,
+			expected: proxyModeIPTables,
 		},
-		{ // flag says ipvs, bad ipset version, fallback on iptables mode
-			flag:            "ipvs",
-			kmods:           []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
-			ipsetVersion:    "a.b.c",
+		{// flag says ipvs, bad ipset version, fallback on iptables mode
+			flag: "ipvs",
+			kmods: []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
+			ipsetVersion: "a.b.c",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    true,
-			expected:        proxyModeIPTables,
+			kernelCompat: true,
+			expected: proxyModeIPTables,
 		},
-		{ // flag says ipvs, required kernel modules are not installed, fallback on iptables mode
-			flag:            "ipvs",
-			kmods:           []string{"foo", "bar", "baz"},
-			ipsetVersion:    ipvs.MinIPSetCheckVersion,
+		{// flag says ipvs, required kernel modules are not installed, fallback on iptables mode
+			flag: "ipvs",
+			kmods: []string{"foo", "bar", "baz"},
+			ipsetVersion: ipvs.MinIPSetCheckVersion,
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    true,
-			expected:        proxyModeIPTables,
+			kernelCompat: true,
+			expected: proxyModeIPTables,
 		},
-		{ // flag says ipvs, required kernel modules are not installed, iptables version too old, fallback on userspace mode
-			flag:            "ipvs",
-			kmods:           []string{"foo", "bar", "baz"},
-			ipsetVersion:    ipvs.MinIPSetCheckVersion,
+		{// flag says ipvs, required kernel modules are not installed, iptables version too old, fallback on userspace mode
+			flag: "ipvs",
+			kmods: []string{"foo", "bar", "baz"},
+			ipsetVersion: ipvs.MinIPSetCheckVersion,
 			iptablesVersion: "0.0.0",
-			kernelCompat:    true,
-			expected:        proxyModeUserspace,
+			kernelCompat: true,
+			expected: proxyModeUserspace,
 		},
-		{ // flag says ipvs, ipset version too low, iptables version too old, kernel not compatible, fallback on userspace mode
-			flag:            "ipvs",
-			kmods:           []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
-			ipsetVersion:    "0.0",
+		{// flag says ipvs, ipset version too low, iptables version too old, kernel not compatible, fallback on userspace mode
+			flag: "ipvs",
+			kmods: []string{"ip_vs", "ip_vs_rr", "ip_vs_wrr", "ip_vs_sh", "nf_conntrack_ipv4"},
+			ipsetVersion: "0.0",
 			iptablesVersion: iptables.MinCheckVersion,
-			kernelCompat:    false,
-			expected:        proxyModeUserspace,
+			kernelCompat: false,
+			expected: proxyModeUserspace,
 		},
 	}
 	for i, c := range cases {

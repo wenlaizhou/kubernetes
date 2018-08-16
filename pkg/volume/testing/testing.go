@@ -39,7 +39,6 @@ import (
 	"k8s.io/kubernetes/pkg/cloudprovider"
 	"k8s.io/kubernetes/pkg/util/mount"
 	utilstrings "k8s.io/kubernetes/pkg/util/strings"
-	. "k8s.io/kubernetes/pkg/volume"
 	"k8s.io/kubernetes/pkg/volume/util"
 	"k8s.io/kubernetes/pkg/volume/util/recyclerclient"
 	"k8s.io/kubernetes/pkg/volume/util/volumepathhandler"
@@ -81,7 +80,7 @@ func newFakeVolumeHost(rootDir string, kubeClient clientset.Interface, plugins [
 	host := &fakeVolumeHost{rootDir: rootDir, kubeClient: kubeClient, cloud: cloud}
 	host.mounter = &mount.FakeMounter{}
 	host.exec = mount.NewFakeExec(nil)
-	host.pluginMgr.InitPlugins(plugins, nil /* prober */, host)
+	host.pluginMgr.InitPlugins(plugins, nil /* prober */ , host)
 	return host
 }
 
@@ -1177,7 +1176,7 @@ func GetTestVolumePluginMgr(
 		nil, /* plugins */
 	)
 	plugins := ProbeVolumePlugins(VolumeConfig{})
-	if err := v.pluginMgr.InitPlugins(plugins, nil /* prober */, v); err != nil {
+	if err := v.pluginMgr.InitPlugins(plugins, nil /* prober */ , v); err != nil {
 		t.Fatal(err)
 	}
 

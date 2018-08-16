@@ -35,9 +35,9 @@ import (
 	"text/template"
 	"time"
 
-	oidc "github.com/coreos/go-oidc"
+	"github.com/coreos/go-oidc"
 	"github.com/golang/glog"
-	jose "gopkg.in/square/go-jose.v2"
+	"gopkg.in/square/go-jose.v2"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
 
@@ -173,7 +173,7 @@ func newClaimServer(t *testing.T, keys jose.JSONWebKeySet, signer jose.Signer, c
 			w.Header().Set("Content-Type", "application/json")
 			glog.V(5).Infof("%v: returning: %+v", r.URL, *openIDConfig)
 			w.Write([]byte(*openIDConfig))
-		// These claims are tested in the unit tests.
+			// These claims are tested in the unit tests.
 		case "/groups":
 			fallthrough
 		case "/rabbits":

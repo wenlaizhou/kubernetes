@@ -230,8 +230,8 @@ func TestCreateDisk_BadDiskType(t *testing.T) {
 	zonesWithNodes := []string{"zone1"}
 	fakeManager := newFakeManager(gceProjectId, gceRegion)
 	gce := GCECloud{manager: fakeManager,
-		managedZones:       zonesWithNodes,
-		nodeZones:          createNodeZones(zonesWithNodes),
+		managedZones: zonesWithNodes,
+		nodeZones: createNodeZones(zonesWithNodes),
 		nodeInformerSynced: func() bool { return true }}
 
 	diskName := "disk"
@@ -517,8 +517,8 @@ func TestGetAutoLabelsForPD_DiskNotFound(t *testing.T) {
 	fakeManager := newFakeManager(gceProjectId, gceRegion)
 	diskName := "disk"
 	gce := GCECloud{manager: fakeManager,
-		managedZones:       zonesWithNodes,
-		nodeZones:          createNodeZones(zonesWithNodes),
+		managedZones: zonesWithNodes,
+		nodeZones: createNodeZones(zonesWithNodes),
 		nodeInformerSynced: func() bool { return true }}
 
 	/* Act */

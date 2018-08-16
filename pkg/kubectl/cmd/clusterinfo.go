@@ -32,7 +32,7 @@ import (
 	"k8s.io/kubernetes/pkg/kubectl/genericclioptions/resource"
 	"k8s.io/kubernetes/pkg/kubectl/util/i18n"
 
-	ct "github.com/daviddengcn/go-colortext"
+	"github.com/daviddengcn/go-colortext"
 	"github.com/spf13/cobra"
 )
 

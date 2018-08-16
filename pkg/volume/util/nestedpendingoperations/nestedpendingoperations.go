@@ -206,7 +206,7 @@ func (grm *nestedPendingOperations) getOperation(
 }
 
 func (grm *nestedPendingOperations) deleteOperation(
-	// Assumes lock has been acquired by caller.
+// Assumes lock has been acquired by caller.
 	volumeName v1.UniqueVolumeName,
 	podName types.UniquePodName) {
 

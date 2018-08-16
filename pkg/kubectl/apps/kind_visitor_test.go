@@ -17,9 +17,6 @@ limitations under the License.
 package apps_test
 
 import (
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-
 	"k8s.io/kubernetes/pkg/kubectl/apps"
 )
 

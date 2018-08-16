@@ -30,7 +30,7 @@ import (
 	"strings"
 	"time"
 
-	restful "github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful"
 	"github.com/golang/glog"
 	cadvisorapi "github.com/google/cadvisor/info/v1"
 	"github.com/google/cadvisor/metrics"
@@ -635,7 +635,7 @@ func (r *responder) Error(w http.ResponseWriter, req *http.Request, err error) {
 // proxyStream proxies stream to url.
 func proxyStream(w http.ResponseWriter, r *http.Request, url *url.URL) {
 	// TODO(random-liu): Set MaxBytesPerSec to throttle the stream.
-	handler := proxy.NewUpgradeAwareHandler(url, nil /*transport*/, false /*wrapTransport*/, true /*upgradeRequired*/, &responder{})
+	handler := proxy.NewUpgradeAwareHandler(url, nil /*transport*/ , false /*wrapTransport*/ , true /*upgradeRequired*/ , &responder{})
 	handler.ServeHTTP(w, r)
 }
 

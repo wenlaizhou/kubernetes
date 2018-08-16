@@ -24,7 +24,6 @@ import (
 	"time"
 
 	systemd "github.com/coreos/go-systemd/daemon"
-	"github.com/emicklei/go-restful-swagger12"
 	"github.com/golang/glog"
 
 	"k8s.io/apimachinery/pkg/api/meta"

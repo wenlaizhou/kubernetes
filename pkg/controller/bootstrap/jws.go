@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	jose "gopkg.in/square/go-jose.v2"
+	"gopkg.in/square/go-jose.v2"
 )
 
 // computeDetachedSig takes content and token details and computes a detached

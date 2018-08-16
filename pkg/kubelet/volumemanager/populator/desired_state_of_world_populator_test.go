@@ -106,7 +106,7 @@ func TestFindAndAddNewPods_FindAndRemoveDeletedPods(t *testing.T) {
 	}
 
 	verifyVolumeExistsInVolumesToMount(
-		t, v1.UniqueVolumeName(generatedVolumeName), false /* expectReportedInUse */, fakesDSW)
+		t, v1.UniqueVolumeName(generatedVolumeName), false /* expectReportedInUse */ , fakesDSW)
 
 	//let the pod be terminated
 	podGet, exist := fakePodManager.GetPodByName(pod.Namespace, pod.Name)
@@ -217,7 +217,7 @@ func TestFindAndAddNewPods_FindAndRemoveDeletedPods_Valid_Block_VolumeDevices(t 
 	}
 
 	verifyVolumeExistsInVolumesToMount(
-		t, v1.UniqueVolumeName(generatedVolumeName), false /* expectReportedInUse */, fakesDSW)
+		t, v1.UniqueVolumeName(generatedVolumeName), false /* expectReportedInUse */ , fakesDSW)
 
 	//let the pod be terminated
 	podGet, exist := fakePodManager.GetPodByName(pod.Namespace, pod.Name)

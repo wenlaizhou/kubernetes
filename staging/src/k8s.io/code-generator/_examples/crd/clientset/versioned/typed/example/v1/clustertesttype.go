@@ -20,12 +20,12 @@ package v1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	types "k8s.io/apimachinery/pkg/types"
-	watch "k8s.io/apimachinery/pkg/watch"
-	rest "k8s.io/client-go/rest"
-	v1 "k8s.io/code-generator/_examples/crd/apis/example/v1"
-	scheme "k8s.io/code-generator/_examples/crd/clientset/versioned/scheme"
-	autoscaling "k8s.io/kubernetes/pkg/apis/autoscaling"
+	"k8s.io/apimachinery/pkg/types"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/rest"
+	"k8s.io/code-generator/_examples/crd/apis/example/v1"
+	"k8s.io/code-generator/_examples/crd/clientset/versioned/scheme"
+	"k8s.io/kubernetes/pkg/apis/autoscaling"
 )
 
 // ClusterTestTypesGetter has a method to return a ClusterTestTypeInterface.

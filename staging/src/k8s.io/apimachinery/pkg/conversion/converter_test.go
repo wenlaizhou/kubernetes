@@ -42,22 +42,22 @@ type MyWeirdCustomEmbeddedVersionKindField struct {
 
 type TestType1 struct {
 	MyWeirdCustomEmbeddedVersionKindField `json:",inline"`
-	A                                     string               `json:"A,omitempty"`
-	B                                     int                  `json:"B,omitempty"`
-	C                                     int8                 `json:"C,omitempty"`
-	D                                     int16                `json:"D,omitempty"`
-	E                                     int32                `json:"E,omitempty"`
-	F                                     int64                `json:"F,omitempty"`
-	G                                     uint                 `json:"G,omitempty"`
-	H                                     uint8                `json:"H,omitempty"`
-	I                                     uint16               `json:"I,omitempty"`
-	J                                     uint32               `json:"J,omitempty"`
-	K                                     uint64               `json:"K,omitempty"`
-	L                                     bool                 `json:"L,omitempty"`
-	M                                     map[string]int       `json:"M,omitempty"`
-	N                                     map[string]TestType2 `json:"N,omitempty"`
-	O                                     *TestType2           `json:"O,omitempty"`
-	P                                     []TestType2          `json:"Q,omitempty"`
+	A string                              `json:"A,omitempty"`
+	B int                                 `json:"B,omitempty"`
+	C int8                                `json:"C,omitempty"`
+	D int16                               `json:"D,omitempty"`
+	E int32                               `json:"E,omitempty"`
+	F int64                               `json:"F,omitempty"`
+	G uint                                `json:"G,omitempty"`
+	H uint8                               `json:"H,omitempty"`
+	I uint16                              `json:"I,omitempty"`
+	J uint32                              `json:"J,omitempty"`
+	K uint64                              `json:"K,omitempty"`
+	L bool                                `json:"L,omitempty"`
+	M map[string]int                      `json:"M,omitempty"`
+	N map[string]TestType2                `json:"N,omitempty"`
+	O *TestType2                          `json:"O,omitempty"`
+	P []TestType2                         `json:"Q,omitempty"`
 }
 
 type TestType2 struct {
@@ -71,22 +71,22 @@ type ExternalTestType2 struct {
 }
 type ExternalTestType1 struct {
 	MyWeirdCustomEmbeddedVersionKindField `json:",inline"`
-	A                                     string                       `json:"A,omitempty"`
-	B                                     int                          `json:"B,omitempty"`
-	C                                     int8                         `json:"C,omitempty"`
-	D                                     int16                        `json:"D,omitempty"`
-	E                                     int32                        `json:"E,omitempty"`
-	F                                     int64                        `json:"F,omitempty"`
-	G                                     uint                         `json:"G,omitempty"`
-	H                                     uint8                        `json:"H,omitempty"`
-	I                                     uint16                       `json:"I,omitempty"`
-	J                                     uint32                       `json:"J,omitempty"`
-	K                                     uint64                       `json:"K,omitempty"`
-	L                                     bool                         `json:"L,omitempty"`
-	M                                     map[string]int               `json:"M,omitempty"`
-	N                                     map[string]ExternalTestType2 `json:"N,omitempty"`
-	O                                     *ExternalTestType2           `json:"O,omitempty"`
-	P                                     []ExternalTestType2          `json:"Q,omitempty"`
+	A string                              `json:"A,omitempty"`
+	B int                                 `json:"B,omitempty"`
+	C int8                                `json:"C,omitempty"`
+	D int16                               `json:"D,omitempty"`
+	E int32                               `json:"E,omitempty"`
+	F int64                               `json:"F,omitempty"`
+	G uint                                `json:"G,omitempty"`
+	H uint8                               `json:"H,omitempty"`
+	I uint16                              `json:"I,omitempty"`
+	J uint32                              `json:"J,omitempty"`
+	K uint64                              `json:"K,omitempty"`
+	L bool                                `json:"L,omitempty"`
+	M map[string]int                      `json:"M,omitempty"`
+	N map[string]ExternalTestType2        `json:"N,omitempty"`
+	O *ExternalTestType2                  `json:"O,omitempty"`
+	P []ExternalTestType2                 `json:"Q,omitempty"`
 }
 
 func testLogger(t *testing.T) DebugLogger {

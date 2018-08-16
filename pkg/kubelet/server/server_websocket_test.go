@@ -33,8 +33,8 @@ import (
 )
 
 const (
-	dataChannel = iota
-	errorChannel
+	dataChannel  = iota
+	errorChannel 
 )
 
 func TestServeWSPortForward(t *testing.T) {

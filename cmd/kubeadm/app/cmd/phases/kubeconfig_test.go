@@ -344,13 +344,13 @@ func TestKubeConfigSubCommandsThatWritesToOut(t *testing.T) {
 		withToken       bool
 		additionalFlags []string
 	}{
-		{ // Test user subCommand withClientCert
-			command:        "user",
+		{// Test user subCommand withClientCert
+			command: "user",
 			withClientCert: true,
 		},
-		{ // Test user subCommand withToken
-			withToken:       true,
-			command:         "user",
+		{// Test user subCommand withToken
+			withToken: true,
+			command: "user",
 			additionalFlags: []string{"--token=123456"},
 		},
 	}

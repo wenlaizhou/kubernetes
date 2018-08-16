@@ -19,9 +19,9 @@ limitations under the License.
 package autoscaling
 
 import (
-	v1 "k8s.io/client-go/informers/autoscaling/v1"
-	v2beta1 "k8s.io/client-go/informers/autoscaling/v2beta1"
-	internalinterfaces "k8s.io/client-go/informers/internalinterfaces"
+	"k8s.io/client-go/informers/autoscaling/v1"
+	"k8s.io/client-go/informers/autoscaling/v2beta1"
+	"k8s.io/client-go/informers/internalinterfaces"
 )
 
 // Interface provides access to each of this group's versions.

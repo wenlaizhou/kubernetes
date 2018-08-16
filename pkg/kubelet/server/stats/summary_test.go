@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 	"github.com/stretchr/testify/assert"
 
 	"k8s.io/api/core/v1"

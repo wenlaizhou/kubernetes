@@ -61,7 +61,7 @@ func (r *RingGrowing) WriteOne(data interface{}) {
 			copy(newData, r.data[r.beg:to])
 		} else {
 			copied := copy(newData, r.data[r.beg:])
-			copy(newData[copied:], r.data[:(to%r.n)])
+			copy(newData[copied:], r.data[:(to % r.n)])
 		}
 		r.beg = 0
 		r.data = newData

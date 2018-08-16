@@ -78,11 +78,11 @@ func NewCmdReconcile(f cmdutil.Factory, streams genericclioptions.IOStreams) *co
 	o := NewReconcileOptions(streams)
 
 	cmd := &cobra.Command{
-		Use: "reconcile -f FILENAME",
+		Use:                   "reconcile -f FILENAME",
 		DisableFlagsInUseLine: true,
-		Short:   "Reconciles rules for RBAC Role, RoleBinding, ClusterRole, and ClusterRole binding objects",
-		Long:    reconcileLong,
-		Example: reconcileExample,
+		Short:                 "Reconciles rules for RBAC Role, RoleBinding, ClusterRole, and ClusterRole binding objects",
+		Long:                  reconcileLong,
+		Example:               reconcileExample,
 		Run: func(cmd *cobra.Command, args []string) {
 			cmdutil.CheckErr(o.Complete(cmd, f, args))
 			cmdutil.CheckErr(o.Validate())
@@ -182,7 +182,7 @@ func (o *ReconcileOptions) RunReconcile() error {
 			reconcileOptions := reconciliation.ReconcileRoleOptions{
 				Confirm:                !o.DryRun,
 				RemoveExtraPermissions: o.RemoveExtraPermissions,
-				Role: reconciliation.RoleRuleOwner{Role: t},
+				Role:                   reconciliation.RoleRuleOwner{Role: t},
 				Client: reconciliation.RoleModifier{
 					NamespaceClient: o.NamespaceClient.Namespaces(),
 					Client:          o.RBACClient,
@@ -198,7 +198,7 @@ func (o *ReconcileOptions) RunReconcile() error {
 			reconcileOptions := reconciliation.ReconcileRoleOptions{
 				Confirm:                !o.DryRun,
 				RemoveExtraPermissions: o.RemoveExtraPermissions,
-				Role: reconciliation.ClusterRoleRuleOwner{ClusterRole: t},
+				Role:                   reconciliation.ClusterRoleRuleOwner{ClusterRole: t},
 				Client: reconciliation.ClusterRoleModifier{
 					Client: o.RBACClient.ClusterRoles(),
 				},
@@ -241,13 +241,13 @@ func (o *ReconcileOptions) RunReconcile() error {
 			o.PrintObject(result.RoleBinding.GetObject(), o.Out)
 
 		case *rbacv1beta1.Role,
-			*rbacv1beta1.RoleBinding,
-			*rbacv1beta1.ClusterRole,
-			*rbacv1beta1.ClusterRoleBinding,
-			*rbacv1alpha1.Role,
-			*rbacv1alpha1.RoleBinding,
-			*rbacv1alpha1.ClusterRole,
-			*rbacv1alpha1.ClusterRoleBinding:
+		*rbacv1beta1.RoleBinding,
+		*rbacv1beta1.ClusterRole,
+		*rbacv1beta1.ClusterRoleBinding,
+		*rbacv1alpha1.Role,
+		*rbacv1alpha1.RoleBinding,
+		*rbacv1alpha1.ClusterRole,
+		*rbacv1alpha1.ClusterRoleBinding:
 			return fmt.Errorf("only rbac.authorization.k8s.io/v1 is supported: not %T", t)
 
 		default:

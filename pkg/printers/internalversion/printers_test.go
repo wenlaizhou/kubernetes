@@ -70,12 +70,12 @@ var testData = TestStruct{
 }
 
 type TestStruct struct {
-	metav1.TypeMeta   `json:",inline"`
-	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Key               string         `json:"Key"`
-	Map               map[string]int `json:"Map"`
-	StringList        []string       `json:"StringList"`
-	IntList           []int          `json:"IntList"`
+	metav1.TypeMeta           `json:",inline"`
+	metav1.ObjectMeta         `json:"metadata,omitempty"`
+	Key        string         `json:"Key"`
+	Map        map[string]int `json:"Map"`
+	StringList []string       `json:"StringList"`
+	IntList    []int          `json:"IntList"`
 }
 
 func (in *TestStruct) DeepCopyObject() runtime.Object {
@@ -653,7 +653,7 @@ func TestPrintEventsResultSorted(t *testing.T) {
 		t.Fatalf("An error occurred printing the EventList: %#v", err)
 	}
 	out := buffer.String()
-	VerifyDatesInOrder(out, "\n" /* rowDelimiter */, "  " /* columnDelimiter */, t)
+	VerifyDatesInOrder(out, "\n" /* rowDelimiter */ , "  " /* columnDelimiter */ , t)
 }
 
 func TestPrintNodeStatus(t *testing.T) {
@@ -1289,7 +1289,7 @@ func TestPrintHumanReadableWithNamespace(t *testing.T) {
 						Spec: api.PodSpec{
 							Containers: []api.Container{
 								{
-									Image: "foo/bar",
+									Image:                  "foo/bar",
 									TerminationMessagePath: api.TerminationMessagePathDefault,
 									ImagePullPolicy:        api.PullIfNotPresent,
 								},
@@ -1473,32 +1473,32 @@ func TestPrintPodTable(t *testing.T) {
 		ignoreLegacy bool
 	}{
 		{
-			obj: runningPod, opts: printers.PrintOptions{},
+			obj:    runningPod, opts: printers.PrintOptions{},
 			expect: "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\ntest1\t1/2\tRunning\t6\t<unknown>\n",
 		},
 		{
-			obj: runningPod, opts: printers.PrintOptions{WithKind: true, Kind: schema.GroupKind{Kind: "Pod"}},
+			obj:    runningPod, opts: printers.PrintOptions{WithKind: true, Kind: schema.GroupKind{Kind: "Pod"}},
 			expect: "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\npod/test1\t1/2\tRunning\t6\t<unknown>\n",
 		},
 		{
-			obj: runningPod, opts: printers.PrintOptions{ShowLabels: true},
+			obj:    runningPod, opts: printers.PrintOptions{ShowLabels: true},
 			expect: "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\tLABELS\ntest1\t1/2\tRunning\t6\t<unknown>\ta=1,b=2\n",
 		},
 		{
-			obj: &api.PodList{Items: []api.Pod{*runningPod, *failedPod}}, opts: printers.PrintOptions{ColumnLabels: []string{"a"}},
+			obj:    &api.PodList{Items: []api.Pod{*runningPod, *failedPod}}, opts: printers.PrintOptions{ColumnLabels: []string{"a"}},
 			expect: "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\tA\ntest1\t1/2\tRunning\t6\t<unknown>\t1\ntest2\t1/2\tFailed\t6\t<unknown>\t\n",
 		},
 		{
-			obj: runningPod, opts: printers.PrintOptions{NoHeaders: true},
+			obj:    runningPod, opts: printers.PrintOptions{NoHeaders: true},
 			expect: "test1\t1/2\tRunning\t6\t<unknown>\n",
 		},
 		{
-			obj: failedPod, opts: printers.PrintOptions{},
+			obj:          failedPod, opts: printers.PrintOptions{},
 			expect:       "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\ntest2\t1/2\tFailed\t6\t<unknown>\n",
 			ignoreLegacy: true, // filtering is not done by the printer in the legacy path
 		},
 		{
-			obj: failedPod, opts: printers.PrintOptions{},
+			obj:    failedPod, opts: printers.PrintOptions{},
 			expect: "NAME\tREADY\tSTATUS\tRESTARTS\tAGE\ntest2\t1/2\tFailed\t6\t<unknown>\n",
 		},
 	}
@@ -2571,7 +2571,7 @@ func TestPrintHPA(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -2599,7 +2599,7 @@ func TestPrintHPA(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -2612,7 +2612,7 @@ func TestPrintHPA(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricStatus{
-								Name: api.ResourceCPU,
+								Name:                      api.ResourceCPU,
 								CurrentAverageUtilization: &currentUtilizationVal,
 								CurrentAverageValue:       *resource.NewMilliQuantity(40, resource.DecimalSI),
 							},
@@ -2644,7 +2644,7 @@ func TestPrintHPA(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricSource{
-								Name: api.ResourceCPU,
+								Name:                     api.ResourceCPU,
 								TargetAverageUtilization: &targetUtilizationVal,
 							},
 						},
@@ -2671,7 +2671,7 @@ func TestPrintHPA(t *testing.T) {
 						{
 							Type: autoscaling.ResourceMetricSourceType,
 							Resource: &autoscaling.ResourceMetricStatus{
-								Name: api.ResourceCPU,
+								Name:                      api.ResourceCPU,
 								CurrentAverageUtilization: &currentUtilizationVal,
 								CurrentAverageValue:       *resource.NewMilliQuantity(40, resource.DecimalSI),
 							},

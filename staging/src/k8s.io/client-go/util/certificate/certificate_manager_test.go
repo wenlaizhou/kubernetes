@@ -28,10 +28,10 @@ import (
 
 	certificates "k8s.io/api/certificates/v1beta1"
 	"k8s.io/apimachinery/pkg/api/errors"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/wait"
-	watch "k8s.io/apimachinery/pkg/watch"
+	"k8s.io/apimachinery/pkg/watch"
 	certificatesclient "k8s.io/client-go/kubernetes/typed/certificates/v1beta1"
 )
 
@@ -751,7 +751,7 @@ func TestServerHealth(t *testing.T) {
 type fakeClientFailureType int
 
 const (
-	none fakeClientFailureType = iota
+	none                            fakeClientFailureType = iota
 	createError
 	watchError
 	certificateSigningRequestDenied

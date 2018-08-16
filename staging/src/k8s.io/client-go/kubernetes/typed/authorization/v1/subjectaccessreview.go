@@ -19,7 +19,7 @@ limitations under the License.
 package v1
 
 import (
-	rest "k8s.io/client-go/rest"
+	"k8s.io/client-go/rest"
 )
 
 // SubjectAccessReviewsGetter has a method to return a SubjectAccessReviewInterface.

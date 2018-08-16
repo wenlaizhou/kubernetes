@@ -446,7 +446,7 @@ func getFromEtcd(keys clientv3.KV, prefix, localPath string) (*metaObject, error
 type metaObject struct {
 	Kind       string `json:"kind,omitempty" protobuf:"bytes,1,opt,name=kind"`
 	APIVersion string `json:"apiVersion,omitempty" protobuf:"bytes,2,opt,name=apiVersion"`
-	Metadata   `json:"metadata,omitempty" protobuf:"bytes,3,opt,name=metadata"`
+	Metadata          `json:"metadata,omitempty" protobuf:"bytes,3,opt,name=metadata"`
 }
 
 type Metadata struct {

@@ -41,9 +41,9 @@ var unstructuredSerializer = resource.UnstructuredPlusDefaultContentConfig().Neg
 
 func fakecmd() *cobra.Command {
 	cmd := &cobra.Command{
-		Use: "delete ([-f FILENAME] | TYPE [(NAME | -l label | --all)])",
+		Use:                   "delete ([-f FILENAME] | TYPE [(NAME | -l label | --all)])",
 		DisableFlagsInUseLine: true,
-		Run: func(cmd *cobra.Command, args []string) {},
+		Run:                   func(cmd *cobra.Command, args []string) {},
 	}
 	return cmd
 }
@@ -66,7 +66,7 @@ func TestDeleteObjectByTuple(t *testing.T) {
 			case p == "/namespaces/test/replicationcontrollers/redis-master-controller" && m == "DELETE":
 				return &http.Response{StatusCode: 200, Header: defaultHeader(), Body: objBody(codec, &rc.Items[0])}, nil
 
-			// secret with cascade on, but no client-side reaper
+				// secret with cascade on, but no client-side reaper
 			case p == "/namespaces/test/secrets/mysecret" && m == "DELETE":
 				return &http.Response{StatusCode: 200, Header: defaultHeader(), Body: objBody(codec, &rc.Items[0])}, nil
 
@@ -182,7 +182,7 @@ func TestDeleteNamedObject(t *testing.T) {
 			case p == "/namespaces/test/replicationcontrollers/redis-master-controller" && m == "DELETE":
 				return &http.Response{StatusCode: 200, Header: defaultHeader(), Body: objBody(codec, &rc.Items[0])}, nil
 
-			// secret with cascade on, but no client-side reaper
+				// secret with cascade on, but no client-side reaper
 			case p == "/namespaces/test/secrets/mysecret" && m == "DELETE":
 				return &http.Response{StatusCode: 200, Header: defaultHeader(), Body: objBody(codec, &rc.Items[0])}, nil
 

@@ -79,12 +79,12 @@ func NewController(p ControllerParameters) (*PersistentVolumeController, error) 
 	}
 
 	controller := &PersistentVolumeController{
-		volumes:           newPersistentVolumeOrderedIndex(),
-		claims:            cache.NewStore(cache.DeletionHandlingMetaNamespaceKeyFunc),
-		kubeClient:        p.KubeClient,
-		eventRecorder:     eventRecorder,
-		runningOperations: goroutinemap.NewGoRoutineMap(true /* exponentialBackOffOnError */),
-		cloud:             p.Cloud,
+		volumes:                       newPersistentVolumeOrderedIndex(),
+		claims:                        cache.NewStore(cache.DeletionHandlingMetaNamespaceKeyFunc),
+		kubeClient:                    p.KubeClient,
+		eventRecorder:                 eventRecorder,
+		runningOperations:             goroutinemap.NewGoRoutineMap(true /* exponentialBackOffOnError */),
+		cloud:                         p.Cloud,
 		enableDynamicProvisioning:     p.EnableDynamicProvisioning,
 		clusterName:                   p.ClusterName,
 		createProvisionedPVRetryCount: createProvisionedPVRetryCount,
@@ -95,7 +95,7 @@ func NewController(p ControllerParameters) (*PersistentVolumeController, error) 
 	}
 
 	// Prober is nil because PV is not aware of Flexvolume.
-	if err := controller.volumePluginMgr.InitPlugins(p.VolumePlugins, nil /* prober */, controller); err != nil {
+	if err := controller.volumePluginMgr.InitPlugins(p.VolumePlugins, nil /* prober */ , controller); err != nil {
 		return nil, fmt.Errorf("Could not initialize volume plugins for PersistentVolume Controller: %v", err)
 	}
 

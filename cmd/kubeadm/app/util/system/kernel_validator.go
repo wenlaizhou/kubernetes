@@ -117,7 +117,7 @@ func (k *KernelValidator) validateCachedKernelConfig(allConfig map[string]kConfi
 		k.Reporter.Report(name, msg, result)
 	}
 	const (
-		required = iota
+		required  = iota
 		optional
 		forbidden
 	)

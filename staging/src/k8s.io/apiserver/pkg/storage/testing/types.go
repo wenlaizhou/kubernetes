@@ -25,5 +25,5 @@ import (
 type TestResource struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata"`
-	Value             int `json:"value"`
+	Value int         `json:"value"`
 }

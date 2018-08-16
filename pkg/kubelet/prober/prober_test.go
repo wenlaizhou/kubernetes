@@ -214,38 +214,38 @@ func TestProbe(t *testing.T) {
 		expectedResult results.Result
 		expectCommand  []string
 	}{
-		{ // No probe
-			probe:          nil,
+		{// No probe
+			probe: nil,
 			expectedResult: results.Success,
 		},
-		{ // No handler
-			probe:          &v1.Probe{},
-			expectError:    true,
+		{// No handler
+			probe: &v1.Probe{},
+			expectError: true,
 			expectedResult: results.Failure,
 		},
-		{ // Probe fails
-			probe:          execProbe,
-			execResult:     probe.Failure,
+		{// Probe fails
+			probe: execProbe,
+			execResult: probe.Failure,
 			expectedResult: results.Failure,
 		},
-		{ // Probe succeeds
-			probe:          execProbe,
-			execResult:     probe.Success,
+		{// Probe succeeds
+			probe: execProbe,
+			execResult: probe.Success,
 			expectedResult: results.Success,
 		},
-		{ // Probe result is unknown
-			probe:          execProbe,
-			execResult:     probe.Unknown,
+		{// Probe result is unknown
+			probe: execProbe,
+			execResult: probe.Unknown,
 			expectedResult: results.Failure,
 		},
-		{ // Probe has an error
-			probe:          execProbe,
-			execError:      true,
-			expectError:    true,
-			execResult:     probe.Unknown,
+		{// Probe has an error
+			probe: execProbe,
+			execError: true,
+			expectError: true,
+			execResult: probe.Unknown,
 			expectedResult: results.Failure,
 		},
-		{ // Probe arguments are passed through
+		{// Probe arguments are passed through
 			probe: &v1.Probe{
 				Handler: v1.Handler{
 					Exec: &v1.ExecAction{
@@ -253,11 +253,11 @@ func TestProbe(t *testing.T) {
 					},
 				},
 			},
-			expectCommand:  []string{"/bin/bash", "-c", "some script"},
-			execResult:     probe.Success,
+			expectCommand: []string{"/bin/bash", "-c", "some script"},
+			execResult: probe.Success,
 			expectedResult: results.Success,
 		},
-		{ // Probe arguments are passed through
+		{// Probe arguments are passed through
 			probe: &v1.Probe{
 				Handler: v1.Handler{
 					Exec: &v1.ExecAction{
@@ -268,8 +268,8 @@ func TestProbe(t *testing.T) {
 			env: []v1.EnvVar{
 				{Name: "A", Value: "script"},
 			},
-			expectCommand:  []string{"/bin/bash", "-c", "some script $(B)"},
-			execResult:     probe.Success,
+			expectCommand: []string{"/bin/bash", "-c", "some script $(B)"},
+			execResult: probe.Success,
 			expectedResult: results.Success,
 		},
 	}

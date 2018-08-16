@@ -39,7 +39,7 @@ import (
 	"k8s.io/apimachinery/pkg/util/diff"
 	"k8s.io/apimachinery/pkg/util/wait"
 	"k8s.io/apimachinery/pkg/watch"
-	example "k8s.io/apiserver/pkg/apis/example"
+	"k8s.io/apiserver/pkg/apis/example"
 	"k8s.io/apiserver/pkg/endpoints/handlers"
 	apitesting "k8s.io/apiserver/pkg/endpoints/testing"
 	"k8s.io/apiserver/pkg/registry/rest"

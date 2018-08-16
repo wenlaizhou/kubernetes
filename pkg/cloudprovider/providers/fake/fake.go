@@ -56,22 +56,22 @@ type FakeCloud struct {
 	NodeShutdown            bool
 	ErrShutdownByProviderID error
 
-	Calls         []string
-	Addresses     []v1.NodeAddress
-	addressesMux  sync.Mutex
-	ExtID         map[types.NodeName]string
-	InstanceTypes map[types.NodeName]string
-	Machines      []types.NodeName
-	NodeResources *v1.NodeResources
-	ClusterList   []string
-	MasterName    string
-	ExternalIP    net.IP
-	Balancers     map[string]FakeBalancer
-	UpdateCalls   []FakeUpdateBalancerCall
-	RouteMap      map[string]*FakeRoute
-	Lock          sync.Mutex
-	Provider      string
-	addCallLock   sync.Mutex
+	Calls          []string
+	Addresses      []v1.NodeAddress
+	addressesMux   sync.Mutex
+	ExtID          map[types.NodeName]string
+	InstanceTypes  map[types.NodeName]string
+	Machines       []types.NodeName
+	NodeResources  *v1.NodeResources
+	ClusterList    []string
+	MasterName     string
+	ExternalIP     net.IP
+	Balancers      map[string]FakeBalancer
+	UpdateCalls    []FakeUpdateBalancerCall
+	RouteMap       map[string]*FakeRoute
+	Lock           sync.Mutex
+	Provider       string
+	addCallLock    sync.Mutex
 	cloudprovider.Zone
 	VolumeLabelMap map[string]map[string]string
 

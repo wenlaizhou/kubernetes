@@ -105,7 +105,7 @@ func TestBuildKubeletArgMap(t *testing.T) {
 				nodeRegOpts: &kubeadmapi.NodeRegistrationOptions{
 					CRISocket: "/var/run/dockershim.sock",
 					Name:      "foo",
-					Taints: []v1.Taint{ // This should be ignored as registerTaintsUsingFlags is false
+					Taints: []v1.Taint{// This should be ignored as registerTaintsUsingFlags is false
 						{
 							Key:    "foo",
 							Value:  "bar",
@@ -205,9 +205,9 @@ func TestBuildKubeletArgMap(t *testing.T) {
 					},
 				},
 				registerTaintsUsingFlags: true,
-				execer:          cgroupfsCgroupExecer,
-				pidOfFunc:       binaryNotRunningPidOfFunc,
-				defaultHostname: "foo",
+				execer:                   cgroupfsCgroupExecer,
+				pidOfFunc:                binaryNotRunningPidOfFunc,
+				defaultHostname:          "foo",
 			},
 			expected: map[string]string{
 				"container-runtime":          "remote",

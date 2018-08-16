@@ -22,7 +22,7 @@ import (
 
 	"github.com/golang/glog"
 
-	admission "k8s.io/apiserver/pkg/admission"
+	"k8s.io/apiserver/pkg/admission"
 	"k8s.io/apiserver/pkg/util/feature"
 	api "k8s.io/kubernetes/pkg/apis/core"
 	informers "k8s.io/kubernetes/pkg/client/informers/informers_generated/internalversion"

@@ -19,16 +19,16 @@ limitations under the License.
 package v1
 
 import (
-	time "time"
+	"time"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	runtime "k8s.io/apimachinery/pkg/runtime"
-	watch "k8s.io/apimachinery/pkg/watch"
-	cache "k8s.io/client-go/tools/cache"
+	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/tools/cache"
 	examplev1 "k8s.io/code-generator/_examples/crd/apis/example/v1"
-	versioned "k8s.io/code-generator/_examples/crd/clientset/versioned"
-	internalinterfaces "k8s.io/code-generator/_examples/crd/informers/externalversions/internalinterfaces"
-	v1 "k8s.io/code-generator/_examples/crd/listers/example/v1"
+	"k8s.io/code-generator/_examples/crd/clientset/versioned"
+	"k8s.io/code-generator/_examples/crd/informers/externalversions/internalinterfaces"
+	"k8s.io/code-generator/_examples/crd/listers/example/v1"
 )
 
 // ClusterTestTypeInformer provides access to a shared informer and lister for

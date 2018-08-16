@@ -146,11 +146,11 @@ func NewCmdApply(baseName string, f cmdutil.Factory, ioStreams genericclioptions
 	o.cmdBaseName = baseName
 
 	cmd := &cobra.Command{
-		Use: "apply -f FILENAME",
+		Use:                   "apply -f FILENAME",
 		DisableFlagsInUseLine: true,
-		Short:   i18n.T("Apply a configuration to a resource by filename or stdin"),
-		Long:    applyLong,
-		Example: applyExample,
+		Short:                 i18n.T("Apply a configuration to a resource by filename or stdin"),
+		Long:                  applyLong,
+		Example:               applyExample,
 		Run: func(cmd *cobra.Command, args []string) {
 			cmdutil.CheckErr(o.Complete(f, cmd))
 			cmdutil.CheckErr(validateArgs(cmd, args))
@@ -585,10 +585,10 @@ func (p *pruner) prune(namespace string, mapping *meta.RESTMapping, includeUnini
 	objList, err := p.dynamicClient.Resource(mapping.Resource).
 		Namespace(namespace).
 		List(metav1.ListOptions{
-			LabelSelector:        p.labelSelector,
-			FieldSelector:        p.fieldSelector,
-			IncludeUninitialized: includeUninitialized,
-		})
+		LabelSelector:        p.labelSelector,
+		FieldSelector:        p.fieldSelector,
+		IncludeUninitialized: includeUninitialized,
+	})
 	if err != nil {
 		return err
 	}

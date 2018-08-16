@@ -20,8 +20,8 @@ func (check *Checker) isTerminating(s ast.Stmt, label string) bool {
 		unreachable()
 
 	case *ast.BadStmt, *ast.DeclStmt, *ast.EmptyStmt, *ast.SendStmt,
-		*ast.IncDecStmt, *ast.AssignStmt, *ast.GoStmt, *ast.DeferStmt,
-		*ast.RangeStmt:
+	*ast.IncDecStmt, *ast.AssignStmt, *ast.GoStmt, *ast.DeferStmt,
+	*ast.RangeStmt:
 		// no chance
 
 	case *ast.LabeledStmt:
@@ -119,8 +119,8 @@ func hasBreak(s ast.Stmt, label string, implicit bool) bool {
 		unreachable()
 
 	case *ast.BadStmt, *ast.DeclStmt, *ast.EmptyStmt, *ast.ExprStmt,
-		*ast.SendStmt, *ast.IncDecStmt, *ast.AssignStmt, *ast.GoStmt,
-		*ast.DeferStmt, *ast.ReturnStmt:
+	*ast.SendStmt, *ast.IncDecStmt, *ast.AssignStmt, *ast.GoStmt,
+	*ast.DeferStmt, *ast.ReturnStmt:
 		// no chance
 
 	case *ast.LabeledStmt:

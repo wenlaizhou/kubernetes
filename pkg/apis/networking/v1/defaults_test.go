@@ -28,7 +28,6 @@ import (
 	"k8s.io/kubernetes/pkg/api/legacyscheme"
 	_ "k8s.io/kubernetes/pkg/apis/core/install"
 	_ "k8s.io/kubernetes/pkg/apis/networking/install"
-	. "k8s.io/kubernetes/pkg/apis/networking/v1"
 )
 
 func TestSetDefaultNetworkPolicy(t *testing.T) {
@@ -36,7 +35,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 		original *networkingv1.NetworkPolicy
 		expected *networkingv1.NetworkPolicy
 	}{
-		{ // Empty NetworkPolicy should be set to PolicyTypes Ingress
+		{// Empty NetworkPolicy should be set to PolicyTypes Ingress
 			original: &networkingv1.NetworkPolicy{
 				Spec: networkingv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -53,7 +52,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Empty Ingress NetworkPolicy should be set to PolicyTypes Ingress
+		{// Empty Ingress NetworkPolicy should be set to PolicyTypes Ingress
 			original: &networkingv1.NetworkPolicy{
 				Spec: networkingv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -72,7 +71,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Defined Ingress and Egress should be set to Ingress,Egress
+		{// Defined Ingress and Egress should be set to Ingress,Egress
 			original: &networkingv1.NetworkPolicy{
 				Spec: networkingv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -139,7 +138,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Egress only with unset PolicyTypes should be set to Ingress, Egress
+		{// Egress only with unset PolicyTypes should be set to Ingress, Egress
 			original: &networkingv1.NetworkPolicy{
 				Spec: networkingv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{
@@ -178,7 +177,7 @@ func TestSetDefaultNetworkPolicy(t *testing.T) {
 				},
 			},
 		},
-		{ // Egress only with PolicyTypes set to Egress should be set to only Egress
+		{// Egress only with PolicyTypes set to Egress should be set to only Egress
 			original: &networkingv1.NetworkPolicy{
 				Spec: networkingv1.NetworkPolicySpec{
 					PodSelector: metav1.LabelSelector{

@@ -294,7 +294,7 @@ func (adc *attachDetachController) populateActualStateOfWorld() error {
 			// volume spec is not needed to detach a volume. If the volume is used by a pod, it
 			// its spec can be: this would happen during in the populateDesiredStateOfWorld which
 			// scans the pods and updates their volumes in the ActualStateOfWorld too.
-			err = adc.actualStateOfWorld.MarkVolumeAsAttached(uniqueName, nil /* VolumeSpec */, nodeName, attachedVolume.DevicePath)
+			err = adc.actualStateOfWorld.MarkVolumeAsAttached(uniqueName, nil /* VolumeSpec */ , nodeName, attachedVolume.DevicePath)
 			if err != nil {
 				glog.Errorf("Failed to mark the volume as attached: %v", err)
 				continue

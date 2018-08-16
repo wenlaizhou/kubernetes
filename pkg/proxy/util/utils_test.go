@@ -125,9 +125,9 @@ func TestGetNodeAddressses(t *testing.T) {
 		itfAddrsPairs []InterfaceAddrsPair
 		expected      sets.String
 	}{
-		{ // case 0
+		{// case 0
 			cidrs: []string{"10.20.30.0/24"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -140,9 +140,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("10.20.30.51"),
 		},
-		{ // case 1
+		{// case 1
 			cidrs: []string{"0.0.0.0/0"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -155,9 +155,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("0.0.0.0/0"),
 		},
-		{ // case 2
+		{// case 2
 			cidrs: []string{"2001:db8::/32", "::1/128"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -170,9 +170,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("2001:db8::1", "::1"),
 		},
-		{ // case 3
+		{// case 3
 			cidrs: []string{"::/0"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -185,9 +185,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("::/0"),
 		},
-		{ // case 4
+		{// case 4
 			cidrs: []string{"127.0.0.1/32"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -200,9 +200,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("127.0.0.1"),
 		},
-		{ // case 5
+		{// case 5
 			cidrs: []string{"127.0.0.0/8"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 1, MTU: 0, Name: "lo", HardwareAddr: nil, Flags: 0},
@@ -211,9 +211,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("127.0.1.1"),
 		},
-		{ // case 6
+		{// case 6
 			cidrs: []string{"10.20.30.0/24", "100.200.201.0/24"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -226,9 +226,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("10.20.30.51", "100.200.201.1"),
 		},
-		{ // case 7
+		{// case 7
 			cidrs: []string{"10.20.30.0/24", "100.200.201.0/24"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -241,9 +241,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString(),
 		},
-		{ // case 8
+		{// case 8
 			cidrs: []string{},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -256,9 +256,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("0.0.0.0/0", "::/0"),
 		},
-		{ // case 9
+		{// case 9
 			cidrs: []string{},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -271,9 +271,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("0.0.0.0/0", "::/0"),
 		},
-		{ // case 9
+		{// case 9
 			cidrs: []string{"1.2.3.0/24", "0.0.0.0/0"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -282,9 +282,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("0.0.0.0/0"),
 		},
-		{ // case 10
+		{// case 10
 			cidrs: []string{"0.0.0.0/0", "1.2.3.0/24", "::1/128"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},
@@ -297,9 +297,9 @@ func TestGetNodeAddressses(t *testing.T) {
 			},
 			expected: sets.NewString("0.0.0.0/0", "::1"),
 		},
-		{ // case 11
+		{// case 11
 			cidrs: []string{"::/0", "1.2.3.0/24", "::1/128"},
-			nw:    fake.NewFakeNetwork(),
+			nw: fake.NewFakeNetwork(),
 			itfAddrsPairs: []InterfaceAddrsPair{
 				{
 					itf:   net.Interface{Index: 0, MTU: 0, Name: "eth0", HardwareAddr: nil, Flags: 0},

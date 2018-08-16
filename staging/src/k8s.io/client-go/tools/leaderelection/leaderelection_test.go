@@ -56,7 +56,7 @@ func testTryAcquireOrRenew(t *testing.T, objectType string) {
 	tests := []struct {
 		observedRecord rl.LeaderElectionRecord
 		observedTime   time.Time
-		reactors       []struct {
+		reactors []struct {
 			verb     string
 			reaction core.ReactionFunc
 		}

@@ -858,7 +858,7 @@ func loadBalancerStatusStringer(s api.LoadBalancerStatus, wide bool) string {
 
 	r := strings.Join(result.List(), ",")
 	if !wide && len(r) > loadBalancerWidth {
-		r = r[0:(loadBalancerWidth-3)] + "..."
+		r = r[0:(loadBalancerWidth - 3)] + "..."
 	}
 	return r
 }

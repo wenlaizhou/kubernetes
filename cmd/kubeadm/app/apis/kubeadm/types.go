@@ -17,9 +17,9 @@ limitations under the License.
 package kubeadm
 
 import (
-	fuzz "github.com/google/gofuzz"
+	"github.com/google/gofuzz"
 
-	v1 "k8s.io/api/core/v1"
+	"k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/kubernetes/pkg/kubelet/apis/kubeletconfig"
 	"k8s.io/kubernetes/pkg/proxy/apis/kubeproxyconfig"
@@ -149,7 +149,6 @@ type API struct {
 
 // NodeRegistrationOptions holds fields that relate to registering a new master or node to the cluster, either via "kubeadm init" or "kubeadm join"
 type NodeRegistrationOptions struct {
-
 	// Name is the `.Metadata.Name` field of the Node API object that will be created in this `kubeadm init` or `kubeadm joiń` operation.
 	// This field is also used in the CommonName field of the kubelet's client certificate to the API server.
 	// Defaults to the hostname of the node if not provided.
@@ -205,7 +204,6 @@ type BootstrapToken struct {
 
 // Etcd contains elements describing Etcd configuration.
 type Etcd struct {
-
 	// Local provides configuration knobs for configuring the local etcd instance
 	// Local and External are mutually exclusive
 	Local *LocalEtcd
@@ -217,7 +215,6 @@ type Etcd struct {
 
 // LocalEtcd describes that kubeadm should run an etcd cluster locally
 type LocalEtcd struct {
-
 	// Image specifies which container image to use for running etcd.
 	// If empty, automatically populated by kubeadm using the image
 	// repository and default etcd version.
@@ -239,7 +236,6 @@ type LocalEtcd struct {
 
 // ExternalEtcd describes an external etcd cluster
 type ExternalEtcd struct {
-
 	// Endpoints of etcd members. Useful for using external etcd.
 	// If not provided, kubeadm will run etcd in a static pod.
 	Endpoints []string

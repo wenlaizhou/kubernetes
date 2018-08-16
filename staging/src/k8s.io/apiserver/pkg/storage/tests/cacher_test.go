@@ -181,15 +181,15 @@ func TestGetToList(t *testing.T) {
 		key         string
 		pred        storage.SelectionPredicate
 		expectedOut []*example.Pod
-	}{{ // test GetToList on existing key
-		key:         key,
-		pred:        storage.Everything,
+	}{{// test GetToList on existing key
+		key: key,
+		pred: storage.Everything,
 		expectedOut: []*example.Pod{storedObj},
-	}, { // test GetToList on non-existing key
-		key:         "/non-existing",
-		pred:        storage.Everything,
+	}, {// test GetToList on non-existing key
+		key: "/non-existing",
+		pred: storage.Everything,
 		expectedOut: nil,
-	}, { // test GetToList with matching pod name
+	}, {// test GetToList with matching pod name
 		key: "/non-existing",
 		pred: storage.SelectionPredicate{
 			Label: labels.Everything(),

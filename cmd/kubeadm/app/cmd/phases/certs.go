@@ -55,7 +55,7 @@ var (
 		Generates the self-signed kubernetes certificate authority and related key, and saves them into %s and %s files. 
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.CACertName, kubeadmconstants.CAKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.CACertName, kubeadmconstants.CAKeyName)
 
 	apiServerCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the API server serving certificate and key and saves them into %s and %s files.
@@ -65,20 +65,20 @@ var (
 		kubernetes.default.svc.<service-dns-domain>, <internalAPIServerVirtualIP> (that is the .10 address in <service-cidr> address space).
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerCertName, kubeadmconstants.APIServerKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerCertName, kubeadmconstants.APIServerKeyName)
 
 	apiServerKubeletCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the client certificate for the API server to connect to the kubelet securely and the respective key,
 		and saves them into %s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerKubeletClientCertName, kubeadmconstants.APIServerKubeletClientKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerKubeletClientCertName, kubeadmconstants.APIServerKubeletClientKeyName)
 
 	etcdCaCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the self-signed etcd certificate authority and related key and saves them into %s and %s files. 
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdCACertName, kubeadmconstants.EtcdCAKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdCACertName, kubeadmconstants.EtcdCAKeyName)
 
 	etcdServerCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the etcd serving certificate and key and saves them into %s and %s files.
@@ -87,7 +87,7 @@ var (
 		default SANs are: localhost, 127.0.0.1.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdServerCertName, kubeadmconstants.EtcdServerKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdServerCertName, kubeadmconstants.EtcdServerKeyName)
 
 	etcdPeerCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the etcd peer certificate and key and saves them into %s and %s files.
@@ -96,40 +96,40 @@ var (
 		default SANs are: <node-name>, <apiserver-advertise-address>.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdPeerCertName, kubeadmconstants.EtcdPeerKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdPeerCertName, kubeadmconstants.EtcdPeerKeyName)
 
 	etcdHealthcheckClientCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the client certificate for liveness probes to healthcheck etcd and the respective key,
 		and saves them into %s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdHealthcheckClientCertName, kubeadmconstants.EtcdHealthcheckClientKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.EtcdHealthcheckClientCertName, kubeadmconstants.EtcdHealthcheckClientKeyName)
 
 	apiServerEtcdServerCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the client certificate for the API server to connect to etcd securely and the respective key,
 		and saves them into %s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerEtcdClientCertName, kubeadmconstants.APIServerEtcdClientKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.APIServerEtcdClientCertName, kubeadmconstants.APIServerEtcdClientKeyName)
 
 	saKeyLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the private key for signing service account tokens along with its public key, and saves them into
 		%s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.ServiceAccountPrivateKeyName, kubeadmconstants.ServiceAccountPublicKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.ServiceAccountPrivateKeyName, kubeadmconstants.ServiceAccountPublicKeyName)
 
 	frontProxyCaCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the front proxy CA certificate and key and saves them into %s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.FrontProxyCACertName, kubeadmconstants.FrontProxyCAKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.FrontProxyCACertName, kubeadmconstants.FrontProxyCAKeyName)
 
 	frontProxyClientCertLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the front proxy client certificate and key and saves them into %s and %s files.
 
 		If both files already exist, kubeadm skips the generation step and existing files will be used.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.FrontProxyClientCertName, kubeadmconstants.FrontProxyClientKeyName)
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.FrontProxyClientCertName, kubeadmconstants.FrontProxyClientKeyName)
 )
 
 // NewCmdCerts returns main command for certs phase

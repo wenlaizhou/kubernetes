@@ -506,7 +506,7 @@ func TestSetSelectorParser(t *testing.T) {
 		}, true, true},
 		{"a in (x,y,notin, z,in)", internalSelector{
 			getRequirement("a", selection.In, sets.NewString("in", "notin", "x", "y", "z"), t),
-		}, true, true}, // operator 'in' inside list of identifiers
+		}, true, true},                        // operator 'in' inside list of identifiers
 		{"a in (xyz abc)", nil, false, false}, // no comma
 		{"a notin(", nil, true, false},        // bad formed
 		{"a (", nil, false, false},            // cpar

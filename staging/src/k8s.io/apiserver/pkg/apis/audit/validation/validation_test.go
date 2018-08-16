@@ -24,18 +24,18 @@ import (
 
 func TestValidatePolicy(t *testing.T) {
 	validRules := []audit.PolicyRule{
-		{ // Defaulting rule
+		{// Defaulting rule
 			Level: audit.LevelMetadata,
-		}, { // Matching non-humans
-			Level:      audit.LevelNone,
+		}, {// Matching non-humans
+			Level: audit.LevelNone,
 			UserGroups: []string{"system:serviceaccounts", "system:nodes"},
-		}, { // Specific request
-			Level:      audit.LevelRequestResponse,
-			Verbs:      []string{"get"},
-			Resources:  []audit.GroupResources{{Group: "rbac.authorization.k8s.io", Resources: []string{"roles", "rolebindings"}}},
+		}, {// Specific request
+			Level: audit.LevelRequestResponse,
+			Verbs: []string{"get"},
+			Resources: []audit.GroupResources{{Group: "rbac.authorization.k8s.io", Resources: []string{"roles", "rolebindings"}}},
 			Namespaces: []string{"kube-system"},
-		}, { // Some non-resource URLs
-			Level:      audit.LevelMetadata,
+		}, {// Some non-resource URLs
+			Level: audit.LevelMetadata,
 			UserGroups: []string{"developers"},
 			NonResourceURLs: []string{
 				"/logs*",
@@ -43,7 +43,7 @@ func TestValidatePolicy(t *testing.T) {
 				"/metrics",
 				"*",
 			},
-		}, { // Omit RequestReceived stage
+		}, {// Omit RequestReceived stage
 			Level: audit.LevelMetadata,
 			OmitStages: []audit.Stage{
 				audit.Stage("RequestReceived"),
@@ -54,8 +54,8 @@ func TestValidatePolicy(t *testing.T) {
 	for _, rule := range validRules {
 		successCases = append(successCases, audit.Policy{Rules: []audit.PolicyRule{rule}})
 	}
-	successCases = append(successCases, audit.Policy{})                         // Empty policy is valid.
-	successCases = append(successCases, audit.Policy{OmitStages: []audit.Stage{ // Policy with omitStages
+	successCases = append(successCases, audit.Policy{}) // Empty policy is valid.
+	successCases = append(successCases, audit.Policy{OmitStages: []audit.Stage{// Policy with omitStages
 		audit.Stage("RequestReceived")}})
 	successCases = append(successCases, audit.Policy{Rules: validRules}) // Multiple rules.
 
@@ -67,55 +67,55 @@ func TestValidatePolicy(t *testing.T) {
 
 	invalidRules := []audit.PolicyRule{
 		{}, // Empty rule (missing Level)
-		{ // Missing level
-			Verbs:      []string{"get"},
-			Resources:  []audit.GroupResources{{Resources: []string{"secrets"}}},
+		{// Missing level
+			Verbs: []string{"get"},
+			Resources: []audit.GroupResources{{Resources: []string{"secrets"}}},
 			Namespaces: []string{"kube-system"},
-		}, { // Invalid Level
+		}, {// Invalid Level
 			Level: "FooBar",
-		}, { // NonResourceURLs + Namespaces
-			Level:           audit.LevelMetadata,
-			Namespaces:      []string{"default"},
+		}, {// NonResourceURLs + Namespaces
+			Level: audit.LevelMetadata,
+			Namespaces: []string{"default"},
 			NonResourceURLs: []string{"/logs*"},
-		}, { // NonResourceURLs + ResourceKinds
-			Level:           audit.LevelMetadata,
-			Resources:       []audit.GroupResources{{Resources: []string{"secrets"}}},
+		}, {// NonResourceURLs + ResourceKinds
+			Level: audit.LevelMetadata,
+			Resources: []audit.GroupResources{{Resources: []string{"secrets"}}},
 			NonResourceURLs: []string{"/logs*"},
-		}, { // invalid group name
-			Level:     audit.LevelMetadata,
+		}, {// invalid group name
+			Level: audit.LevelMetadata,
 			Resources: []audit.GroupResources{{Group: "rbac.authorization.k8s.io/v1beta1", Resources: []string{"roles"}}},
-		}, { // invalid non-resource URLs
+		}, {// invalid non-resource URLs
 			Level: audit.LevelMetadata,
 			NonResourceURLs: []string{
 				"logs",
 				"/healthz*",
 			},
-		}, { // empty non-resource URLs
+		}, {// empty non-resource URLs
 			Level: audit.LevelMetadata,
 			NonResourceURLs: []string{
 				"",
 				"/healthz*",
 			},
-		}, { // invalid non-resource URLs with multi "*"
+		}, {// invalid non-resource URLs with multi "*"
 			Level: audit.LevelMetadata,
 			NonResourceURLs: []string{
 				"/logs/*/*",
 				"/metrics",
 			},
-		}, { // invalid non-resrouce URLs with "*" not in the end
+		}, {// invalid non-resrouce URLs with "*" not in the end
 			Level: audit.LevelMetadata,
 			NonResourceURLs: []string{
 				"/logs/*.log",
 				"/metrics",
 			},
 		},
-		{ // ResourceNames without Resources
-			Level:      audit.LevelMetadata,
-			Verbs:      []string{"get"},
-			Resources:  []audit.GroupResources{{ResourceNames: []string{"leader"}}},
+		{// ResourceNames without Resources
+			Level: audit.LevelMetadata,
+			Verbs: []string{"get"},
+			Resources: []audit.GroupResources{{ResourceNames: []string{"leader"}}},
 			Namespaces: []string{"kube-system"},
 		},
-		{ // invalid omitStages in rule
+		{// invalid omitStages in rule
 			Level: audit.LevelMetadata,
 			OmitStages: []audit.Stage{
 				audit.Stage("foo"),

@@ -104,30 +104,30 @@ type builtinId int
 
 const (
 	// universe scope
-	_Append builtinId = iota
-	_Cap
-	_Close
-	_Complex
-	_Copy
-	_Delete
-	_Imag
-	_Len
-	_Make
-	_New
-	_Panic
-	_Print
-	_Println
-	_Real
-	_Recover
+	_Append  builtinId = iota
+	_Cap     
+	_Close   
+	_Complex 
+	_Copy    
+	_Delete  
+	_Imag    
+	_Len     
+	_Make    
+	_New     
+	_Panic   
+	_Print   
+	_Println 
+	_Real    
+	_Recover 
 
 	// package unsafe
-	_Alignof
-	_Offsetof
-	_Sizeof
+	_Alignof  
+	_Offsetof 
+	_Sizeof   
 
 	// testing support
-	_Assert
-	_Trace
+	_Assert 
+	_Trace  
 )
 
 var predeclaredFuncs = [...]struct {

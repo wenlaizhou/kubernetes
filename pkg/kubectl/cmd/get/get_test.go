@@ -193,7 +193,7 @@ func TestGetUnknownSchemaObject(t *testing.T) {
 		NegotiatedSerializer: unstructuredSerializer,
 		Resp: &http.Response{
 			StatusCode: 200, Header: defaultHeader(),
-			Body: objBody(codec, obj),
+			Body:       objBody(codec, obj),
 		},
 	}
 	tf.ClientConfigVal = defaultClientConfig()

@@ -35,7 +35,7 @@ func newTestableProvisioner(assert *assert.Assertions, options volume.VolumeOpti
 	assert.NoError(err, fmt.Sprintf("can't make a temp dir: %v", err))
 
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 
 	plug, err := plugMgr.FindPluginByName(pluginName)
 	assert.NoError(err, "Can't find the plugin by name")
@@ -50,7 +50,7 @@ func TestProvision(t *testing.T) {
 
 	pvc := volumetest.CreateTestPVC("3Gi", []v1.PersistentVolumeAccessMode{v1.ReadWriteOnce})
 	options := volume.VolumeOptions{
-		PVC: pvc,
+		PVC:                           pvc,
 		PersistentVolumeReclaimPolicy: v1.PersistentVolumeReclaimDelete,
 	}
 
@@ -76,7 +76,7 @@ func TestProvision(t *testing.T) {
 
 	// parameters are not supported
 	options = volume.VolumeOptions{
-		PVC: pvc,
+		PVC:                           pvc,
 		PersistentVolumeReclaimPolicy: v1.PersistentVolumeReclaimDelete,
 		Parameters: map[string]string{
 			"not-supported-params": "test123",
@@ -91,7 +91,7 @@ func TestProvision(t *testing.T) {
 	// selectors are not supported
 	pvc.Spec.Selector = &metav1.LabelSelector{MatchLabels: map[string]string{"key": "value"}}
 	options = volume.VolumeOptions{
-		PVC: pvc,
+		PVC:                           pvc,
 		PersistentVolumeReclaimPolicy: v1.PersistentVolumeReclaimDelete,
 	}
 

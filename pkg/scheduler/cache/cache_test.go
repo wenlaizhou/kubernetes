@@ -127,7 +127,7 @@ func TestAssumePodScheduled(t *testing.T) {
 			usedPorts:           newHostPortInfoBuilder().add("TCP", "127.0.0.1", 80).add("TCP", "127.0.0.1", 8080).build(),
 			imageStates:         make(map[string]*ImageStateSummary),
 		},
-	}, { // test non-zero request
+	}, {// test non-zero request
 		pods: []*v1.Pod{testPods[3]},
 		wNodeInfo: &NodeInfo{
 			requestedResource: &Resource{
@@ -250,13 +250,13 @@ func TestExpirePod(t *testing.T) {
 		cleanupTime time.Time
 
 		wNodeInfo *NodeInfo
-	}{{ // assumed pod would expires
+	}{{// assumed pod would expires
 		pods: []*testExpirePodStruct{
 			{pod: testPods[0], assumedTime: now},
 		},
 		cleanupTime: now.Add(2 * ttl),
-		wNodeInfo:   nil,
-	}, { // first one would expire, second one would not.
+		wNodeInfo: nil,
+	}, {// first one would expire, second one would not.
 		pods: []*testExpirePodStruct{
 			{pod: testPods[0], assumedTime: now},
 			{pod: testPods[1], assumedTime: now.Add(3 * ttl / 2)},
@@ -312,9 +312,9 @@ func TestAddPodWillConfirm(t *testing.T) {
 		podsToAdd    []*v1.Pod
 
 		wNodeInfo *NodeInfo
-	}{{ // two pod were assumed at same time. But first one is called Add() and gets confirmed.
+	}{{// two pod were assumed at same time. But first one is called Add() and gets confirmed.
 		podsToAssume: []*v1.Pod{testPods[0], testPods[1]},
-		podsToAdd:    []*v1.Pod{testPods[0]},
+		podsToAdd: []*v1.Pod{testPods[0]},
 		wNodeInfo: &NodeInfo{
 			requestedResource: &Resource{
 				MilliCPU: 100,
@@ -363,9 +363,9 @@ func TestSnapshot(t *testing.T) {
 	tests := []struct {
 		podsToAssume []*v1.Pod
 		podsToAdd    []*v1.Pod
-	}{{ // two pod were assumed at same time. But first one is called Add() and gets confirmed.
+	}{{// two pod were assumed at same time. But first one is called Add() and gets confirmed.
 		podsToAssume: []*v1.Pod{testPods[0], testPods[1]},
-		podsToAdd:    []*v1.Pod{testPods[0]},
+		podsToAdd: []*v1.Pod{testPods[0]},
 	}}
 
 	for _, tt := range tests {
@@ -521,8 +521,8 @@ func TestUpdatePod(t *testing.T) {
 		podsToUpdate []*v1.Pod
 
 		wNodeInfo []*NodeInfo
-	}{{ // add a pod and then update it twice
-		podsToAdd:    []*v1.Pod{testPods[0]},
+	}{{// add a pod and then update it twice
+		podsToAdd: []*v1.Pod{testPods[0]},
 		podsToUpdate: []*v1.Pod{testPods[0], testPods[1], testPods[0]},
 		wNodeInfo: []*NodeInfo{{
 			requestedResource: &Resource{
@@ -652,9 +652,9 @@ func TestExpireAddUpdatePod(t *testing.T) {
 		podsToUpdate []*v1.Pod
 
 		wNodeInfo []*NodeInfo
-	}{{ // Pod is assumed, expired, and added. Then it would be updated twice.
+	}{{// Pod is assumed, expired, and added. Then it would be updated twice.
 		podsToAssume: []*v1.Pod{testPods[0]},
-		podsToAdd:    []*v1.Pod{testPods[0]},
+		podsToAdd: []*v1.Pod{testPods[0]},
 		podsToUpdate: []*v1.Pod{testPods[0], testPods[1], testPods[0]},
 		wNodeInfo: []*NodeInfo{{
 			requestedResource: &Resource{

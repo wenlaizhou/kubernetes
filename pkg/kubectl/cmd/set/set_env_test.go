@@ -146,7 +146,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"replicaset", "nginx", "env=prod"},
+			args:         []string{"replicaset", "nginx", "env=prod"},
 		},
 		{
 			name: "test apps.v1beta2 replicaset",
@@ -167,7 +167,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"replicaset", "nginx", "env=prod"},
+			args:         []string{"replicaset", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1 replicaset",
@@ -188,7 +188,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"replicaset", "nginx", "env=prod"},
+			args:         []string{"replicaset", "nginx", "env=prod"},
 		},
 		{
 			name: "test extensions.v1beta1 daemonset",
@@ -209,7 +209,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"daemonset", "nginx", "env=prod"},
+			args:         []string{"daemonset", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1beta2 daemonset",
@@ -230,7 +230,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"daemonset", "nginx", "env=prod"},
+			args:         []string{"daemonset", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1 daemonset",
@@ -251,7 +251,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"daemonset", "nginx", "env=prod"},
+			args:         []string{"daemonset", "nginx", "env=prod"},
 		},
 		{
 			name: "test extensions.v1beta1 deployment",
@@ -272,7 +272,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", "env=prod"},
+			args:         []string{"deployment", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1bta1 deployment",
@@ -293,7 +293,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx", "env=prod"},
+			args:         []string{"deployment", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1beta2n deployment",
@@ -314,7 +314,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"deployment", "nginx", "env=prod"},
+			args:         []string{"deployment", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1 deployment",
@@ -335,7 +335,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"deployment", "nginx", "env=prod"},
+			args:         []string{"deployment", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1beta1 statefulset",
@@ -356,7 +356,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"statefulset", "nginx", "env=prod"},
+			args:         []string{"statefulset", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1beta2 statefulset",
@@ -377,7 +377,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"statefulset", "nginx", "env=prod"},
+			args:         []string{"statefulset", "nginx", "env=prod"},
 		},
 		{
 			name: "test appsv1 statefulset",
@@ -398,7 +398,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"statefulset", "nginx", "env=prod"},
+			args:         []string{"statefulset", "nginx", "env=prod"},
 		},
 		{
 			object: &batchv1.Job{
@@ -418,7 +418,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "batch",
 			apiPrefix:    "/apis", apiGroup: "batch", apiVersion: "v1",
-			args: []string{"job", "nginx", "env=prod"},
+			args:         []string{"job", "nginx", "env=prod"},
 		},
 		{
 			object: &v1.ReplicationController{
@@ -438,7 +438,7 @@ func TestSetEnvRemote(t *testing.T) {
 			},
 			testAPIGroup: "",
 			apiPrefix:    "/api", apiGroup: "", apiVersion: "v1",
-			args: []string{"replicationcontroller", "nginx", "env=prod"},
+			args:         []string{"replicationcontroller", "nginx", "env=prod"},
 		},
 	}
 	for _, input := range inputs {

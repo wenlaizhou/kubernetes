@@ -694,16 +694,16 @@ func compareListValuesAtIndex(list1Inbounds, list2Inbounds bool, list1Value, lis
 	// scalars are identical
 	case bothInBounds && list1Value == list2Value:
 		return nil, nil
-	// only list2 is in bound
+		// only list2 is in bound
 	case !list1Inbounds:
 		fallthrough
-	// list2 has additional scalar
+		// list2 has additional scalar
 	case bothInBounds && list1Value > list2Value:
 		return nil, list2Value
-	// only original is in bound
+		// only original is in bound
 	case !list2Inbounds:
 		fallthrough
-	// original has additional scalar
+		// original has additional scalar
 	case bothInBounds && list1Value < list2Value:
 		return list1Value, nil
 	default:
@@ -767,19 +767,19 @@ func diffListsOfMaps(original, modified []interface{}, schema LookupPatchMeta, m
 			}
 			originalIndex++
 			modifiedIndex++
-		// only modified is in bound
+			// only modified is in bound
 		case !originalInBounds:
 			fallthrough
-		// modified has additional map
+			// modified has additional map
 		case bothInBounds && ItemAddedToModifiedSlice(originalElementMergeKeyValueString, modifiedElementMergeKeyValueString):
 			if !diffOptions.IgnoreChangesAndAdditions {
 				patch = append(patch, modifiedElement)
 			}
 			modifiedIndex++
-		// only original is in bound
+			// only original is in bound
 		case !modifiedInBounds:
 			fallthrough
-		// original has additional map
+			// original has additional map
 		case bothInBounds && ItemRemovedFromModifiedSlice(originalElementMergeKeyValueString, modifiedElementMergeKeyValueString):
 			if !diffOptions.IgnoreDeletions {
 				// Item was deleted, so add delete directive

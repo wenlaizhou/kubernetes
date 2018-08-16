@@ -62,121 +62,121 @@ func TestSyncIPSetEntries(t *testing.T) {
 		currentEntries  []string
 		expectedEntries []string
 	}{
-		{ // case 0
+		{// case 0
 			set: &utilipset.IPSet{
 				Name: "foo",
 			},
-			setType:         utilipset.HashIPPort,
-			ipv6:            false,
-			activeEntries:   []string{"172.17.0.4,tcp:80"},
-			currentEntries:  nil,
+			setType: utilipset.HashIPPort,
+			ipv6: false,
+			activeEntries: []string{"172.17.0.4,tcp:80"},
+			currentEntries: nil,
 			expectedEntries: []string{"172.17.0.4,tcp:80"},
 		},
-		{ // case 1
+		{// case 1
 			set: &utilipset.IPSet{
 				Name: "abz",
 			},
-			setType:         utilipset.HashIPPort,
-			ipv6:            true,
-			activeEntries:   []string{"FE80::0202:B3FF:FE1E:8329,tcp:80"},
-			currentEntries:  []string{"FE80::0202:B3FF:FE1E:8329,tcp:80"},
+			setType: utilipset.HashIPPort,
+			ipv6: true,
+			activeEntries: []string{"FE80::0202:B3FF:FE1E:8329,tcp:80"},
+			currentEntries: []string{"FE80::0202:B3FF:FE1E:8329,tcp:80"},
 			expectedEntries: []string{"FE80::0202:B3FF:FE1E:8329,tcp:80"},
 		},
-		{ // case 2
+		{// case 2
 			set: &utilipset.IPSet{
 				Name: "bca",
 			},
-			setType:         utilipset.HashIPPort,
-			ipv6:            false,
-			activeEntries:   []string{"172.17.0.4,tcp:80", "172.17.0.5,tcp:80"},
-			currentEntries:  []string{"172.17.0.5,udp:53"},
+			setType: utilipset.HashIPPort,
+			ipv6: false,
+			activeEntries: []string{"172.17.0.4,tcp:80", "172.17.0.5,tcp:80"},
+			currentEntries: []string{"172.17.0.5,udp:53"},
 			expectedEntries: []string{"172.17.0.4,tcp:80", "172.17.0.5,tcp:80"},
 		},
-		{ // case 3
+		{// case 3
 			set: &utilipset.IPSet{
 				Name: "bar",
 			},
-			setType:         utilipset.HashIPPortIP,
-			ipv6:            false,
-			activeEntries:   []string{"172.17.0.4,tcp:80:172.17.0.4"},
-			currentEntries:  []string{"172.17.0.4,tcp:80:172.17.0.4"},
+			setType: utilipset.HashIPPortIP,
+			ipv6: false,
+			activeEntries: []string{"172.17.0.4,tcp:80:172.17.0.4"},
+			currentEntries: []string{"172.17.0.4,tcp:80:172.17.0.4"},
 			expectedEntries: []string{"172.17.0.4,tcp:80:172.17.0.4"},
 		},
-		{ // case 4
+		{// case 4
 			set: &utilipset.IPSet{
 				Name: "baz",
 			},
-			setType:         utilipset.HashIPPortIP,
-			ipv6:            true,
-			activeEntries:   []string{"FE80:0000:0000:0000:0202:B3FF:FE1E:8329,tcp:8080:FE80:0000:0000:0000:0202:B3FF:FE1E:8329"},
-			currentEntries:  []string{"1111:0000:0000:0000:0202:B3FF:FE1E:8329,tcp:8081:1111:0000:0000:0000:0202:B3FF:FE1E:8329:8081"},
+			setType: utilipset.HashIPPortIP,
+			ipv6: true,
+			activeEntries: []string{"FE80:0000:0000:0000:0202:B3FF:FE1E:8329,tcp:8080:FE80:0000:0000:0000:0202:B3FF:FE1E:8329"},
+			currentEntries: []string{"1111:0000:0000:0000:0202:B3FF:FE1E:8329,tcp:8081:1111:0000:0000:0000:0202:B3FF:FE1E:8329:8081"},
 			expectedEntries: []string{"FE80:0000:0000:0000:0202:B3FF:FE1E:8329,tcp:8080:FE80:0000:0000:0000:0202:B3FF:FE1E:8329"},
 		},
-		{ // case 5
+		{// case 5
 			set: &utilipset.IPSet{
 				Name: "NOPE",
 			},
-			setType:         utilipset.HashIPPortIP,
-			ipv6:            false,
-			activeEntries:   []string{"172.17.0.4,tcp:80,172.17.0.9", "172.17.0.5,tcp:80,172.17.0.10"},
-			currentEntries:  nil,
+			setType: utilipset.HashIPPortIP,
+			ipv6: false,
+			activeEntries: []string{"172.17.0.4,tcp:80,172.17.0.9", "172.17.0.5,tcp:80,172.17.0.10"},
+			currentEntries: nil,
 			expectedEntries: []string{"172.17.0.4,tcp:80,172.17.0.9", "172.17.0.5,tcp:80,172.17.0.10"},
 		},
-		{ // case 6
+		{// case 6
 			set: &utilipset.IPSet{
 				Name: "ABC-DEF",
 			},
-			setType:         utilipset.HashIPPortNet,
-			ipv6:            false,
-			activeEntries:   []string{"172.17.0.4,tcp:80,172.17.0.0/16", "172.17.0.5,tcp:80,172.17.0.0/16"},
-			currentEntries:  nil,
+			setType: utilipset.HashIPPortNet,
+			ipv6: false,
+			activeEntries: []string{"172.17.0.4,tcp:80,172.17.0.0/16", "172.17.0.5,tcp:80,172.17.0.0/16"},
+			currentEntries: nil,
 			expectedEntries: []string{"172.17.0.4,tcp:80,172.17.0.0/16", "172.17.0.5,tcp:80,172.17.0.0/16"},
 		},
-		{ // case 7
+		{// case 7
 			set: &utilipset.IPSet{
 				Name: "zar",
 			},
-			setType:         utilipset.HashIPPortNet,
-			ipv6:            true,
-			activeEntries:   []string{"FE80::8329,tcp:8800,2001:db8::/32"},
-			currentEntries:  []string{"FE80::8329,tcp:8800,2001:db8::/32"},
+			setType: utilipset.HashIPPortNet,
+			ipv6: true,
+			activeEntries: []string{"FE80::8329,tcp:8800,2001:db8::/32"},
+			currentEntries: []string{"FE80::8329,tcp:8800,2001:db8::/32"},
 			expectedEntries: []string{"FE80::8329,tcp:8800,2001:db8::/32"},
 		},
-		{ // case 8
+		{// case 8
 			set: &utilipset.IPSet{
 				Name: "bbb",
 			},
-			setType:         utilipset.HashIPPortNet,
-			ipv6:            true,
-			activeEntries:   nil,
-			currentEntries:  []string{"FE80::8329,udp:8801,2001:db8::/32"},
+			setType: utilipset.HashIPPortNet,
+			ipv6: true,
+			activeEntries: nil,
+			currentEntries: []string{"FE80::8329,udp:8801,2001:db8::/32"},
 			expectedEntries: nil,
 		},
-		{ // case 9
+		{// case 9
 			set: &utilipset.IPSet{
 				Name: "AAA",
 			},
-			setType:         utilipset.BitmapPort,
-			activeEntries:   nil,
-			currentEntries:  []string{"80"},
+			setType: utilipset.BitmapPort,
+			activeEntries: nil,
+			currentEntries: []string{"80"},
 			expectedEntries: nil,
 		},
-		{ // case 10
+		{// case 10
 			set: &utilipset.IPSet{
 				Name: "c-c-c",
 			},
-			setType:         utilipset.BitmapPort,
-			activeEntries:   []string{"8080", "9090"},
-			currentEntries:  []string{"80"},
+			setType: utilipset.BitmapPort,
+			activeEntries: []string{"8080", "9090"},
+			currentEntries: []string{"80"},
 			expectedEntries: []string{"8080", "9090"},
 		},
-		{ // case 11
+		{// case 11
 			set: &utilipset.IPSet{
 				Name: "NODE-PORT",
 			},
-			setType:         utilipset.BitmapPort,
-			activeEntries:   []string{"8080"},
-			currentEntries:  []string{"80", "9090", "8081", "8082"},
+			setType: utilipset.BitmapPort,
+			activeEntries: []string{"8080"},
+			currentEntries: []string{"80", "9090", "8081", "8082"},
 			expectedEntries: []string{"8080"},
 		},
 	}

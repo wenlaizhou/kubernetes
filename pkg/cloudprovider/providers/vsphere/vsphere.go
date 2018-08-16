@@ -30,8 +30,6 @@ import (
 	"sync"
 	"time"
 
-	"gopkg.in/gcfg.v1"
-
 	"github.com/golang/glog"
 	"k8s.io/api/core/v1"
 	k8stypes "k8s.io/apimachinery/pkg/types"

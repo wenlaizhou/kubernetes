@@ -21,10 +21,10 @@ import (
 )
 
 type (
-	ConditionStatus   string
+	ConditionStatus string
 	CarpConditionType string
-	CarpPhase         string
-	RestartPolicy     string
+	CarpPhase string
+	RestartPolicy string
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

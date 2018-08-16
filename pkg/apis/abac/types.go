@@ -32,7 +32,6 @@ type Policy struct {
 
 // PolicySpec contains the attributes for a policy rule
 type PolicySpec struct {
-
 	// User is the username this rule applies to.
 	// Either user or group is required to match the request.
 	// "*" matches all users.
@@ -70,5 +69,4 @@ type PolicySpec struct {
 
 	// TODO: want a way to allow a controller to create a pod based only on a
 	// certain podTemplates.
-
 }

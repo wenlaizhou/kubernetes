@@ -62,12 +62,12 @@ func testWatch(t *testing.T, recursive bool) {
 		key        string
 		pred       storage.SelectionPredicate
 		watchTests []*testWatchStruct
-	}{{ // create a key
-		key:        "/somekey-1",
+	}{{// create a key
+		key: "/somekey-1",
 		watchTests: []*testWatchStruct{{podFoo, true, watch.Added}},
-		pred:       storage.Everything,
-	}, { // create a key but obj gets filtered. Then update it with unfiltered obj
-		key:        "/somekey-3",
+		pred: storage.Everything,
+	}, {// create a key but obj gets filtered. Then update it with unfiltered obj
+		key: "/somekey-3",
 		watchTests: []*testWatchStruct{{podFoo, false, ""}, {podBar, true, watch.Added}},
 		pred: storage.SelectionPredicate{
 			Label: labels.Everything(),
@@ -77,12 +77,12 @@ func testWatch(t *testing.T, recursive bool) {
 				return nil, fields.Set{"metadata.name": pod.Name}, pod.Initializers != nil, nil
 			},
 		},
-	}, { // update
-		key:        "/somekey-4",
+	}, {// update
+		key: "/somekey-4",
 		watchTests: []*testWatchStruct{{podFoo, true, watch.Added}, {podBar, true, watch.Modified}},
-		pred:       storage.Everything,
-	}, { // delete because of being filtered
-		key:        "/somekey-5",
+		pred: storage.Everything,
+	}, {// delete because of being filtered
+		key: "/somekey-5",
 		watchTests: []*testWatchStruct{{podFoo, true, watch.Added}, {podBar, true, watch.Deleted}},
 		pred: storage.SelectionPredicate{
 			Label: labels.Everything(),

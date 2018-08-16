@@ -166,7 +166,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"replicaset", "nginx"},
+			args:         []string{"replicaset", "nginx"},
 		},
 		{
 			object: &appsv1beta2.ReplicaSet{
@@ -186,7 +186,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"replicaset", "nginx"},
+			args:         []string{"replicaset", "nginx"},
 		},
 		{
 			object: &appsv1.ReplicaSet{
@@ -206,7 +206,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"replicaset", "nginx"},
+			args:         []string{"replicaset", "nginx"},
 		},
 		{
 			object: &extensionsv1beta1.DaemonSet{
@@ -226,7 +226,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"daemonset", "nginx"},
+			args:         []string{"daemonset", "nginx"},
 		},
 		{
 			object: &appsv1beta2.DaemonSet{
@@ -246,7 +246,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"daemonset", "nginx"},
+			args:         []string{"daemonset", "nginx"},
 		},
 		{
 			object: &appsv1.DaemonSet{
@@ -266,7 +266,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"daemonset", "nginx"},
+			args:         []string{"daemonset", "nginx"},
 		},
 		{
 			object: &extensionsv1beta1.Deployment{
@@ -286,7 +286,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "extensions", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx"},
+			args:         []string{"deployment", "nginx"},
 		},
 		{
 			object: &appsv1beta1.Deployment{
@@ -306,7 +306,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"deployment", "nginx"},
+			args:         []string{"deployment", "nginx"},
 		},
 		{
 			object: &appsv1beta2.Deployment{
@@ -326,7 +326,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"deployment", "nginx"},
+			args:         []string{"deployment", "nginx"},
 		},
 		{
 			object: &appsv1.Deployment{
@@ -346,7 +346,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "extensions",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"deployment", "nginx"},
+			args:         []string{"deployment", "nginx"},
 		},
 		{
 			object: &appsv1beta1.StatefulSet{
@@ -366,7 +366,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta1",
-			args: []string{"statefulset", "nginx"},
+			args:         []string{"statefulset", "nginx"},
 		},
 		{
 			object: &appsv1beta2.StatefulSet{
@@ -386,7 +386,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1beta2",
-			args: []string{"statefulset", "nginx"},
+			args:         []string{"statefulset", "nginx"},
 		},
 		{
 			object: &appsv1.StatefulSet{
@@ -406,7 +406,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "apps",
 			apiPrefix:    "/apis", apiGroup: "apps", apiVersion: "v1",
-			args: []string{"statefulset", "nginx"},
+			args:         []string{"statefulset", "nginx"},
 		},
 		{
 			object: &batchv1.Job{
@@ -426,7 +426,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "batch",
 			apiPrefix:    "/apis", apiGroup: "batch", apiVersion: "v1",
-			args: []string{"job", "nginx"},
+			args:         []string{"job", "nginx"},
 		},
 		{
 			object: &v1.ReplicationController{
@@ -446,7 +446,7 @@ func TestSetResourcesRemote(t *testing.T) {
 			},
 			testAPIGroup: "",
 			apiPrefix:    "/api", apiGroup: "", apiVersion: "v1",
-			args: []string{"replicationcontroller", "nginx"},
+			args:         []string{"replicationcontroller", "nginx"},
 		},
 	}
 	for i, input := range inputs {

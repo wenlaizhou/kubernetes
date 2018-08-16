@@ -102,7 +102,7 @@ func (h *heapData) Push(kv interface{}) {
 // Pop is supposed to be called by heap.Pop only.
 func (h *heapData) Pop() interface{} {
 	key := h.queue[len(h.queue)-1]
-	h.queue = h.queue[0 : len(h.queue)-1]
+	h.queue = h.queue[0: len(h.queue)-1]
 	item, ok := h.items[key]
 	if !ok {
 		// This is an error

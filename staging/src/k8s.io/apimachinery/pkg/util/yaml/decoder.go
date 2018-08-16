@@ -156,7 +156,7 @@ func splitYAMLDocument(data []byte, atEOF bool) (advance int, token []byte, err 
 			return 0, nil, nil
 		}
 		if j := bytes.IndexByte(after, '\n'); j >= 0 {
-			return i + j + 1, data[0 : i-sep], nil
+			return i + j + 1, data[0: i-sep], nil
 		}
 		return 0, nil, nil
 	}

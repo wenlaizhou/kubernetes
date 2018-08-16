@@ -52,15 +52,15 @@ var (
 
 	apiServerControlplaneLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the static Pod manifest file for the API server and saves it into %s file.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeAPIServer, kubeadmconstants.GetStaticPodDirectory()))
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeAPIServer, kubeadmconstants.GetStaticPodDirectory()))
 
 	controllerManagerControlplaneLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the static Pod manifest file for the controller-manager and saves it into %s file.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeControllerManager, kubeadmconstants.GetStaticPodDirectory()))
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeControllerManager, kubeadmconstants.GetStaticPodDirectory()))
 
 	schedulerControlplaneLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the static Pod manifest file for the scheduler and saves it into %s file.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeScheduler, kubeadmconstants.GetStaticPodDirectory()))
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.KubeScheduler, kubeadmconstants.GetStaticPodDirectory()))
 )
 
 // NewCmdControlplane return main command for Controlplane phase
@@ -147,7 +147,7 @@ func getControlPlaneSubCommands(outDir, defaultKubernetesVersion string) []*cobr
 			cmd.Flags().Int32Var(&cfg.API.BindPort, "apiserver-bind-port", cfg.API.BindPort, "The port the API server is accessible on")
 			cmd.Flags().StringVar(&cfg.Networking.ServiceSubnet, "service-cidr", cfg.Networking.ServiceSubnet, "The range of IP address used for service VIPs")
 			cmd.Flags().StringVar(&featureGatesString, "feature-gates", featureGatesString, "A set of key=value pairs that describe feature gates for various features. "+
-				"Options are:\n"+strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
+				"Options are:\n"+ strings.Join(features.KnownFeatures(&features.InitFeatureGates), "\n"))
 			cmd.Flags().Var(utilflag.NewMapStringString(&cfg.APIServerExtraArgs), "apiserver-extra-args", "A set of extra flags to pass to the API Server or override default ones in form of <flagname>=<value>")
 		}
 

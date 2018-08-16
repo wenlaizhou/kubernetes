@@ -29,7 +29,6 @@ import (
 	"k8s.io/apimachinery/pkg/util/intstr"
 	"k8s.io/kubernetes/pkg/api/legacyscheme"
 	_ "k8s.io/kubernetes/pkg/apis/apps/install"
-	. "k8s.io/kubernetes/pkg/apis/apps/v1beta2"
 	api "k8s.io/kubernetes/pkg/apis/core"
 	_ "k8s.io/kubernetes/pkg/apis/core/install"
 	utilpointer "k8s.io/kubernetes/pkg/util/pointer"
@@ -64,7 +63,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 		original *appsv1beta2.DaemonSet
 		expected *appsv1beta2.DaemonSet
 	}{
-		{ // Labels change/defaulting test.
+		{// Labels change/defaulting test.
 			original: &appsv1beta2.DaemonSet{
 				Spec: appsv1beta2.DaemonSetSpec{
 					Template: defaultTemplate,
@@ -86,7 +85,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // Labels change/defaulting test.
+		{// Labels change/defaulting test.
 			original: &appsv1beta2.DaemonSet{
 				ObjectMeta: metav1.ObjectMeta{
 					Labels: map[string]string{
@@ -116,7 +115,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // OnDeleteDaemonSetStrategyType update strategy.
+		{// OnDeleteDaemonSetStrategyType update strategy.
 			original: &appsv1beta2.DaemonSet{
 				Spec: appsv1beta2.DaemonSetSpec{
 					Template: templateNoLabel,
@@ -135,7 +134,7 @@ func TestSetDefaultDaemonSetSpec(t *testing.T) {
 				},
 			},
 		},
-		{ // Custom unique label key.
+		{// Custom unique label key.
 			original: &appsv1beta2.DaemonSet{
 				Spec: appsv1beta2.DaemonSetSpec{},
 			},
@@ -192,7 +191,7 @@ func TestSetDefaultStatefulSet(t *testing.T) {
 		original *appsv1beta2.StatefulSet
 		expected *appsv1beta2.StatefulSet
 	}{
-		{ // labels and default update strategy
+		{// labels and default update strategy
 			original: &appsv1beta2.StatefulSet{
 				Spec: appsv1beta2.StatefulSetSpec{
 					Template: defaultTemplate,
@@ -216,7 +215,7 @@ func TestSetDefaultStatefulSet(t *testing.T) {
 				},
 			},
 		},
-		{ // Alternate update strategy
+		{// Alternate update strategy
 			original: &appsv1beta2.StatefulSet{
 				Spec: appsv1beta2.StatefulSetSpec{
 					Template: defaultTemplate,
@@ -240,7 +239,7 @@ func TestSetDefaultStatefulSet(t *testing.T) {
 				},
 			},
 		},
-		{ // Parallel pod management policy.
+		{// Parallel pod management policy.
 			original: &appsv1beta2.StatefulSet{
 				Spec: appsv1beta2.StatefulSetSpec{
 					Template:            defaultTemplate,

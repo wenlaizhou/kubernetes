@@ -19,7 +19,7 @@ package external_metrics
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/util/flowcontrol"
@@ -82,8 +82,8 @@ func (m *namespacedMetrics) List(metricName string, metricSelector labels.Select
 		Namespace(m.namespace).
 		Resource(metricName).
 		VersionedParams(&metav1.ListOptions{
-			LabelSelector: metricSelector.String(),
-		}, metav1.ParameterCodec).
+		LabelSelector: metricSelector.String(),
+	}, metav1.ParameterCodec).
 		Do().
 		Into(res)
 

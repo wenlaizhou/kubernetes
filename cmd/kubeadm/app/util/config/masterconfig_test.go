@@ -59,41 +59,41 @@ func TestConfigFileAndDefaultsToInternalConfig(t *testing.T) {
 	}{
 		// These tests are reading one file, loading it using ConfigFileAndDefaultsToInternalConfig that all of kubeadm is using for unmarshal of our API types,
 		// and then marshals the internal object to the expected groupVersion
-		{ // v1alpha2 -> internal
-			name:         "v1alpha2ToInternal",
-			in:           master_v1alpha2YAML,
-			out:          master_internalYAML,
+		{// v1alpha2 -> internal
+			name: "v1alpha2ToInternal",
+			in: master_v1alpha2YAML,
+			out: master_internalYAML,
 			groupVersion: kubeadm.SchemeGroupVersion,
 		},
-		{ // v1alpha3 -> internal
-			name:         "v1alpha3ToInternal",
-			in:           master_v1alpha3YAML,
-			out:          master_internalYAML,
+		{// v1alpha3 -> internal
+			name: "v1alpha3ToInternal",
+			in: master_v1alpha3YAML,
+			out: master_internalYAML,
 			groupVersion: kubeadm.SchemeGroupVersion,
 		},
-		{ // v1alpha2 -> internal -> v1alpha3
-			name:         "v1alpha2Tov1alpha3",
-			in:           master_v1alpha2YAML,
-			out:          master_v1alpha3YAML,
+		{// v1alpha2 -> internal -> v1alpha3
+			name: "v1alpha2Tov1alpha3",
+			in: master_v1alpha2YAML,
+			out: master_v1alpha3YAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
-		{ // v1alpha3 -> internal -> v1alpha3
-			name:         "v1alpha3Tov1alpha3",
-			in:           master_v1alpha3YAML,
-			out:          master_v1alpha3YAML,
+		{// v1alpha3 -> internal -> v1alpha3
+			name: "v1alpha3Tov1alpha3",
+			in: master_v1alpha3YAML,
+			out: master_v1alpha3YAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
 		// These tests are reading one file that has only a subset of the fields populated, loading it using ConfigFileAndDefaultsToInternalConfig,
 		// and then marshals the internal object to the expected groupVersion
-		{ // v1alpha2 -> default -> validate -> internal -> v1alpha3
-			name:         "incompleteYAMLToDefaultedv1alpha3",
-			in:           master_incompleteYAML,
-			out:          master_defaultedYAML,
+		{// v1alpha2 -> default -> validate -> internal -> v1alpha3
+			name: "incompleteYAMLToDefaultedv1alpha3",
+			in: master_incompleteYAML,
+			out: master_defaultedYAML,
 			groupVersion: kubeadmapiv1alpha3.SchemeGroupVersion,
 		},
-		{ // v1alpha2 -> validation should fail
-			name:        "invalidYAMLShouldFail",
-			in:          master_invalidYAML,
+		{// v1alpha2 -> validation should fail
+			name: "invalidYAMLShouldFail",
+			in: master_invalidYAML,
 			expectedErr: true,
 		},
 	}

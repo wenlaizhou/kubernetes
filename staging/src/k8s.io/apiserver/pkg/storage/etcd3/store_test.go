@@ -185,20 +185,20 @@ func TestGet(t *testing.T) {
 		ignoreNotFound    bool
 		expectNotFoundErr bool
 		expectedOut       *example.Pod
-	}{{ // test get on existing item
-		key:               key,
-		ignoreNotFound:    false,
+	}{{// test get on existing item
+		key: key,
+		ignoreNotFound: false,
 		expectNotFoundErr: false,
-		expectedOut:       storedObj,
-	}, { // test get on non-existing item with ignoreNotFound=false
-		key:               "/non-existing",
-		ignoreNotFound:    false,
+		expectedOut: storedObj,
+	}, {// test get on non-existing item with ignoreNotFound=false
+		key: "/non-existing",
+		ignoreNotFound: false,
 		expectNotFoundErr: true,
-	}, { // test get on non-existing item with ignoreNotFound=true
-		key:               "/non-existing",
-		ignoreNotFound:    true,
+	}, {// test get on non-existing item with ignoreNotFound=true
+		key: "/non-existing",
+		ignoreNotFound: true,
 		expectNotFoundErr: false,
-		expectedOut:       &example.Pod{},
+		expectedOut: &example.Pod{},
 	}}
 
 	for i, tt := range tests {
@@ -228,13 +228,13 @@ func TestUnconditionalDelete(t *testing.T) {
 		key               string
 		expectedObj       *example.Pod
 		expectNotFoundErr bool
-	}{{ // test unconditional delete on existing key
-		key:               key,
-		expectedObj:       storedObj,
+	}{{// test unconditional delete on existing key
+		key: key,
+		expectedObj: storedObj,
 		expectNotFoundErr: false,
-	}, { // test unconditional delete on non-existing key
-		key:               "/non-existing",
-		expectedObj:       nil,
+	}, {// test unconditional delete on non-existing key
+		key: "/non-existing",
+		expectedObj: nil,
 		expectNotFoundErr: true,
 	}}
 
@@ -264,11 +264,11 @@ func TestConditionalDelete(t *testing.T) {
 	tests := []struct {
 		precondition        *storage.Preconditions
 		expectInvalidObjErr bool
-	}{{ // test conditional delete with UID match
-		precondition:        storage.NewUIDPreconditions("A"),
+	}{{// test conditional delete with UID match
+		precondition: storage.NewUIDPreconditions("A"),
 		expectInvalidObjErr: false,
-	}, { // test conditional delete with UID mismatch
-		precondition:        storage.NewUIDPreconditions("B"),
+	}, {// test conditional delete with UID mismatch
+		precondition: storage.NewUIDPreconditions("B"),
 		expectInvalidObjErr: true,
 	}}
 
@@ -300,15 +300,15 @@ func TestGetToList(t *testing.T) {
 		key         string
 		pred        storage.SelectionPredicate
 		expectedOut []*example.Pod
-	}{{ // test GetToList on existing key
-		key:         key,
-		pred:        storage.Everything,
+	}{{// test GetToList on existing key
+		key: key,
+		pred: storage.Everything,
 		expectedOut: []*example.Pod{storedObj},
-	}, { // test GetToList on non-existing key
-		key:         "/non-existing",
-		pred:        storage.Everything,
+	}, {// test GetToList on non-existing key
+		key: "/non-existing",
+		pred: storage.Everything,
 		expectedOut: nil,
-	}, { // test GetToList with matching pod name
+	}, {// test GetToList with matching pod name
 		key: "/non-existing",
 		pred: storage.SelectionPredicate{
 			Label: labels.Everything(),
@@ -358,64 +358,64 @@ func TestGuaranteedUpdate(t *testing.T) {
 		expectNoUpdate      bool
 		transformStale      bool
 		hasSelfLink         bool
-	}{{ // GuaranteedUpdate on non-existing key with ignoreNotFound=false
-		key:                 "/non-existing",
-		ignoreNotFound:      false,
-		precondition:        nil,
-		expectNotFoundErr:   true,
+	}{{// GuaranteedUpdate on non-existing key with ignoreNotFound=false
+		key: "/non-existing",
+		ignoreNotFound: false,
+		precondition: nil,
+		expectNotFoundErr: true,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      false,
-	}, { // GuaranteedUpdate on non-existing key with ignoreNotFound=true
-		key:                 "/non-existing",
-		ignoreNotFound:      true,
-		precondition:        nil,
-		expectNotFoundErr:   false,
+		expectNoUpdate: false,
+	}, {// GuaranteedUpdate on non-existing key with ignoreNotFound=true
+		key: "/non-existing",
+		ignoreNotFound: true,
+		precondition: nil,
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      false,
-	}, { // GuaranteedUpdate on existing key
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        nil,
-		expectNotFoundErr:   false,
+		expectNoUpdate: false,
+	}, {// GuaranteedUpdate on existing key
+		key: key,
+		ignoreNotFound: false,
+		precondition: nil,
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      false,
-	}, { // GuaranteedUpdate with same data
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        nil,
-		expectNotFoundErr:   false,
+		expectNoUpdate: false,
+	}, {// GuaranteedUpdate with same data
+		key: key,
+		ignoreNotFound: false,
+		precondition: nil,
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      true,
-	}, { // GuaranteedUpdate with same data AND a self link
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        nil,
-		expectNotFoundErr:   false,
+		expectNoUpdate: true,
+	}, {// GuaranteedUpdate with same data AND a self link
+		key: key,
+		ignoreNotFound: false,
+		precondition: nil,
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      true,
-		hasSelfLink:         true,
-	}, { // GuaranteedUpdate with same data but stale
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        nil,
-		expectNotFoundErr:   false,
+		expectNoUpdate: true,
+		hasSelfLink: true,
+	}, {// GuaranteedUpdate with same data but stale
+		key: key,
+		ignoreNotFound: false,
+		precondition: nil,
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      false,
-		transformStale:      true,
-	}, { // GuaranteedUpdate with UID match
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        storage.NewUIDPreconditions("A"),
-		expectNotFoundErr:   false,
+		expectNoUpdate: false,
+		transformStale: true,
+	}, {// GuaranteedUpdate with UID match
+		key: key,
+		ignoreNotFound: false,
+		precondition: storage.NewUIDPreconditions("A"),
+		expectNotFoundErr: false,
 		expectInvalidObjErr: false,
-		expectNoUpdate:      true,
-	}, { // GuaranteedUpdate with UID mismatch
-		key:                 key,
-		ignoreNotFound:      false,
-		precondition:        storage.NewUIDPreconditions("B"),
-		expectNotFoundErr:   false,
+		expectNoUpdate: true,
+	}, {// GuaranteedUpdate with UID mismatch
+		key: key,
+		ignoreNotFound: false,
+		precondition: storage.NewUIDPreconditions("B"),
+		expectNotFoundErr: false,
 		expectInvalidObjErr: true,
-		expectNoUpdate:      true,
+		expectNoUpdate: true,
 	}}
 
 	for i, tt := range tests {

@@ -19,11 +19,11 @@ limitations under the License.
 package v1beta1
 
 import (
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	watch "k8s.io/apimachinery/pkg/watch"
-	rest "k8s.io/client-go/rest"
-	v1beta1 "k8s.io/metrics/pkg/apis/metrics/v1beta1"
-	scheme "k8s.io/metrics/pkg/client/clientset/versioned/scheme"
+	"k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/watch"
+	"k8s.io/client-go/rest"
+	"k8s.io/metrics/pkg/apis/metrics/v1beta1"
+	"k8s.io/metrics/pkg/client/clientset/versioned/scheme"
 )
 
 // PodMetricsesGetter has a method to return a PodMetricsInterface.

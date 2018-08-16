@@ -282,7 +282,7 @@ func TestCadvisorImagesFsStats(t *testing.T) {
 	assert.Equal(imageStats.TotalStorageBytes, *stats.UsedBytes)
 	assert.Equal(imageFsInfo.InodesFree, stats.InodesFree)
 	assert.Equal(imageFsInfo.Inodes, stats.Inodes)
-	assert.Equal(*imageFsInfo.Inodes-*imageFsInfo.InodesFree, *stats.InodesUsed)
+	assert.Equal(*imageFsInfo.Inodes - *imageFsInfo.InodesFree, *stats.InodesUsed)
 
 	mockCadvisor.AssertExpectations(t)
 }

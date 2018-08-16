@@ -66,7 +66,7 @@ func (s *SecureServingOptionsWithLoopback) ApplyTo(secureServingInfo **server.Se
 	case err != nil && secureLoopbackClientConfig == nil:
 		return err
 
-	// if we failed, but we already have a fallback loopback client config (usually insecure), allow it
+		// if we failed, but we already have a fallback loopback client config (usually insecure), allow it
 	case err != nil && secureLoopbackClientConfig != nil:
 
 	default:

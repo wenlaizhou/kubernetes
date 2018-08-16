@@ -43,7 +43,6 @@ import (
 	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/apimachinery/pkg/version"
 	"k8s.io/apiserver/pkg/server"
-	. "k8s.io/apiserver/pkg/server"
 	utilflag "k8s.io/apiserver/pkg/util/flag"
 	"k8s.io/client-go/discovery"
 	restclient "k8s.io/client-go/rest"
@@ -179,9 +178,9 @@ func TestGetNamedCertificateMap(t *testing.T) {
 				},
 			},
 			expected: map[string]int{
-				"a": 0, "b": 1,
+				"a":          0, "b": 1,
 				"a.test.com": 0, "b.test.com": 1,
-				"test.com": 0,
+				"test.com":   0,
 			},
 		},
 		{
@@ -684,7 +683,7 @@ func generateSelfSignedCertKey(host string, alternateIPs []net.IP, alternateDNS 
 		KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
 		ExtKeyUsage:           []x509.ExtKeyUsage{x509.ExtKeyUsageServerAuth},
 		BasicConstraintsValid: true,
-		IsCA: true,
+		IsCA:                  true,
 	}
 
 	if ip := net.ParseIP(host); ip != nil {

@@ -218,7 +218,7 @@ func newTestVolumeManager(tmpDir string, podManager kubepod.Manager, kubeClient 
 	fakeRecorder := &record.FakeRecorder{}
 	plugMgr := &volume.VolumePluginMgr{}
 	// TODO (#51147) inject mock prober
-	plugMgr.InitPlugins([]volume.VolumePlugin{plug}, nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, kubeClient, nil))
+	plugMgr.InitPlugins([]volume.VolumePlugin{plug}, nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, kubeClient, nil))
 	statusManager := status.NewManager(kubeClient, podManager, &statustest.FakePodDeletionSafetyProvider{})
 
 	vm := NewVolumeManager(
@@ -233,7 +233,7 @@ func newTestVolumeManager(tmpDir string, podManager kubepod.Manager, kubeClient 
 		"",
 		fakeRecorder,
 		false, /* experimentalCheckNodeCapabilitiesBeforeMount */
-		false /* keepTerminatedPodVolumes */)
+		false  /* keepTerminatedPodVolumes */)
 
 	return vm
 }

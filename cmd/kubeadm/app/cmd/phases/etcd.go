@@ -33,7 +33,7 @@ import (
 var (
 	etcdLocalLongDesc = fmt.Sprintf(normalizer.LongDesc(`
 		Generates the static Pod manifest file for a local, single-node etcd instance and saves it to %s file.
-		`+cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.Etcd, kubeadmconstants.GetStaticPodDirectory()))
+		`+ cmdutil.AlphaDisclaimer), kubeadmconstants.GetStaticPodFilepath(kubeadmconstants.Etcd, kubeadmconstants.GetStaticPodDirectory()))
 
 	etcdLocalExample = normalizer.Examples(`
 		# Generates the static Pod manifest file for etcd, functionally 

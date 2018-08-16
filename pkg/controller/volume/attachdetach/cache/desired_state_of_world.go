@@ -372,7 +372,7 @@ func (dsw *desiredStateOfWorld) GetVolumesToAttach() []VolumeToAttach {
 	dsw.RLock()
 	defer dsw.RUnlock()
 
-	volumesToAttach := make([]VolumeToAttach, 0 /* len */, len(dsw.nodesManaged) /* cap */)
+	volumesToAttach := make([]VolumeToAttach, 0 /* len */ , len(dsw.nodesManaged) /* cap */)
 	for nodeName, nodeObj := range dsw.nodesManaged {
 		for volumeName, volumeObj := range nodeObj.volumesToAttach {
 			volumesToAttach = append(volumesToAttach,

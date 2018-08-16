@@ -142,21 +142,21 @@ func TestRepairWithExisting(t *testing.T) {
 			ObjectMeta: metav1.ObjectMeta{Namespace: "two", Name: "two"},
 			Spec:       api.ServiceSpec{ClusterIP: "192.168.1.100"},
 		},
-		&api.Service{ // outside CIDR, will be dropped
+		&api.Service{// outside CIDR, will be dropped
 			ObjectMeta: metav1.ObjectMeta{Namespace: "three", Name: "three"},
-			Spec:       api.ServiceSpec{ClusterIP: "192.168.0.1"},
+			Spec: api.ServiceSpec{ClusterIP: "192.168.0.1"},
 		},
-		&api.Service{ // empty, ignored
+		&api.Service{// empty, ignored
 			ObjectMeta: metav1.ObjectMeta{Namespace: "four", Name: "four"},
-			Spec:       api.ServiceSpec{ClusterIP: ""},
+			Spec: api.ServiceSpec{ClusterIP: ""},
 		},
-		&api.Service{ // duplicate, dropped
+		&api.Service{// duplicate, dropped
 			ObjectMeta: metav1.ObjectMeta{Namespace: "five", Name: "five"},
-			Spec:       api.ServiceSpec{ClusterIP: "192.168.1.1"},
+			Spec: api.ServiceSpec{ClusterIP: "192.168.1.1"},
 		},
-		&api.Service{ // headless
+		&api.Service{// headless
 			ObjectMeta: metav1.ObjectMeta{Namespace: "six", Name: "six"},
-			Spec:       api.ServiceSpec{ClusterIP: "None"},
+			Spec: api.ServiceSpec{ClusterIP: "None"},
 		},
 	)
 

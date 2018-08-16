@@ -23,7 +23,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime/schema"
-	serializer "k8s.io/apimachinery/pkg/runtime/serializer"
+	"k8s.io/apimachinery/pkg/runtime/serializer"
 	"k8s.io/client-go/kubernetes/scheme"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/util/flowcontrol"
@@ -179,8 +179,8 @@ func (m *rootScopedMetrics) GetForObjects(groupKind schema.GroupKind, selector l
 		Name(v1beta1.AllObjects).
 		SubResource(metricName).
 		VersionedParams(&metav1.ListOptions{
-			LabelSelector: selector.String(),
-		}, metav1.ParameterCodec).
+		LabelSelector: selector.String(),
+	}, metav1.ParameterCodec).
 		Do().
 		Into(res)
 
@@ -235,8 +235,8 @@ func (m *namespacedMetrics) GetForObjects(groupKind schema.GroupKind, selector l
 		Name(v1beta1.AllObjects).
 		SubResource(metricName).
 		VersionedParams(&metav1.ListOptions{
-			LabelSelector: selector.String(),
-		}, metav1.ParameterCodec).
+		LabelSelector: selector.String(),
+	}, metav1.ParameterCodec).
 		Do().
 		Into(res)
 

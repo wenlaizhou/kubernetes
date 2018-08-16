@@ -43,7 +43,7 @@ func TestMultithreadedThrottling(t *testing.T) {
 				// try to add it to the taken channel
 				case taken <- true:
 					continue
-				// if taken is full, notify and return
+					// if taken is full, notify and return
 				default:
 					endCh <- true
 					return

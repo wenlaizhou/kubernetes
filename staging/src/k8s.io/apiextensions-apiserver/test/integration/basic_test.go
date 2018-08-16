@@ -936,8 +936,8 @@ func TestStatusGetAndPatch(t *testing.T) {
 	// make sure we don't get 405 Method Not Allowed from Patching CRD/status subresource
 	_, err = apiExtensionClient.ApiextensionsV1beta1().CustomResourceDefinitions().
 		Patch(noxuDefinition.Name, types.StrategicMergePatchType,
-			[]byte(fmt.Sprintf(`{"labels":{"test-label":"dummy"}}`)),
-			"status")
+		[]byte(fmt.Sprintf(`{"labels":{"test-label":"dummy"}}`)),
+		"status")
 	if err != nil {
 		t.Fatal(err)
 	}

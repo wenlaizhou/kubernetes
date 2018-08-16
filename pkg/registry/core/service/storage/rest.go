@@ -303,8 +303,8 @@ func (rs *REST) healthCheckNodePortUpdate(oldService, service *api.Service, node
 			return false, errors.NewInternalError(err)
 		}
 
-	// Case 2: Transition from needs HealthCheckNodePort to don't need HealthCheckNodePort.
-	// Free the existing healthCheckNodePort and clear the HealthCheckNodePort field.
+		// Case 2: Transition from needs HealthCheckNodePort to don't need HealthCheckNodePort.
+		// Free the existing healthCheckNodePort and clear the HealthCheckNodePort field.
 	case neededHealthCheckNodePort && !needsHealthCheckNodePort:
 		glog.Infof("Transition to non LoadBalancer type service or LoadBalancer type service with ExternalTrafficPolicy=Global")
 		glog.V(4).Infof("Releasing healthCheckNodePort: %d", oldHealthCheckNodePort)
@@ -312,8 +312,8 @@ func (rs *REST) healthCheckNodePortUpdate(oldService, service *api.Service, node
 		// Clear the HealthCheckNodePort field.
 		service.Spec.HealthCheckNodePort = 0
 
-	// Case 3: Remain in needs HealthCheckNodePort.
-	// Reject changing the value of the HealthCheckNodePort field.
+		// Case 3: Remain in needs HealthCheckNodePort.
+		// Reject changing the value of the HealthCheckNodePort field.
 	case neededHealthCheckNodePort && needsHealthCheckNodePort:
 		if oldHealthCheckNodePort != newHealthCheckNodePort {
 			glog.Warningf("Attempt to change value of health check node port DENIED")

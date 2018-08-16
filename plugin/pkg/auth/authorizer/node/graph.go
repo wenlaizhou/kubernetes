@@ -110,14 +110,14 @@ func NewGraph() *Graph {
 type vertexType byte
 
 const (
-	configMapVertexType vertexType = iota
-	nodeVertexType
-	podVertexType
-	pvcVertexType
-	pvVertexType
-	secretVertexType
-	vaVertexType
-	serviceAccountVertexType
+	configMapVertexType      vertexType = iota
+	nodeVertexType           
+	podVertexType            
+	pvcVertexType            
+	pvVertexType             
+	secretVertexType         
+	vaVertexType             
+	serviceAccountVertexType 
 )
 
 var vertexTypes = map[vertexType]string{

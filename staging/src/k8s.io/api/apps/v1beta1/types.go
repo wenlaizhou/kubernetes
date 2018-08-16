@@ -281,8 +281,8 @@ type StatefulSetCondition struct {
 type StatefulSetList struct {
 	metav1.TypeMeta `json:",inline"`
 	// +optional
-	metav1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items           []StatefulSet `json:"items" protobuf:"bytes,2,rep,name=items"`
+	metav1.ListMeta     `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
+	Items []StatefulSet `json:"items" protobuf:"bytes,2,rep,name=items"`
 }
 
 // +genclient

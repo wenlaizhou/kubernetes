@@ -64,38 +64,38 @@ func TestDoProbe(t *testing.T) {
 		expectSet      bool
 		expectedResult results.Result
 	}{
-		{ // No status.
+		{// No status.
 			expectContinue: true,
 		},
-		{ // Pod failed
+		{// Pod failed
 			podStatus: &failedStatus,
 		},
-		{ // No container status
-			podStatus:      &otherStatus,
+		{// No container status
+			podStatus: &otherStatus,
 			expectContinue: true,
 		},
-		{ // Container waiting
-			podStatus:      &pendingStatus,
+		{// Container waiting
+			podStatus: &pendingStatus,
 			expectContinue: true,
-			expectSet:      true,
+			expectSet: true,
 		},
-		{ // Container terminated
+		{// Container terminated
 			podStatus: &terminatedStatus,
 			expectSet: true,
 		},
-		{ // Probe successful.
-			podStatus:      &runningStatus,
+		{// Probe successful.
+			podStatus: &runningStatus,
 			expectContinue: true,
-			expectSet:      true,
+			expectSet: true,
 			expectedResult: results.Success,
 		},
-		{ // Initial delay passed
+		{// Initial delay passed
 			podStatus: &runningStatus,
 			probe: v1.Probe{
 				InitialDelaySeconds: -100,
 			},
 			expectContinue: true,
-			expectSet:      true,
+			expectSet: true,
 			expectedResult: results.Success,
 		},
 	}

@@ -64,7 +64,7 @@ func TestRemoveMissingExtendedResources(t *testing.T) {
 			),
 			expectedPod: makeTestPod(
 				v1.ResourceList{"foo.com/bar": quantity}, // Requests
-				v1.ResourceList{}),                       // Limits
+				v1.ResourceList{}), // Limits
 		},
 		{
 			desc: "requests for resources unavailable in node should be removed",

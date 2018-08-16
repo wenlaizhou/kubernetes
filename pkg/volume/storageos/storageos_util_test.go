@@ -120,7 +120,7 @@ func TestCreateVolume(t *testing.T) {
 	}
 	defer os.RemoveAll(tmpDir)
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 	plug, _ := plugMgr.FindPluginByName("kubernetes.io/storageos")
 
 	// Use real util with stubbed api
@@ -133,8 +133,8 @@ func TestCreateVolume(t *testing.T) {
 	}
 
 	options := volume.VolumeOptions{
-		PVName: testPVName,
-		PVC:    volumetest.CreateTestPVC(fmt.Sprintf("%dGi", testSize), []v1.PersistentVolumeAccessMode{v1.ReadWriteOnce}),
+		PVName:                        testPVName,
+		PVC:                           volumetest.CreateTestPVC(fmt.Sprintf("%dGi", testSize), []v1.PersistentVolumeAccessMode{v1.ReadWriteOnce}),
 		PersistentVolumeReclaimPolicy: v1.PersistentVolumeReclaimDelete,
 	}
 
@@ -210,7 +210,7 @@ func TestAttachVolume(t *testing.T) {
 	}
 	defer os.RemoveAll(tmpDir)
 	plugMgr := volume.VolumePluginMgr{}
-	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */, volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
+	plugMgr.InitPlugins(ProbeVolumePlugins(), nil /* prober */ , volumetest.NewFakeVolumeHost(tmpDir, nil, nil))
 	plug, _ := plugMgr.FindPluginByName("kubernetes.io/storageos")
 
 	// Use real util with stubbed api

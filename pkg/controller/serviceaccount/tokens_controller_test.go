@@ -472,7 +472,7 @@ func TestTokenCreation(t *testing.T) {
 			ClientObjects:          []runtime.Object{serviceAccountTokenSecretWithNamespaceData([]byte("custom"))},
 			ExistingServiceAccount: serviceAccount(tokenSecretReferences()),
 
-			AddedSecret:     serviceAccountTokenSecretWithNamespaceData([]byte("custom")),
+			AddedSecret: serviceAccountTokenSecretWithNamespaceData([]byte("custom")),
 			ExpectedActions: []core.Action{
 				// no update is performed... the custom namespace is preserved
 			},
@@ -537,7 +537,7 @@ func TestTokenCreation(t *testing.T) {
 			ClientObjects:          []runtime.Object{serviceAccountTokenSecretWithNamespaceData([]byte("custom"))},
 			ExistingServiceAccount: serviceAccount(tokenSecretReferences()),
 
-			UpdatedSecret:   serviceAccountTokenSecretWithNamespaceData([]byte("custom")),
+			UpdatedSecret: serviceAccountTokenSecretWithNamespaceData([]byte("custom")),
 			ExpectedActions: []core.Action{
 				// no update is performed... the custom namespace is preserved
 			},
