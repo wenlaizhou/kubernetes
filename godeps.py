@@ -10,4 +10,6 @@ import os
 import re
 import utils
 
-pprint.pprint(utils.getGoDeps())
+for d in utils.getGoDeps():
+    if "k8s.io/kubernetes/" not in d:
+        print d
