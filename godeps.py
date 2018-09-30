@@ -12,5 +12,5 @@ import re
 import utils
 
 for d in utils.getGoDeps():
-    if "k8s.io/kubernetes/" not in d:
-        print d
+    #if "k8s.io/kubernetes/" not in d:
+    print d
